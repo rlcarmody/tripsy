@@ -4,12 +4,12 @@ const InviteModel = new Schema({
   tripID: {
     type: Schema.Types.ObjectId,
     ref: 'Trip',
-    required: true
+    required: true,
   },
   expiration: {
     type: Date,
-    default: (Date.now().getDate() + 7)
-  }
+    default: (Date.now().getDate() + 7),
+  },
 });
 
 const Invite = mongoose.model('Invite', InviteModel);

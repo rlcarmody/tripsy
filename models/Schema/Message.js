@@ -4,18 +4,18 @@ const MessageSchema = new Schema({
   tripID: {
     type: Schema.Types.ObjectId,
     ref: 'Trip',
-    required: true
+    required: true,
   },
   userID: {
     type: Schema.Types.ObjectId,
     ref: 'User',
-    required: true
+    required: true,
   },
   messageBody: {
     type: String,
     trim: true,
-    minlength: 1
-  }
+    minlength: 1,
+  },
 });
 
 const Message = mongoose.model('Message', MessageSchema);

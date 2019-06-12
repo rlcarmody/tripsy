@@ -9,16 +9,16 @@ const SupplyItemSchema = new Schema({
   name: {
     type: String,
     required: true,
-    trim: true
+    trim: true,
   },
   claimed: {
     type: Boolean,
-    default: false
+    default: false,
   },
   claimedBy: {
     type: Schema.Types.ObjectId,
-    ref: 'User'
-  }
+    ref: 'User',
+  },
 });
 
 const SupplyItem = mongoose.model('SupplyItem', SupplyItemSchema);

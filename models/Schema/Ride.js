@@ -4,29 +4,29 @@ const RideSchema = new Schema({
   tripID: {
     type: Schema.Types.ObjectId,
     ref: 'Trip',
-    required: true
+    required: true,
   },
   provider: {
     type: Schema.Types.ObjectId,
     ref: 'User',
-    required: true
+    required: true,
   },
   riders: [{
     type: Schema.Types.ObjectId,
-    ref: 'User'
+    ref: 'User',
   }],
   seats: {
     type: Number,
-    required: true
+    required: true,
   },
   departureDate: {
     type: Date,
-    required: true
+    required: true,
   },
   vehicleType: {
     type: String,
-    trim: true
-  }
+    trim: true,
+  },
 });
 
 const Ride = mongoose.model('Ride', RideSchema);
