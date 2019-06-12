@@ -6,6 +6,5 @@
     "react/jsx-one-expression-per-line": [1, {"allow": "literal"}],
     "linebreak-style": 0
   },
-  "plugins": ["react"],
-  "parser": "babel-eslint"
+  "plugins": ["react"]
 }
