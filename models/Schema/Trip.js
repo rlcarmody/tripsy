@@ -1,4 +1,7 @@
-const mongoose, { Schema } = require('mongoose');
+const mongoose = require('mongoose');
+
+const { Schema } = mongoose;
+const Invite = require('./Invite');
 
 const TripSchema = new Schema({
   name: {
@@ -48,6 +51,11 @@ const TripSchema = new Schema({
   }],
   description: String,
 });
+
+TripSchema.methods.inviteMember = function(data, cb) {
+  data.TripID = this.ObjectId;
+  Invite.insertMany(data).then(cb);
+};
 
 const Trip = mongoose.model('Trip', TripSchema);
 
