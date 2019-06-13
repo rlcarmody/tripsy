@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 const Invite = require('./Invite');
+const SupplyItem = require ('./SupplyItem');
 
 const TripSchema = new Schema({
   name: {
@@ -56,6 +57,11 @@ TripSchema.methods.inviteMember = function(data, cb) {
   data.TripID = this.ObjectId;
   Invite.insertMany(data).then(cb);
 };
+
+TripSchema.methods.addSupplies = function(data, cb) {
+  data.TripID = this.ObjectId;
+  SupplyItem.insertMany(data).then(cb);
+}
 
 const Trip = mongoose.model('Trip', TripSchema);
 
