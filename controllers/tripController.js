@@ -1,28 +1,51 @@
 const Trip = require('../models/Schema/Trip');
+const User = require('../models/Schema/User');
 
 module.exports = {
-  //post
+  //post - done
   create(req, res) {
     const { userID } = req.cookies;
     const { body: tripDetails } = req;
     tripDetails.organizer = userID;
-    
+    tripDetails.members = [userID];
     Trip.create(tripDetails)
       .then(result => {
-        res.json(result)
+        User.findByIdAndUpdate(userID, { $push: { trips: result._id } }).exec();
+        res.json(result);
       })
       .catch(err => res.status(422).json(err));
   },
-  //get
+  //get - done
   findOne(req, res) {
-    Trip.findById(req.query.id)
+    Trip.findById(req.params.tripID)
+      .populate({
+        path: 'members',
+        select: 'displayName'
+      })
       .then(result => res.json(result))
-      .catch(err => res.status(404));
+      .catch(err => res.status(404).json(err));
   },
-  //post
+  //post - done
   invite(req, res) {
-    Trip.findById(req.query.id)
-      .then(trip => trip.inviteMember(req.body, cb => res.json(cb)));
+    const { tripID } = req.query;
+    const invitations = req.body.email.map(email => ({email, tripID}));
+    Trip.findById(tripID)
+      .then(trip => trip.inviteMember(invitations, cb => res.json(cb)));
+  },
+  //update - done
+  acceptInvite(req, res) {
+    const userID = req.cookies.userID;
+    Trip.findByIdAndUpdate(req.query.tripID, { $push: { members: userID } })
+      .then(result => res.json(result))
+      .catch(err => res.status(404).json(err));
+  },
+  //post - done
+  addSupplies(req, res) {
+    const { tripID } = req.query;
+    const supplies = req.body.supplies.map(item => ({name: item, tripID}));
+    Trip.findById(tripID)
+      .then(trip => trip.addSupplies(supplies, cb => res.json(cb)))
+      .catch(err => res.status(404).json(err));
   }
 }
 

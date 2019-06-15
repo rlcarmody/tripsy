@@ -19,7 +19,7 @@ const TripSchema = new Schema({
   },
   organizer: {
     type: Schema.Types.ObjectId,
-    ref: "User",
+    ref: 'User',
     required: true,
   },
   startDate: {
@@ -42,10 +42,6 @@ const TripSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'Ride',
   }],
-  supplies: [{
-    type: Schema.Types.ObjectId,
-    ref: 'SupplyItem',
-  }],
   messages: [{
     type: Schema.Types.ObjectId,
     ref: 'Message',
@@ -54,12 +50,10 @@ const TripSchema = new Schema({
 });
 
 TripSchema.methods.inviteMember = function(data, cb) {
-  data.TripID = this.ObjectId;
   Invite.insertMany(data).then(cb);
 };
 
 TripSchema.methods.addSupplies = function(data, cb) {
-  data.TripID = this.ObjectId;
   SupplyItem.insertMany(data).then(cb);
 }
 

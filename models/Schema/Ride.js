@@ -17,9 +17,10 @@ const RideSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'User',
   }],
-  seats: {
+  availableSeats: {
     type: Number,
     required: true,
+    min: 0,
   },
   departureDate: {
     type: Date,
