@@ -1,4 +1,6 @@
-const mongoose, { Schema } = require('mongoose');
+const mongoose = require('mongoose');
+
+const { Schema } = mongoose;
 
 const InviteModel = new Schema({
   tripID: {
@@ -8,8 +10,12 @@ const InviteModel = new Schema({
   },
   expiration: {
     type: Date,
-    default: (Date.now().getDate() + 7),
+    default: Date.now() + 259200000,
   },
+  email: {
+    type: String,
+    require: true,
+  }
 });
 
 const Invite = mongoose.model('Invite', InviteModel);

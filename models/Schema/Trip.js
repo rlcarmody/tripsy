@@ -1,4 +1,8 @@
-const mongoose, { Schema } = require('mongoose');
+const mongoose = require('mongoose');
+
+const { Schema } = mongoose;
+const Invite = require('./Invite');
+const SupplyItem = require ('./SupplyItem');
 
 const TripSchema = new Schema({
   name: {
@@ -15,7 +19,7 @@ const TripSchema = new Schema({
   },
   organizer: {
     type: Schema.Types.ObjectId,
-    ref: "User",
+    ref: 'User',
     required: true,
   },
   startDate: {
@@ -38,16 +42,20 @@ const TripSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'Ride',
   }],
-  supplies: [{
-    type: Schema.Types.ObjectId,
-    ref: 'SupplyItem',
-  }],
   messages: [{
     type: Schema.Types.ObjectId,
     ref: 'Message',
   }],
   description: String,
 });
+
+TripSchema.methods.inviteMember = function(data, cb) {
+  Invite.insertMany(data).then(cb);
+};
+
+TripSchema.methods.addSupplies = function(data, cb) {
+  SupplyItem.insertMany(data).then(cb);
+}
 
 const Trip = mongoose.model('Trip', TripSchema);
 

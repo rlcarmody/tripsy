@@ -1,4 +1,6 @@
-const mongoose, { Schema } = require('mongoose');
+const mongoose = require('mongoose');
+
+const { Schema } = mongoose;
 
 const MessageSchema = new Schema({
   tripID: {
@@ -16,6 +18,10 @@ const MessageSchema = new Schema({
     trim: true,
     minlength: 1,
   },
+  createdDate: {
+    type: Date,
+    default: Date.now()
+  }
 });
 
 const Message = mongoose.model('Message', MessageSchema);
