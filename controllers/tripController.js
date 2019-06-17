@@ -1,5 +1,6 @@
 const Trip = require('../models/Schema/Trip');
 const User = require('../models/Schema/User');
+const emailer = require('../emailer');
 
 module.exports = {
   //post - done
@@ -28,9 +29,24 @@ module.exports = {
   //post - done
   invite(req, res) {
     const { tripID } = req.query;
-    const invitations = req.body.email.map(email => ({email, tripID}));
+    const invitations = req.body.email.map(email => ({ email, tripID }));
     Trip.findById(tripID)
-      .then(trip => trip.inviteMember(invitations, cb => res.json(cb)));
+      .then(trip => trip.inviteMember(invitations, (cb) => {
+        cb.forEach(invite => {
+          invite.populate({
+            path: 'tripID',
+            populate: {
+              path: 'organizer',
+              select: 'displayName'
+            }
+          }).execPopulate()
+            .then(data => {
+              const { email, _id, tripID: {organizer: { displayName }, location }} = data;
+              emailer(email, displayName, location, _id);
+            });
+        })
+        return res.json(cb);
+      }));
   },
   //update - done
   acceptInvite(req, res) {
@@ -42,7 +58,7 @@ module.exports = {
   //post - done
   addSupplies(req, res) {
     const { tripID } = req.query;
-    const supplies = req.body.supplies.map(item => ({name: item, tripID}));
+    const supplies = req.body.supplies.map(item => ({ name: item, tripID }));
     Trip.findById(tripID)
       .then(trip => trip.addSupplies(supplies, cb => res.json(cb)))
       .catch(err => res.status(404).json(err));
