@@ -14,10 +14,10 @@ class App extends Component {
     return (
 
       <Router>
-        
+
         <Route exact path="/" component={Signup} />
-        
-        <Route path="/login" component={Login} />        
+
+        <Route path="/login" component={Login} />
 
         <Route path="/home" component={Home} />
 
@@ -28,8 +28,8 @@ class App extends Component {
         <Route path="/supplies" component={Supplies} />
 
         <Route path="/guests" component={Guests} />
-        
-        
+
+
       </Router>
 
 
