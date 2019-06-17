@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 class MyTrips extends Component {
 
     render() {
         return (
-            <h6>My Trips Render Here :)</h6>
+            <Link to='/tripdash'>My Trips Will Render Here :)</Link>
         )
     }
 }
