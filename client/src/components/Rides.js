@@ -11,18 +11,18 @@ class TripDash extends Component {
 
         <Nav />
 
-        <div className="container">
+        <div className="container" id="rides">
 
           <div className="row">
             <section>
-              <Link to="/rides">
-                <button type="button">Rides</button>
-              </Link>
-              <Link to="/supplies">
-                <button type="button">Supplies</button>
+            <Link to="/tripdash">
+                <button type="button">Trip</button>
               </Link>
               <Link to="/guests">
                 <button type="button">Guests</button>
+              </Link>
+              <Link to="/supplies">
+                <button type="button">Supplies</button>
               </Link>
             </section>
 

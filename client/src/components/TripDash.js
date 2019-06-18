@@ -10,7 +10,7 @@ class TripDash extends Component {
 
       <div>
         <Nav />
-        <div className="container">
+        <div className="container" id="tripdash">
           <div className="row">
             <section>
               <Link to="/rides">

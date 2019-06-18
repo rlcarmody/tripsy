@@ -11,18 +11,18 @@ class Guests extends Component {
 
         <Nav />
 
-        <div className="container">
+        <div className="container" id="guests">
 
           <div className="row">
             <section>
+            <Link to="/tripdash">
+                <button type="button">Trip</button>
+              </Link>
               <Link to="/rides">
                 <button type="button">Rides</button>
               </Link>
               <Link to="/supplies">
                 <button type="button">Supplies</button>
-              </Link>
-              <Link to="/guests">
-                <button type="button">Guests</button>
               </Link>
             </section>
           </div>
@@ -41,7 +41,11 @@ class Guests extends Component {
             </div>
             <div className="col">
               <section>
-                <div className="aboutTrip">ABOUT TRIP</div>
+                <div className="aboutTrip">
+                  <h5>About Trip</h5>
+                  <p>
+                    Our trip is a camping trip to Mt Hood.
+                  </p></div>
               </section>
             </div>
           </div>

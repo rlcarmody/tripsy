@@ -13,10 +13,10 @@ class Home extends Component {
           <Nav />
         </div>
 
-        <div className="container">
+        <div className="container" id="home">
           <div className="row homeBanner jumbotron">
             <div className="col">
-              <h2 className="headline">Tripsy Home Page</h2>
+              <h2 className="headline" id="homeheadline">Tripsy Home Page</h2>
             </div>
           </div>
 
