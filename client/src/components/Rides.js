@@ -7,8 +7,8 @@ class TripDash extends Component {
 
  render () {
      return (
-         <Router>
-
+         
+<div>
              <Nav />
 
              <div className='container'>
@@ -50,7 +50,7 @@ class TripDash extends Component {
 
              </div>
 
-         </Router>
+         </div>
         
         )
     }

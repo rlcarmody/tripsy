@@ -6,6 +6,24 @@ import MyTrips from './MyTrips';
 
 class Home extends Component {
 
+    state = {
+        myTrips: []
+      };
+
+      componentDidMount() {
+        this.getTrips();
+      }
+    
+      getTrips = () => {
+        API.getTrips()
+          .then(res =>
+            this.setState({
+              myTrips: res.data
+            })
+          )
+          .catch(err => console.log(err));
+      };
+
  render () {
      return (
         <div>
