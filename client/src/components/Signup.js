@@ -1,17 +1,20 @@
-import React, { Component } from "react";
+/* eslint-disable max-len */
+/* eslint-disable react/jsx-one-expression-per-line */
+import React, { Component } from 'react';
+// eslint-disable-next-line no-unused-vars
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 class Signup extends Component {
   constructor(props) {
     super(props);
 
-    this.state={
-      email: "",
-      name: "",
-      password: "",  
-      confirmPassword: "",
+    this.state = {
+      email: '',
+      name: '',
+      password: '',
+      confirmPassword: '',
     };
-  } 
+  }
   //   validateForm=event => {
   //    if (this.state.password.length < 1) {
   //      console.log('password is missing')
@@ -30,17 +33,15 @@ class Signup extends Component {
   //   }
   //   else {
   //     console.log('validated!')
-  //   }       
+  //   }
   // }
-  
 
-    handleSignup=event => {
+
+    handleSignup = (event) => {
       event.preventDefault();
-      console.log(this.state.email, 
-                  this.state.name, 
-                  this.state.password, 
-                  this.state.confirmPassword);
-      // this.validateForm(); 
+      // eslint-disable-next-line react/destructuring-assignment
+      console.log(this.state.email, this.state.name, this.state.password, this.state.confirmPassword);
+      // this.validateForm();
     };
     // const formStyle={
     //   position: 'absolute',
@@ -51,46 +52,50 @@ class Signup extends Component {
     //   right: 0,
     //   margin: 'auto'
     // };
-  
+
     // const buttonStyle={
-    //   backgroundColor: 'teal', 
+    //   backgroundColor: 'teal',
     //   width: 'auto'
     //  };
 
-    render() { 
+    render() {
       return (
-      <div className='container'>
-        <form onSubmit={this.handleSignup}>
-          <div className ='subHeadline'>
+        <div className="container">
+          <form onSubmit={this.handleSignup}>
+            <div className="subHeadline">
               <h5>Welcome to Tripsy! Create an account to get started.</h5>
-          </div>
-          <div className='formField'>
-              <label className='formFieldLabel' htmlFor='name'>Name</label>
-              <input className='formFieldInput' type='text' name='name' id='name' placeholder="What's your name?"></input>
-          </div>
-          <div className='formField'>
-              <label className='formFieldLabel' htmlFor='email'>E-mail Address</label>
-              <input className='formFieldInput' type='email' name='email' id='email' placeholder="And your email address?"></input>
-          </div>
-          
-          <div className='formField'>
-              <label className='formFieldLabel' htmlFor='password'>Password</label>
-              <input className='formFieldInput' type='password' name='password' id='password' placeholder="Create a password..."></input>
-          </div>
-          <div className='formField'>
-              <label className='formFieldLabel' htmlFor='password'>Confirm Password</label>
-              <input className='formFieldInput' type='password' name='confirmPassword' id='password' placeholder="Let's get that password one more time."></input>
-          </div>   
-          <input className='btn waves-light formButton' type='submit'  id='btnSubmit'  placeholder='Submit'></input>   
-          <section>
-              {<p>Already have an account?  
-                <Link to='/login'>Login</Link>
-              </p>}
-          </section>    
-          
-        </form>
-      </div>
-      )
-    };
-  }
-  export default Signup;
+            </div>
+            <div className="formField">
+              <label className="formFieldLabel" htmlFor="name">Name
+                <input className="formFieldInput" type="text" name="name" id="name" placeholder="What's your name?" />
+              </label>
+            </div>
+            <div className="formField">
+              <label className="formFieldLabel" htmlFor="email">E-mail Address
+                <input className="formFieldInput" type="email" name="email" id="email" placeholder="And your email address?" />
+              </label>
+            </div>
+
+            <div className="formField">
+              <label className="formFieldLabel" htmlFor="password">Password
+                <input className="formFieldInput" type="password" name="password" id="password" placeholder="Create a password..." />
+              </label>
+            </div>
+            <div className="formField">
+              <label className="formFieldLabel" htmlFor="password">Confirm Password
+                <input className="formFieldInput" type="password" name="confirmPassword" id="password" placeholder="Let's get that password one more time." />
+              </label>
+            </div>
+            <input className="btn waves-light formButton" type="submit" id="btnSubmit" placeholder="Submit" />
+            <section>
+              <p>Already have an account?
+                <Link to="/login">Login</Link>
+              </p>
+            </section>
+
+          </form>
+        </div>
+      );
+    }
+}
+export default Signup;
