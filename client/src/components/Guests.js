@@ -42,10 +42,7 @@ class Guests extends Component {
             <div className="col">
               <section>
                 <div className="aboutTrip">
-                  <h5>About Trip</h5>
-                  <p>
-                    Our trip is a camping trip to Mt Hood.
-                  </p></div>
+                  ABOUT TRIP</div>
               </section>
             </div>
           </div>

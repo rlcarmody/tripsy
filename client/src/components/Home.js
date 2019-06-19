@@ -16,7 +16,10 @@ class Home extends Component {
         <div className="container" id="home">
           <div className="row homeBanner jumbotron">
             <div className="col">
-              <h2 className="headline" id="homeheadline">Tripsy Home Page</h2>
+              <img src={ require('../images/tripsy.PNG') } />
+            </div>
+            <div className="col">
+              <h3 className="headline" id="homeheadline">Let's Get Your Trip Started!</h3>
             </div>
           </div>
 

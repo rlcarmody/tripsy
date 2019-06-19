@@ -7,7 +7,7 @@ export default class Nav extends Component {
     return (
       <nav>
         <div className="nav-wrapper">
-          <Link to="/home">Tripsy</Link>
+          <Link to="/home">tripsy</Link>
           <ul id="nav-mobile" className="right hide-on-med-and-down">
             <Link to="/login">Sign Out</Link>
           </ul>
