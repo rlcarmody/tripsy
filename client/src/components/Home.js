@@ -19,7 +19,7 @@ class Home extends Component {
               <img src={ require('../images/tripsy.PNG') } />
             </div>
             <div className="col">
-              <h3 className="headline" id="homeheadline">Let's Get Your Trip Started!</h3>
+              <h2 className="headline" id="homeheadline">This is your Trip Dashboard!</h2>
             </div>
           </div>
 

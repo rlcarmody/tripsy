@@ -33,7 +33,7 @@ class TripDash extends Component {
           <div className="row">
             <div className="col">
               <section>
-                <div><img src={ require('../images/bing.png') } />
+                <div><img alt="map" src={ require('../images/bing.png') } />
 </div>
               </section>
             </div>
