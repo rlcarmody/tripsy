@@ -1,64 +1,58 @@
-import React, { Component, Fragment } from 'react';
+import React, { Fragment } from 'react';
 // eslint-disable-next-line no-unused-vars
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
-import Nav from './Nav';
+import Nav from './layoutComponents/Nav';
 
-class TripDash extends Component {
-  render() {
-    return (
-      <Fragment>
-
-        <Nav />
-
-        <div className="container">
-
-          <div className="row">
-            <section>
-              <Link to="/rides">
-                <button type="button">Rides</button>
-              </Link>
-              <Link to="/supplies">
-                <button type="button">Supplies</button>
-              </Link>
-              <Link to="/guests">
-                <button type="button">Guests</button>
-              </Link>
-            </section>
-
+function Rides({
+  provider, availableSeats, vehicleType, departureDate, riders,
+}) {
+  return (
+    <Fragment>
+      <Nav />
+    
+      <div className="row flex-wrap-reverse">
+        <div className="col">
+          <h3 className="font-italic">
+            {vehicleType}
+                        </h3>
+            {provider && (
+            <h5 className="font-italic">
+              {provider}
+            </h5>
+            )}
           </div>
-
-          <div className="headline row">
-            <section>
-              <h3>Rides</h3>
-            </section>
-
+          <div className="col">
+            
           </div>
-
-          <div className="row">
-            <div className="col">
-              <section>
-                <div>MAP</div>
-              </section>
-            </div>
-            <div className="col">
-              <section>
-                <div className="aboutTrip">ABOUT TRIP</div>
-              </section>
-            </div>
-          </div>
-
-          <div className="row">
-            <section>
-              <div>COMMENTS</div>
-            </section>
-          </div>
-
         </div>
+        <div className="row">
+          <div className="col" size="md-6">
+            <p className="font-italic small">
 
+Departure:
+              {' '}
+              {departureDate}
+                        </p>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col">
+            <p className="font-italic">
+
+Seats Available:
+              {' '}
+              {availableSeats}
+                        </p>
+          </div>
+          <div className="col">
+            <p>
+              {riders}
+                        </p>
+          </div>
+        </div>
       </Fragment>
-
-    );
-  }
+  );
 }
-export default TripDash;
+
+export default Rides;
