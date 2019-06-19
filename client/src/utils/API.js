@@ -10,8 +10,8 @@ export default {
 
   },
 
-  createTrip: function() {
-    return axios.post("/api/trips");
+  createTrip: function(body) {
+    return axios.post("/api/trips", body);
   },
   getTrips: function() {
     return axios.get("/api/trips");

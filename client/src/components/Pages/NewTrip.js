@@ -15,8 +15,7 @@ class NewTrip extends Component {
       location: '',
       startDate: '',
       endDate: '',
-      organizer: '',
-      description: '',
+      
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -36,7 +35,12 @@ class NewTrip extends Component {
     // eslint-disable-next-line react/destructuring-assignment
     console.log('form was submitted with the following data:');
     console.log(this.state);
-    API.createTrip();
+    
+    API.createTrip(this.state)
+      .then(result => {
+        console.log(result);
+        this.props.history.push('/inviteGuests');
+      });
   }
 
   render() {

@@ -26,7 +26,7 @@ class Signup extends Component {
     // eslint-disable-next-line react/destructuring-assignment
     console.log('form was submitted with the following data:');
     console.log(this.state);
-    
+
     API.createNewUser({displayName: this.state.name, email: this.state.email})
       .then(result => {
         console.log(result);

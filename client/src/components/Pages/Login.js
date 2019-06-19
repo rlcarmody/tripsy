@@ -25,7 +25,12 @@ class Login extends Component {
     // eslint-disable-next-line react/destructuring-assignment
     console.log('login was submitted with the following data:');
     console.log(this.state);
-    API.loginUser();
+    
+    API.loginUser({displayName: this.state.name, email: this.state.email})
+      .then(result => {
+        console.log(result);
+        this.props.history.push('/home');
+      });
   }
 
   handleInputChange(event) {

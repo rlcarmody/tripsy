@@ -9,6 +9,7 @@ import Rides from './components/Rides';
 import Supplies from './components/Supplies';
 import Guests from './components/Guests';
 import NewTrip from './components/Pages/NewTrip';
+import InviteGuests from './components/InviteGuests';
 
 class App extends Component {
   render() {
@@ -23,6 +24,8 @@ class App extends Component {
         <Route path="/home" component={Home} />
 
         <Route path="/NewTrip" component={NewTrip} />
+
+        <Route path="/inviteGuests" component={InviteGuests} />
 
         <Route path="/tripdash" component={TripDash} />
 
