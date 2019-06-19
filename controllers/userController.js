@@ -18,7 +18,7 @@ module.exports = {
         maxAge: 86400000,
         httpOnly: true,
         sameSite: true,
-      }).status(303).redirect('/trips'));
+      }).json(data));
   },
   getTrips(req, res) {
     User.findById(req.cookies.userID)
