@@ -1,18 +1,16 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 // eslint-disable-next-line no-unused-vars
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
-import Nav from './Nav';
-import MyTrips from './MyTrips';
+import Nav from '../layoutComponents/Nav';
+import MyTrips from '../MyTrips';
+
 
 class Home extends Component {
   render() {
     return (
-      <div>
-        <div>
-          <Nav />
-        </div>
-
+      <Fragment>
+        <Nav />
         <div className="container">
           <div className="row homeBanner jumbotron">
             <div className="col">
@@ -22,7 +20,7 @@ class Home extends Component {
 
           <div className="row">
             <div className="col">
-              <Link to="/newtrip">
+              <Link to="/NewTrip">
                 <button type="button" className="btn">New Trip</button>
               </Link>
             </div>
@@ -33,7 +31,7 @@ class Home extends Component {
           </div>
 
         </div>
-      </div>
+      </Fragment>
     );
   }
 }

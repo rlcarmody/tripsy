@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 // eslint-disable-next-line no-unused-vars
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
-import Nav from './Nav';
+import Nav from '../layoutComponents/Nav';
 
 class TripDash extends Component {
   render() {
