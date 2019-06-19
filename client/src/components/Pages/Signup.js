@@ -27,7 +27,11 @@ class Signup extends Component {
     console.log('form was submitted with the following data:');
     console.log(this.state);
     
-    API.createNewUser({displayName: this.state.name, email: this.state.email});
+    API.createNewUser({displayName: this.state.name, email: this.state.email})
+      .then(result => {
+        console.log(result);
+        this.props.history.push('/home');
+      });
   }
 
   handleInputChange(event) {
