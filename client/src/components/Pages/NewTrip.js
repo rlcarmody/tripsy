@@ -48,7 +48,7 @@ class NewTrip extends Component {
   render() {
     return (
       <Fragment>
-        <Container>
+        <div className="container" id="login">
           <Row>
             <Col>
               <h2 className="headline">Create a New Trip</h2>
@@ -129,7 +129,7 @@ class NewTrip extends Component {
             />
 
           </form>
-        </Container>
+        </div>
       </Fragment>
     );
   }

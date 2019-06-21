@@ -10,7 +10,7 @@ function Rides({
   return (
     <Fragment>
       <Nav />
-    
+      <div className="container" id="rides">
       <div className="row flex-wrap-reverse">
         <div className="col">
           <h3 className="font-italic">
@@ -51,6 +51,7 @@ Seats Available:
                         </p>
           </div>
         </div>
+      </div>
       </Fragment>
   );
 }
