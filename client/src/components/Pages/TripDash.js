@@ -10,7 +10,7 @@ class TripDash extends Component {
 
       <div>
         <Nav />
-        <div className="container">
+        <div className="container" id="tripdash">
           <div className="row">
             <section>
               <Link to="/rides">
@@ -33,7 +33,8 @@ class TripDash extends Component {
           <div className="row">
             <div className="col">
               <section>
-                <div>MAP</div>
+                <div><img alt="map" src={ require('../../images/bing.png') } />
+</div>
               </section>
             </div>
             <div className="col">

@@ -11,10 +11,13 @@ class Home extends Component {
     return (
       <Fragment>
         <Nav />
-        <div className="container">
+        <div className="container" id="home">
           <div className="row homeBanner jumbotron">
             <div className="col">
-              <h2 className="headline">Tripsy Home Page</h2>
+              <img alt="logo" src={ require('../../images/tripsy.PNG') } />
+            </div>
+            <div className="col">
+              <h2 className="headline" id="homeheadline">Trips Made Easy!</h2>
             </div>
           </div>
 

@@ -10,8 +10,16 @@ import Supplies from './components/Supplies';
 import Guests from './components/Guests';
 import NewTrip from './components/Pages/NewTrip';
 import Invitation from './components/Pages/Invitation';
+import InviteGuests from './components/InviteGuests';
 
 class App extends Component {
+state= {
+  tripID: undefined,
+}
+  handleNewTrip = (id) => {
+    this.setState({ tripID: id })
+  }
+
   render() {
     return (
 
@@ -23,7 +31,9 @@ class App extends Component {
 
         <Route path="/home" component={Home} />
 
-        <Route path="/NewTrip" component={NewTrip} />
+        <Route path="/NewTrip" render={() => <NewTrip onNewTrip={this.handleNewTrip} />} />
+
+        <Route path="/inviteGuests" render={() => <InviteGuests tripID={this.state.tripID} />} />
 
         <Route path="/tripdash" component={TripDash} />
 

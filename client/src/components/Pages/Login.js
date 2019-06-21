@@ -25,7 +25,12 @@ class Login extends Component {
     // eslint-disable-next-line react/destructuring-assignment
     console.log('login was submitted with the following data:');
     console.log(this.state);
-    API.loginUser();
+    
+    API.loginUser({displayName: this.state.name, email: this.state.email})
+      .then(result => {
+        console.log(result);
+        this.props.history.push('/home');
+      });
   }
 
   handleInputChange(event) {
@@ -40,7 +45,7 @@ class Login extends Component {
 
   render() {
     return (
-      <div className="container">
+      <div className="container" id="login">
         <div className="subHeadline">
           <h5>Welcome to Tripsy! Log in to get started.</h5>
         </div>

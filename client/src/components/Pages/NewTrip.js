@@ -1,7 +1,7 @@
 /* eslint-disable react/destructuring-assignment */
 import React, { Component, Fragment } from 'react';
 // eslint-disable-next-line no-unused-vars
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link, withRouter } from 'react-router-dom';
 import { ListItem } from '../layoutComponents/List';
 import { Row, Col, Container } from '../layoutComponents/Grid';
 import API from '../../utils/API';
@@ -15,34 +15,40 @@ class NewTrip extends Component {
       location: '',
       startDate: '',
       endDate: '',
-      organizer: '',
-      description: '',
-    };
+      tripID: '',
 
-    this.handleInputChange = this.handleInputChange.bind(this);
-    this.handleCreateTrip = this.handleCreateTrip.bind(this);
+    };
   }
 
 
-  handleInputChange(event) {
+  handleInputChange = (event) => {
     const { name, value } = event.target;
     this.setState({
       [name]: value,
     });
   }
 
-  handleCreateTrip(event) {
+  handleCreateTrip = (event) => {
     event.preventDefault();
     // eslint-disable-next-line react/destructuring-assignment
     console.log('form was submitted with the following data:');
     console.log(this.state);
-    API.createTrip();
+    
+    API.createTrip(this.state)
+      .then(result => {
+        console.log('y o yo yoy ')
+        console.log(result.data._id)
+        // this.setState({tripID: result.data._id})
+        // console.log(this.state.tripID);
+        this.props.onNewTrip(result.data._id);
+        this.props.history.push('/inviteGuests')
+      });
   }
 
   render() {
     return (
       <Fragment>
-        <Container>
+        <div className="container" id="login">
           <Row>
             <Col>
               <h2 className="headline">Create a New Trip</h2>
@@ -123,9 +129,9 @@ class NewTrip extends Component {
             />
 
           </form>
-        </Container>
+        </div>
       </Fragment>
     );
   }
 }
-export default NewTrip;
+export default withRouter(NewTrip);
