@@ -13,7 +13,8 @@ module.exports = {
         }
       })
       .then(data => {
-        data.expiration < Date.now() ? res.status(410).end() : res.json(data);
+        const { email, expiration, tripID } = data;
+        data.expiration < Date.now() ? res.status(410).end() : res.json({email, expiration, tripID, isSignedIn: req.cookies.userID});
       })
       .catch(err => res.status(404).json(err));
   },  

@@ -9,6 +9,7 @@ import Rides from './components/Rides';
 import Supplies from './components/Supplies';
 import Guests from './components/Guests';
 import NewTrip from './components/Pages/NewTrip';
+import Invitation from './components/Pages/Invitation';
 
 class App extends Component {
   render() {
@@ -32,6 +33,7 @@ class App extends Component {
 
         <Route path="/guests" component={Guests} />
 
+        <Route path="/invitation" component={Invitation} />
 
       </Router>
 
