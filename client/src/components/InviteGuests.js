@@ -1,7 +1,7 @@
 /* eslint-disable react/destructuring-assignment */
 import React, { Component, Fragment } from 'react';
 // eslint-disable-next-line no-unused-vars
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link, withRouter } from 'react-router-dom';
 import { ListItem } from './layoutComponents/List';
 import { Row, Col, Container } from './layoutComponents/Grid';
 import API from '../utils/API';
@@ -11,36 +11,40 @@ class InviteGuests extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: '',
+      newGuest: '',
       guests: [],
     };
-
-    this.handleInputChange = this.handleInputChange.bind(this);
-    this.handleInviteGuests = this.handleInviteGuests.bind(this);
   }
 
-
-  handleInputChange(event) {
-    const { name, value } = event.target;
-    this.setState({
-      [name]: value,
-    });
+  addGuest = () => {
+    this.setState({ guests: [...this.state.guests, this.state.newGuest], newGuest: '' });
   }
 
-  handleInviteGuests(event) {
+  handleChange = (e) => {
+    // this.state.guests[index] = e.target.value;
+    this.setState({ newGuest: e.target.value });
+  }
+
+  handleRemove = (index) => {
+    this.state.guests.splice(index, 1);
+    this.setState({ guests: this.state.guests });
+  }
+
+  handleInviteGuests = (event) => {
     event.preventDefault();
     // eslint-disable-next-line react/destructuring-assignment
     console.log('form was submitted with the following data:');
     console.log(this.state);
-    
-    API.sendInvite(this.state)
+
+    API.sendInvite(this.props.tripID, this.state.guests)
       .then(result => {
-        console.log(result);
+        console.log('HI');
         this.props.history.push('/home');
       });
   }
 
   render() {
+      console.log(this.props.tripID)
     return (
       <Fragment>
         <Container>
@@ -59,12 +63,26 @@ class InviteGuests extends Component {
                   type="email"
                   name="email"
                   id="email"
-                  value={this.state.email}
-                  onChange={this.handleInputChange}
+                  value={this.state.newGuest}
+                  onChange={this.handleChange}
                 />
               </label>
-              <button>Add Guest</button>
+              {this.state.guests.map((guest, index) => (
+                <div key={index}>
+                  {guest}
+                  <button onClick={this.handleRemove}>X</button>
+
+                </div>
+              ))}
+              <br />
+              <button
+                className="btn waves-light"
+                type="button"
+                onClick={this.addGuest}>
+                    Add Guest
+              </button>
             </div>
+            <br />
             <input
               className="btn waves-light formButton"
               type="submit"
@@ -78,4 +96,4 @@ class InviteGuests extends Component {
     );
   }
 }
-export default InviteGuests;
+export default withRouter(InviteGuests);

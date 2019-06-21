@@ -3,7 +3,7 @@ import axios from 'axios';
 export default {
 
   createNewUser: function(body) {
-    return axios.post("/api/users/create", body);
+    return axios.post("http://localhost:3001/api/users/create", body);
   },
   loginUser: function(body) {
     return axios.post("/api/users/login", body)
@@ -19,8 +19,8 @@ export default {
   getOneTrip: function(tripID) {
     return axios.get("/api/trips/tripID/"+ tripID);
   },
-  sendInvite: function(tripID) {
-    return axios.post("/api/trips/invite?tripID="+ tripID);
+  sendInvite: function(tripID, email) {
+    return axios.post("http://localhost:3001/api/trips/invite?tripID="+ tripID, { email });
   },
   acceptInvite: function(tripID) {
     return axios.put("/api/invite?tripID="+ tripID);

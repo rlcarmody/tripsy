@@ -1,7 +1,7 @@
 /* eslint-disable react/destructuring-assignment */
 import React, { Component, Fragment } from 'react';
 // eslint-disable-next-line no-unused-vars
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link, withRouter } from 'react-router-dom';
 import { ListItem } from '../layoutComponents/List';
 import { Row, Col, Container } from '../layoutComponents/Grid';
 import API from '../../utils/API';
@@ -15,22 +15,20 @@ class NewTrip extends Component {
       location: '',
       startDate: '',
       endDate: '',
-      
-    };
+      tripID: '',
 
-    this.handleInputChange = this.handleInputChange.bind(this);
-    this.handleCreateTrip = this.handleCreateTrip.bind(this);
+    };
   }
 
 
-  handleInputChange(event) {
+  handleInputChange = (event) => {
     const { name, value } = event.target;
     this.setState({
       [name]: value,
     });
   }
 
-  handleCreateTrip(event) {
+  handleCreateTrip = (event) => {
     event.preventDefault();
     // eslint-disable-next-line react/destructuring-assignment
     console.log('form was submitted with the following data:');
@@ -38,8 +36,12 @@ class NewTrip extends Component {
     
     API.createTrip(this.state)
       .then(result => {
-        console.log(result);
-        this.props.history.push('/inviteGuests');
+        console.log('y o yo yoy ')
+        console.log(result.data._id)
+        // this.setState({tripID: result.data._id})
+        // console.log(this.state.tripID);
+        this.props.onNewTrip(result.data._id);
+        this.props.history.push('/inviteGuests')
       });
   }
 
@@ -132,4 +134,4 @@ class NewTrip extends Component {
     );
   }
 }
-export default NewTrip;
+export default withRouter(NewTrip);
