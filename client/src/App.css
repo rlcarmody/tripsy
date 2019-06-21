@@ -46,6 +46,14 @@ body {
     text-align: center;
 }
 
+#newtrip {
+    background-color: rgba(255,255,255,0.75);
+    border-radius: 15px;
+    background-size: cover;
+    padding: 10px;
+    text-align: center;
+}
+
 #tripdash {
     background-color: rgba(255,255,255,0.75);
     border-radius: 15px;

@@ -3,13 +3,12 @@ const User = require('../models/Schema/User');
 module.exports = {
   //post
   create(req, res) {
-    console.log(req.body)
     User.create(req.body)
       .then((data) => res.cookie('userID', data._id, {
         maxAge: 86400000,
         httpOnly: true,
         sameSite: true,
-      }).status(303).redirect('/trips'))
+      }).json(data))
       .catch(err => res.status(422).json(err))
   },
   //post
@@ -19,7 +18,7 @@ module.exports = {
         maxAge: 86400000,
         httpOnly: true,
         sameSite: true,
-      }).status(303).redirect('/trips'));
+      }).json(data));
   },
   getTrips(req, res) {
     User.findById(req.cookies.userID)
