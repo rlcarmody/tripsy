@@ -12,15 +12,18 @@ class MyTrips extends Component {
       trips: [],
     };
 
+    componentDidMount() {
+      this.getTrips();
+      console.log(this.state.trips);
+    }
+
     getTrips = () => {
       API.getTrips()
         .then(res => this.setState({
           trips: res.data,
-        }),
-        ).catch(() => this.setState({
+        })).catch(() => this.setState({
           trips: [],
-        }),
-        );
+        }));
     };
 
     render() {
