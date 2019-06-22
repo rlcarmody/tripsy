@@ -44,9 +44,13 @@ class TripDash extends Component {
           </div>
 
           <div className="row">
-            <section>
-              <div>COMMENTS</div>
-            </section>
+          <section>
+              <div id="chat">Comment Board</div>
+              <form id="send-messages">
+                <input id="messages"></input>
+                <input type="submit"></input>
+              </form>
+          </section>
           </div>
 
         </div>

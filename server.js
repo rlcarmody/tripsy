@@ -32,6 +32,14 @@ const io = socketIO(server);
 
 app.set('io', io);
 
+io.sockets.on('connection', function(socket) {
+  socket.on('send message', function(data) {
+    io.sockets.emit('new message', data);
+    console.log('sending message');
+  })
+})
+
+
 io.on('connect', socket => {
   console.log('successfully connected to socket')
 })

@@ -63,6 +63,11 @@ body {
     text-align: center;
 }
 
+#messages {
+    border-style: dotted;
+    height: 100px;
+}
+
 #login {
     text-align: center;
     border-style: solid;
