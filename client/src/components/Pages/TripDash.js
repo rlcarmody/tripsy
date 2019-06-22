@@ -1,10 +1,33 @@
+/* eslint-disable no-unused-vars */
 import React, { Component } from 'react';
 // eslint-disable-next-line no-unused-vars
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-
+import API from '../../utils/API';
+import Comments from '../Comments';
 import Nav from '../layoutComponents/Nav';
 
 class TripDash extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      trip: '',
+    };
+  }
+
+  componentDidMount() {
+    console.log('The trip ID is: ' + this.props.tripID)
+    this.getOneTrip();
+  }
+
+  getOneTrip = () => {
+    API.getOneTrip(this.props.tripID)
+      .then(res => this.setState({
+        trip: res.data,
+      })).catch(() => this.setState({
+        trip: [],
+      }));
+  };
+
   render() {
     return (
 
@@ -34,7 +57,7 @@ class TripDash extends Component {
             <div className="col">
               <section>
                 <div><img alt="map" src={ require('../../images/bing.png') } />
-</div>
+                </div>
               </section>
             </div>
             <div className="col">
@@ -46,7 +69,7 @@ class TripDash extends Component {
 
           <div className="row">
             <section>
-              <div>COMMENTS</div>
+              Comments
             </section>
           </div>
 

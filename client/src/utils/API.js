@@ -38,8 +38,8 @@ export default {
   getMessages() {
     return axios.get('/api/tripID/');
   },
-  postRide() {
-    return axios.post('/api/rides');
+  postRide(body) {
+    return axios.post('/api/rides', body);
   },
   getRides(tripID) {
     return axios.get(`/api/rides?tripID=${tripID}`);
