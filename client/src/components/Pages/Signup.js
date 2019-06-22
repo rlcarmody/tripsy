@@ -4,6 +4,7 @@
 import React, { Component } from 'react';
 // eslint-disable-next-line no-unused-vars
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import API from '../../utils/API';
 
 class Signup extends Component {
@@ -23,14 +24,19 @@ class Signup extends Component {
 
   handleSignup(event) {
     event.preventDefault();
+    const { redirectURL, callback } = this.props;
+    const { name, email } = this.state;
     // eslint-disable-next-line react/destructuring-assignment
     console.log('form was submitted with the following data:');
     console.log(this.state);
 
-    API.createNewUser({displayName: this.state.name, email: this.state.email})
-      .then(result => {
+    API.createNewUser({ displayName: name, email })
+      .then((result) => {
         console.log(result);
-        this.props.history.push('/home');
+        this.props.history.push(redirectURL);
+        if (callback) {
+          callback();
+        }
       });
   }
 
@@ -126,3 +132,18 @@ class Signup extends Component {
   }
 }
 export default Signup;
+
+Signup.propTypes = {
+  history: PropTypes.shape({
+    action: PropTypes.string.isRequired,
+    block: PropTypes.func.isRequired,
+    push: PropTypes.func.isRequired,
+  }).isRequired,
+  redirectURL: PropTypes.string,
+  callback: PropTypes.func,
+};
+
+Signup.defaultProps = {
+  redirectURL: '/home',
+  callback: null,
+};

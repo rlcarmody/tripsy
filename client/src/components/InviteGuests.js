@@ -17,7 +17,8 @@ class InviteGuests extends Component {
   }
 
   addGuest = () => {
-    this.setState({ guests: [...this.state.guests, this.state.newGuest], newGuest: '' });
+    // this.setState({ guests: [...this.state.guests, this.state.newGuest], newGuest: '' });
+    this.setState(currentState => ({ guests: [...currentState.guests, currentState.newGuest], newGuest: '' }));
   }
 
   handleChange = (e) => {
@@ -37,8 +38,7 @@ class InviteGuests extends Component {
     console.log(this.state);
 
     API.sendInvite(this.props.tripID, this.state.guests)
-      .then(result => {
-        console.log('HI');
+      .then(() => {
         this.props.history.push('/home');
       });
   }

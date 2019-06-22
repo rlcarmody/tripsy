@@ -23,7 +23,13 @@ module.exports = {
   getTrips(req, res) {
     User.findById(req.cookies.userID)
       .select('displayName')
-      .populate('trips')
+      .populate({
+        path: 'trips',
+        populate: {
+          path: 'organizer',
+          select: 'displayName'
+        }
+      })
       .then(user => res.json(user))
       .catch(err => res.status(404).json(err));
   }

@@ -50,9 +50,14 @@ module.exports = {
   },
   //update - done
   acceptInvite(req, res) {
-    const userID = req.cookies.userID;
-    Trip.findByIdAndUpdate(req.query.tripID, { $push: { members: userID } })
-      .then(result => res.json(result))
+    const { userID }  = req.cookies;
+    const { tripID } = req.query;
+    Trip.findByIdAndUpdate(tripID, { $push: { members: userID } })
+      .then(result =>  {
+        User.findByIdAndUpdate(userID, { $push: { trips: tripID } })
+          .then(data => console.log(`Trip successfully added to ${data.displayName}'s trips`));
+        return res.json(result);
+      })
       .catch(err => res.status(404).json(err));
   },
   //post - done

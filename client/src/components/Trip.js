@@ -1,9 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import dateFns from 'date-fns';
 import { ListItem } from './layoutComponents/List';
 import { Row, Col } from './layoutComponents/Grid';
 
-
-function Trip({ name, location, startDate, endDate, organizer, description }) {
+function Trip({
+  name, location, startDate, endDate, organizer, description,
+}) {
   return (
     <ListItem>
       <Row className="flex-wrap-reverse">
@@ -14,15 +17,16 @@ function Trip({ name, location, startDate, endDate, organizer, description }) {
       </Row>
       <Row>
         <Col size="md-6">
-          <p className="font-italic small">Organized by {organizer}</p>
+          {organizer && <p className="font-italic small">Organized by {organizer}</p>}
         </Col>
       </Row>
       <Row>
         <Col size="md-6">
+          {startDate && endDate && (
           <p className="font-italic small">
-              Start: {startDate} 
-              End: {endDate}
+              Start: {dateFns.format(startDate, 'MMMM DD, YYYY')} End: {dateFns.format(endDate, 'MMMM DD, YYYY')}
           </p>
+          )}
         </Col>
       </Row>
       <Row>
@@ -33,5 +37,18 @@ function Trip({ name, location, startDate, endDate, organizer, description }) {
     </ListItem>
   );
 }
+
+Trip.propTypes = {
+  name: PropTypes.string.isRequired,
+  location: PropTypes.string.isRequired,
+  startDate: PropTypes.string.isRequired,
+  endDate: PropTypes.string.isRequired,
+  organizer: PropTypes.string.isRequired,
+  description: PropTypes.string,
+};
+
+Trip.defaultProps = {
+  description: 'The organizer has not entered a description yet',
+};
 
 export default Trip;
