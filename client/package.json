@@ -9,6 +9,7 @@
     "prop-types": "^15.7.2",
     "query-string": "^6.7.0",
     "react": "^16.6.3",
+    "react-bingmaps": "^3.6.1",
     "react-dom": "^16.6.3",
     "react-router-dom": "^5.0.1",
     "react-scripts": "^2.1.1"

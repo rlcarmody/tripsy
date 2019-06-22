@@ -1,6 +1,13 @@
 const Trip = require('../models/Schema/Trip');
 const User = require('../models/Schema/User');
 const emailer = require('../emailer');
+const geocoder = require('../geocoder');
+
+const insertCoordinates = async ({_id, location}) => {
+  const coordinates = await geocoder(location);
+  Trip.findByIdAndUpdate(_id, { $set: { coordinates } })
+    .catch(err => console.log(err));
+}
 
 module.exports = {
   //post - done
@@ -11,6 +18,7 @@ module.exports = {
     tripDetails.members = [userID];
     Trip.create(tripDetails)
       .then(result => {
+        insertCoordinates(result);
         User.findByIdAndUpdate(userID, { $push: { trips: result._id } }).exec();
         res.json(result);
       })
