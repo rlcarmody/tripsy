@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 // eslint-disable-next-line no-unused-vars
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-
+import BingMap from '../Map';
 import Nav from '../layoutComponents/Nav';
 
 class TripDash extends Component {
@@ -33,8 +33,7 @@ class TripDash extends Component {
           <div className="row">
             <div className="col">
               <section>
-                <div><img alt="map" src={ require('../../images/bing.png') } />
-</div>
+                <BingMap coordinates={[44.834692, -119.8201757]} />
               </section>
             </div>
             <div className="col">
