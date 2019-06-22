@@ -5,7 +5,6 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 import API from '../../utils/API';
 import Comments from '../Comments';
-
 import BingMap from '../Map';
 
 import Nav from '../layoutComponents/Nav';
@@ -60,12 +59,10 @@ class TripDash extends Component {
           <div className="row">
             <div className="col">
               <section>
-<<<<<<< HEAD
-                <div><img alt="map" src={ require('../../images/bing.png') } />
-                </div>
-=======
+
+
                 <BingMap coordinates={[44.834692, -119.8201757]} />
->>>>>>> master
+
               </section>
             </div>
             <div className="col">
