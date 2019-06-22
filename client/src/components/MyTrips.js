@@ -20,7 +20,7 @@ class MyTrips extends Component {
     getTrips = () => {
       API.getTrips()
         .then(res => this.setState({
-          trips: res.data,
+          trips: res.data.trips,
         })).catch(() => this.setState({
           trips: [],
         }));
@@ -41,10 +41,12 @@ class MyTrips extends Component {
                       <Trip
                         name={trip.name}
                         location={trip.location}
-                        organizer={trip.organizer}
+                        organizer={trip.organizer.displayName}
                         startDate={trip.startDate}
                         endDate={trip.endDate}
                         description={trip.description}
+                        // eslint-disable-next-line no-underscore-dangle
+                        key={trip._id}
                       />
                     ))}
                   </List>

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import dateFns from 'date-fns';
 import { ListItem } from './layoutComponents/List';
 import { Row, Col } from './layoutComponents/Grid';
 
@@ -23,7 +24,7 @@ function Trip({
         <Col size="md-6">
           {startDate && endDate && (
           <p className="font-italic small">
-              Start: {startDate} End: {endDate}
+              Start: {dateFns.format(startDate, 'MMMM DD, YYYY')} End: {dateFns.format(endDate, 'MMMM DD, YYYY')}
           </p>
           )}
         </Col>

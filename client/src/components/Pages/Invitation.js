@@ -1,13 +1,15 @@
 import React, { Component, Fragment } from 'react';
 import queryString from 'query-string';
 import PropTypes from 'prop-types';
-import dateFns from 'date-fns';
 import API from '../../utils/API';
 import Trip from '../Trip';
 import Signup from './Signup';
 import { Container, Col, Row } from '../layoutComponents/Grid';
 import ActionButton from '../ActionButton';
 import Nav from '../layoutComponents/Nav';
+import Card from '../layoutComponents/Card';
+import { List } from '../layoutComponents/List';
+import './Invitation.css';
 
 class Invitation extends Component {
   state = {
@@ -29,7 +31,6 @@ class Invitation extends Component {
     this.setState({ inviteID });
     API.findInvite(inviteID)
       .then((data) => {
-        console.log(data);
         const {
           isSignedIn,
           tripID: {
@@ -45,7 +46,7 @@ class Invitation extends Component {
           },
         } = data.data;
         this.setState({
-          isSignedIn, name, location, description, startDate: dateFns.format(startDate, 'MMMM DD, YYYY'), endDate: dateFns.format(endDate, 'MMMM DD, YYYY'), organizer, tripID: _id,
+          isSignedIn, name, location, description, startDate, endDate, organizer, tripID: _id,
         });
       })
       .catch(err => console.log(err));
@@ -74,8 +75,13 @@ class Invitation extends Component {
         <Container>
           <Row>
             <Col>
-              <Trip {...this.state} />
-              {isSignedIn && <ActionButton buttonText="Accept Invitation" buttonFunction={this.handleAccept} />}
+              <Card className="invitation">
+                {!isSignedIn && <h4>You were invited on this trip. Please create an account to accept</h4>}
+                <List>
+                  <Trip {...this.state} />
+                  {isSignedIn && <ActionButton buttonText="Accept Invitation" buttonFunction={this.handleAccept} />}
+                </List>
+              </Card>
             </Col>
             {!isSignedIn && (
             <Col>

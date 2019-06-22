@@ -2,58 +2,55 @@ import axios from 'axios';
 
 export default {
 
-  createNewUser: function(body) {
-    return axios.post("http://localhost:3001/api/users/create", body);
+  createNewUser(body) {
+    return axios.post('/api/users/create', body);
   },
-  loginUser: function(body) {
-    return axios.post("/api/users/login", body)
-
+  loginUser(body) {
+    return axios.post('/api/users/login', body);
   },
-
-  createTrip: function(body) {
-    return axios.post("/api/trips", body);
+  createTrip(body) {
+    return axios.post('/api/trips', body);
   },
-  getTrips: function() {
-    return axios.get("/api/trips");
+  getTrips() {
+    return axios.get('/api/trips');
   },
-  getOneTrip: function(tripID) {
-    return axios.get("/api/trips/tripID/"+ tripID);
+  getOneTrip(tripID) {
+    return axios.get(`/api/trips/tripID/${tripID}`);
   },
-  sendInvite: function(tripID, email) {
-    return axios.post("http://localhost:3001/api/trips/invite?tripID="+ tripID, { email });
+  sendInvite(tripID, email) {
+    return axios.post(`/api/trips/invite?tripID=${tripID}`, { email });
   },
-  acceptInvite: function(tripID) {
-    return axios.put("/api/invite?tripID="+ tripID);
+  acceptInvite(tripID) {
+    return axios.put(`/api/trips/invite?tripID=${tripID}`);
   },
-  findInvite: function(inviteID) {
-    return axios.get("/api/invitation/" + inviteID);
+  findInvite(inviteID) {
+    return axios.get(`/api/invitation/${inviteID}`);
   },
-  addSupplies: function(tripID) {
-    return axios.post("/api/trips/supplies?tripID="+ tripID);
+  addSupplies(tripID) {
+    return axios.post(`/api/trips/supplies?tripID=${tripID}`);
   },
-  getSupplies: function(tripID) {
-    return axios.get("/api/trips/supplies?tripID=<tripID?>");
+  getSupplies(tripID) {
+    return axios.get(`/api/trips/supplies?tripID=${tripID}`);
   },
-  claimSupplies: function(supplyItemID) {
-    return axios.put("/api/trips/supplies?supplyItemID="+ supplyItemID);
+  claimSupplies(supplyItemID) {
+    return axios.put(`/api/trips/supplies?supplyItemID=${supplyItemID}`);
   },
-  getMessages: function() {
-    return axios.get("/api/tripID/");
+  getMessages() {
+    return axios.get('/api/tripID/');
   },
-  postRide: function() {
-    return axios.post("/api/rides");
+  postRide() {
+    return axios.post('/api/rides');
   },
-  getRides: function(tripID) {
-    return axios.get("/api/rides?tripID="+ tripID);
+  getRides(tripID) {
+    return axios.get(`/api/rides?tripID=${tripID}`);
   },
-  claimRide: function(rideID) {
-    return axios.put("/api/rides?rideID="+ rideID)
+  claimRide(rideID) {
+    return axios.put(`/api/rides?rideID=${rideID}`);
   },
-  postComment: function() {
-    return axios.post("/api/messages")
+  postComment() {
+    return axios.post('/api/messages');
   },
-  getComments: function(tripID) {
-    return axios.get("/api/messages?tripID="+ tripID)
-  }
-
-}
+  getComments(tripID) {
+    return axios.get(`/api/messages?tripID=${tripID}`);
+  },
+};
