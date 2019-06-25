@@ -1,6 +1,8 @@
 import React, { Component, Fragment } from 'react';
 // eslint-disable-next-line no-unused-vars
-import { BrowserRouter as Router, Route, Link, withRouter } from 'react-router-dom';
+import {
+  BrowserRouter as Router, Route, Link, withRouter,
+} from 'react-router-dom';
 import API from '../utils/API';
 // eslint-disable-next-line no-unused-vars
 import Nav from './layoutComponents/Nav';
@@ -41,6 +43,7 @@ class PostRide extends Component {
       .then(result => {
         console.log(result);
         // eslint-disable-next-line react/destructuring-assignment
+        this.props.onNewRide(result.data._id);
         this.props.history.push('/rides')
       });
 

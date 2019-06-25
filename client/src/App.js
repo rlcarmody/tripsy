@@ -16,9 +16,14 @@ import PostRide from './components/PostRide';
 class App extends Component {
 state= {
   tripID: undefined,
+  rideID: undefined,
 }
   handleNewTrip = (id) => {
     this.setState({ tripID: id })
+  }
+
+  handleNewRide = (id) => {
+    this.setState({ rideID: id })
   }
 
   render() {
@@ -38,7 +43,7 @@ state= {
 
         <Route path="/tripdash" render={() => <TripDash tripID={this.state.tripID} />} />
 
-        <Route path="/rides" render={() => <Rides tripID={this.state.tripID} />} />
+        <Route path="/rides" render={() => <Rides tripID={this.state.tripID} rideID={this.state.rideID} />} />
 
         <Route path="/postRide" render={() => <PostRide tripID={this.state.tripID} />} />
 
