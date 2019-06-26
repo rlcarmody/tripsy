@@ -30,7 +30,7 @@ class Home extends Component {
           </div>
 
           <div className="row myTripsDiv">
-            <MyTrips />
+            <MyTrips setGlobalTrip={this.props.setGlobalTrip}/>
           </div>
 
         </div>

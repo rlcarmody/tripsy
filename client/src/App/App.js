@@ -37,7 +37,7 @@ state= {
 
         <Route path="/login" component={Login} />
 
-        <Route path="/home" component={Home} />
+        <Route path="/home" render={() => <Home setGlobalTrip={this.handleNewTrip} />} />
 
         <Route path="/NewTrip" render={() => <NewTrip onNewTrip={this.handleNewTrip} />} />
 

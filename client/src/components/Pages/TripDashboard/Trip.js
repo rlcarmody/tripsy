@@ -6,14 +6,6 @@ import { ListItem } from '../../layoutComponents/List';
 import { Row, Col } from '../../layoutComponents/Grid';
 
 class Trip extends Component {
-  state = {
-    tripID: undefined,
-  }
-
-  handleSetTripID = () => {
-    this.setState({ tripID: this.props.key });
-  }
-
   render() {
     const { name, location, startDate, endDate, organizer, description, key } = this.props;
     return (
@@ -50,7 +42,7 @@ class Trip extends Component {
         </Row>
         <Row>
           <Link to="/tripDash">
-            <button type="button" onClick={this.handleSetTripID}>View</button>
+            <button type="button" onClick={() => {this.props.setGlobalTrip(this.props.id)}}>View</button>
           </Link>
         </Row>
       </ListItem>

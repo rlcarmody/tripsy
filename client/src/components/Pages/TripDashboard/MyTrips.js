@@ -46,6 +46,8 @@ class MyTrips extends Component {
                         startDate={trip.startDate}
                         endDate={trip.endDate}
                         description={trip.description}
+                        setGlobalTrip={this.props.setGlobalTrip}
+                        id={trip._id}
                         // eslint-disable-next-line no-underscore-dangle
                         key={trip._id}
                       />
