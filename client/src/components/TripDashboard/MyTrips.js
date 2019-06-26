@@ -1,11 +1,11 @@
 import React, { Component, Fragment } from 'react';
 // eslint-disable-next-line no-unused-vars
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import API from '../utils/API';
+import API from '../../../utils/API';
 // eslint-disable-next-line no-unused-vars
-import { Col, Row, Container } from './layoutComponents/Grid';
-import { List } from './layoutComponents/List';
-import Card from './layoutComponents/Card';
+import { Col, Row, Container } from '../../layoutComponents/Grid';
+import { List } from '../../layoutComponents/List';
+import Card from '../../layoutComponents/Card';
 import Trip from './Trip';
 
 class MyTrips extends Component {

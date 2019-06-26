@@ -3,11 +3,11 @@ import React, { Component } from 'react';
 // eslint-disable-next-line no-unused-vars
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
-import API from '../../utils/API';
-import Comments from '../Comments';
-import BingMap from '../Map';
+import API from '../../../utils/API';
+import Comments from './Comments';
+import BingMap from './Map';
 
-import Nav from '../layoutComponents/Nav';
+import Nav from '../../layoutComponents/Nav';
 
 class TripDash extends Component {
   constructor(props) {
