@@ -64,8 +64,14 @@ body {
 }
 
 #messages {
-    border-style: dotted;
+    border-style: dashed;
+    height: 20px;
+    margin-top: 10px;
+}
+
+#chat {
     height: 100px;
+    border-style: solid;
 }
 
 #login {

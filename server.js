@@ -39,7 +39,6 @@ io.sockets.on('connection', function(socket) {
   })
 })
 
-
 io.on('connect', socket => {
   console.log('successfully connected to socket')
 })

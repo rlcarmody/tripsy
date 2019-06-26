@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import BingMap from '../Map';
 import Nav from '../layoutComponents/Nav';
+import CommentInput from '../layoutComponents/CommentInput';
+// import Comment from '../layoutComponents/Comment'
 
 class TripDash extends Component {
   render() {
@@ -44,13 +46,8 @@ class TripDash extends Component {
           </div>
 
           <div className="row">
-          <section>
-              <div id="chat">Comment Board</div>
-              <form id="send-messages">
-                <input id="messages"></input>
-                <input type="submit"></input>
-              </form>
-          </section>
+          <CommentInput />
+
           </div>
 
         </div>
