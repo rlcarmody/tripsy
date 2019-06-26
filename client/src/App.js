@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.css';
 import Signup from './components/Pages/Signup';
+import FacebookLogin from './components/Pages/FacebookLogin';
 import Login from './components/Pages/Login';
 import Home from './components/Pages/Home';
 import TripDash from './components/Pages/TripDash';
@@ -27,6 +28,8 @@ state= {
       <Router>
 
         <Route exact path="/" component={Signup} />
+
+        <Route exact path="/" component={FacebookLogin} />
 
         <Route path="/login" component={Login} />
 
