@@ -1,8 +1,10 @@
 /* eslint-disable react/destructuring-assignment */
 import React, { Component, Fragment } from 'react';
 // eslint-disable-next-line no-unused-vars
+// eslint-disable-next-line object-curly-newline
+// eslint-disable-next-line no-unused-vars
 import { BrowserRouter as Router, Route, Link, withRouter } from 'react-router-dom';
-import { ListItem } from '../layoutComponents/List';
+// eslint-disable-next-line no-unused-vars
 import { Row, Col, Container } from '../layoutComponents/Grid';
 import API from '../../utils/API';
 
@@ -15,8 +17,7 @@ class NewTrip extends Component {
       location: '',
       startDate: '',
       endDate: '',
-      tripID: '',
-
+      
     };
   }
 
@@ -38,8 +39,6 @@ class NewTrip extends Component {
       .then(result => {
         console.log('y o yo yoy ')
         console.log(result.data._id)
-        // this.setState({tripID: result.data._id})
-        // console.log(this.state.tripID);
         this.props.onNewTrip(result.data._id);
         this.props.history.push('/inviteGuests')
       });
