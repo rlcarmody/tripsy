@@ -16,6 +16,7 @@ class App extends Component {
 state= {
   tripID: undefined,
 }
+
   handleNewTrip = (id) => {
     this.setState({ tripID: id })
   }
