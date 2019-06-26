@@ -1,38 +1,38 @@
-import React, { Component } from 'react'
-import CommentInput from '../CommentInput'
-import CommentMessage from '../CommentMessage'
+import React, { Component } from 'react';
+import CommentInput from './CommentInput';
+import CommentMessage from './CommentMessage';
 
 class Comment extends Component {
   state = {
     messages: []
   }
 
-  
+
   componentDidMount() {
-    this.io.onopen = () => {
+    this.onopen = () => {
       // on connecting, do nothing but log it to the console
       console.log('connected')
     }
 
-    this.io.onmessage = evt => {
+    this.onmessage = evt => {
       // on receiving a message, add it to the list of messages
       const message = JSON.parse(evt.data)
       this.addMessage(message)
     }
-    
-    const socket = io();
-    socket.on(this.props.tripID, msg => {
-        this.setState((currentState) => ({messages: [...currentState, msg]}));
-      })
+
+    // this.on(this.props.tripID, msg => {
+    //     this.addMessage(msg)
+    //     this.setState((currentState) => ({messages: [...currentState, msg]}));
+    //   })
   }
 
   addMessage = message =>
-    this.setState(state => ({ messages: [message, ...state.messages] }))
+    this.setState((currentState) => ({messages: [...currentState, message]}));
 
   submitMessage = messageString => {
     // on submitting the CommentInput form, send the message, add it to the list and reset the input
     const message = { name: this.state.name, message: messageString }
-    this.io.send(JSON.stringify(message))
+    this.send(JSON.stringify(message))
     this.addMessage(message)
   }
 
@@ -50,7 +50,6 @@ class Comment extends Component {
           />
         </label>
         <CommentInput
-          ws={this.ws}
           onSubmitMessage={messageString => this.submitMessage(messageString)}
         />
         {this.state.messages.map((message, index) =>
