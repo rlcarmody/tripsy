@@ -15,7 +15,7 @@ class MyTrips extends Component {
 
     componentDidMount() {
       this.getTrips();
-      console.log(this.state.trips);
+      console.log('got trips');
     }
 
     getTrips = () => {
@@ -49,9 +49,7 @@ class MyTrips extends Component {
                         // eslint-disable-next-line no-underscore-dangle
                         key={trip._id}
                       />
-                      
                     ))}
-                    <Link to="/tripDash/:tripId">View This Trip</Link>
                   </List>
                 ) : (
                   <h2 className="text-center">No Saved Trips</h2>

@@ -19,12 +19,13 @@ state= {
   tripID: undefined,
   rideID: undefined,
 }
+
   handleNewTrip = (id) => {
-    this.setState({ tripID: id })
+    this.setState({ tripID: id });
   }
 
   handleNewRide = (id) => {
-    this.setState({ rideID: id })
+    this.setState({ rideID: id });
   }
 
   render() {
