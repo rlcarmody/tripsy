@@ -26,8 +26,8 @@ export default {
   findInvite(inviteID) {
     return axios.get(`/api/invitation/${inviteID}`);
   },
-  addSupplies(tripID) {
-    return axios.post(`/api/trips/supplies?tripID=${tripID}`);
+  addSupplies(tripID, supplies) {
+    return axios.post(`/api/trips/supplies?tripID=${tripID}`, { supplies });
   },
   getSupplies(tripID) {
     return axios.get(`/api/trips/supplies?tripID=${tripID}`);

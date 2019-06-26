@@ -17,10 +17,9 @@ class NewTrip extends Component {
       location: '',
       startDate: '',
       endDate: '',
-      
+      description: '',
     };
   }
-
 
   handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -37,11 +36,13 @@ class NewTrip extends Component {
     
     API.createTrip(this.state)
       .then(result => {
-        console.log('y o yo yoy ')
-        console.log(result.data._id)
+        console.log('trip id is: ' + result.data._id)
         this.props.onNewTrip(result.data._id);
         this.props.history.push('/inviteGuests')
-      });
+      })
+      .catch(error => {
+        return(error);
+      })
   }
 
   render() {
@@ -62,11 +63,12 @@ class NewTrip extends Component {
                   type="text"
                   name="name"
                   id="name"
-                  value={this.state.name} 
+                  value={this.state.name}
                   onChange={this.handleInputChange}
                 />
               </label>
             </div>
+
             <div className="formField">
               <label className="formFieldLabel" htmlFor="location">
                 Destination
@@ -76,7 +78,7 @@ class NewTrip extends Component {
                   name="location"
                   id="location"
                   value={this.state.location}
-                  onChange={this.handleInputChange} 
+                  onChange={this.handleInputChange}
                 />
               </label>
             </div>
@@ -90,10 +92,11 @@ class NewTrip extends Component {
                   name="startDate"
                   id="startDate"
                   value={this.state.startDate}
-                  onChange={this.handleInputChange} 
+                  onChange={this.handleInputChange}
                 />
               </label>
             </div>
+
             <div className="formField">
               <label className="formFieldLabel" htmlFor="endDate">
                 End Date
@@ -107,6 +110,7 @@ class NewTrip extends Component {
                 />
               </label>
             </div>
+
             <div className="formField">
               <label className="formFieldLabel" htmlFor="description">
                 Trip Description
@@ -120,6 +124,7 @@ class NewTrip extends Component {
                 />
               </label>
             </div>
+
             <input
               className="btn waves-light formButton"
               type="submit"

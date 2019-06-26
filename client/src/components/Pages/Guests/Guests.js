@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 // eslint-disable-next-line no-unused-vars
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
-import Nav from './layoutComponents/Nav';
+import Nav from '../../layoutComponents/Nav';
 
 class Guests extends Component {
   render() {

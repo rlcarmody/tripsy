@@ -3,13 +3,13 @@ import React, { Component, Fragment } from 'react';
 import {
   BrowserRouter as Router, Route, Link, withRouter,
 } from 'react-router-dom';
-import API from '../utils/API';
+import API from '../../../utils/API';
 // eslint-disable-next-line no-unused-vars
-import Nav from './layoutComponents/Nav';
+import Nav from '../../layoutComponents/Nav';
 // eslint-disable-next-line no-unused-vars
-import { ListItem } from './layoutComponents/List';
+import { ListItem } from '../../layoutComponents/List';
 // eslint-disable-next-line no-unused-vars
-import { Row, Col, Container } from './layoutComponents/Grid';
+import { Row, Col, Container } from '../../layoutComponents/Grid';
 
 
 class PostRide extends Component {
