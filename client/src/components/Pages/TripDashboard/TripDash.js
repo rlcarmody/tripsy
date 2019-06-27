@@ -2,11 +2,9 @@
 import React, { Component } from 'react';
 // eslint-disable-next-line no-unused-vars
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-
 import API from '../../../utils/API';
-import Comments from './Comments';
+import Comment from '../../layoutComponents/Comment';
 import BingMap from './Map';
-
 import Nav from '../../layoutComponents/Nav';
 
 class TripDash extends Component {
@@ -73,9 +71,7 @@ class TripDash extends Component {
           </div>
 
           <div className="row">
-          {/* <CommentInput />
-          <CommentMessage /> */}
-          <Comment />
+            <Comment tripID="5d12ecbe4ab29e3e98870d91" />
           </div>
 
         </div>

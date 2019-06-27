@@ -47,8 +47,8 @@ export default {
   claimRide(rideID) {
     return axios.put(`/api/rides?rideID=${rideID}`);
   },
-  postComment() {
-    return axios.post('/api/messages');
+  postComment(msg) {
+    return axios.post('/api/messages', msg);
   },
   getComments(tripID) {
     return axios.get(`/api/messages?tripID=${tripID}`);

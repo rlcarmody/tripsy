@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import dateFns from 'date-fns';
+// eslint-disable-next-line no-unused-vars
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import { ListItem } from '../../layoutComponents/List';
 import { Row, Col } from '../../layoutComponents/Grid';
@@ -26,7 +27,7 @@ function Trip({
           {startDate && endDate && (
           <p className="font-italic small">
               Start:
-              {dateFns.format(startDate, 'MMMM DD, YYYY')} 
+              {dateFns.format(startDate, 'MMMM DD, YYYY')}
               End:
               {dateFns.format(endDate, 'MMMM DD, YYYY')}
           </p>

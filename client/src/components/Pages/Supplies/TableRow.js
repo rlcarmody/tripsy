@@ -6,6 +6,7 @@ class TableRow extends Component {
   }
 
   render() {
+    const { item, claimedBy } = this.props;
     return (
       <Fragment>
         <tr>

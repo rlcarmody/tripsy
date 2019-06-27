@@ -1,67 +1,54 @@
+/* global io */
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import CommentInput from './CommentInput';
 import CommentMessage from './CommentMessage';
+import API from '../../utils/API';
 
 class Comment extends Component {
   state = {
-    messages: []
+    messages: [],
   }
 
 
   componentDidMount() {
-    this.onopen = () => {
-      // on connecting, do nothing but log it to the console
-      console.log('connected')
-    }
-
-    this.onmessage = evt => {
-      // on receiving a message, add it to the list of messages
-      const message = JSON.parse(evt.data)
-      this.addMessage(message)
-    }
-
-    // this.on(this.props.tripID, msg => {
-    //     this.addMessage(msg)
-    //     this.setState((currentState) => ({messages: [...currentState, msg]}));
-    //   })
+    const { tripID } = this.props;
+    API.getComments(tripID)
+      .then(result => this.setState({ messages: result.data }));
+    const socket = io();
+    socket.on(tripID, (msg) => {
+      this.setState(currentState => ({ messages: [...currentState.messages, msg] }));
+    });
   }
 
-  addMessage = message =>
-    this.setState((currentState) => ({messages: [...currentState, message]}));
-
-  submitMessage = messageString => {
+  submitMessage = (messageString) => {
+    const { tripID } = this.props;
     // on submitting the CommentInput form, send the message, add it to the list and reset the input
-    const message = { name: this.state.name, message: messageString }
-    this.send(JSON.stringify(message))
-    this.addMessage(message)
+    const message = { tripID, messageBody: messageString };
+    API.postComment(message)
+      .catch(err => console.log(err));
   }
 
   render() {
+    const { messages } = this.state;
     return (
       <div>
-        <label htmlFor="name">
-          Name:&nbsp;
-          <input
-            type="text"
-            id={'name'}
-            placeholder={'Enter your name...'}
-            value={this.state.name}
-            onChange={e => this.setState({ name: e.target.value })}
-          />
-        </label>
-        <CommentInput
-          onSubmitMessage={messageString => this.submitMessage(messageString)}
-        />
-        {this.state.messages.map((message, index) =>
+        {messages.map(msg => (
           <CommentMessage
-            key={index}
-            message={message.message}
-            name={message.name}
-          />,
-        )}
+            // eslint-disable-next-line no-underscore-dangle
+            key={msg._id}
+            message={msg.messageBody}
+            name={msg.userID.displayName}
+          />
+        ))}
+        <CommentInput onSubmitMessage={this.submitMessage} />
       </div>
-    )
+    );
   }
 }
 
-export default Comment
+export default Comment;
+
+Comment.propTypes = {
+  tripID: PropTypes.string.isRequired,
+};
