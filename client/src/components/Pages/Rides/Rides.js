@@ -36,28 +36,38 @@ class Rides extends Component {
 
       <Fragment>
         <Nav />
-        <Container id="rides">
-          <Row>
-            <Link to="/postRide">
-              <button type="button">Post a Ride</button>
-            </Link>
-          </Row>
-          <Row>
-            <section>
-              <Link to="/tripDash">
-                <button type="button">Trip</button>
-              </Link>
+        <div className="container">
+          <div className="row text-center">
+            <div className="col-md-4" />
+            <div className="col-md-4 text-center">
+
               <Link to="/supplies">
-                <button type="button">Supplies</button>
+                <button type="button" className="button btnNav">Supplies</button>
               </Link>
-              <Link to="/guests">
-                <button type="button">Guests</button>
+              <Link to="/tripDash">
+                <button type="button" className="button btnNav">This Trip</button>
               </Link>
-            </section>
-          </Row>
-          <Row>
-            <Col size="md-12">
-              <Card title="Rides">
+              <Link to="/home">
+                <button type="button" className="button btnNav">My Trips</button>
+              </Link>
+
+            </div>
+            <div className="col-md-4" />
+          </div>
+          <div className="row text-center">
+            <Link to="/PostRide">
+              <button type="button" className="button btnNav">Post a Ride</button>
+            </Link>
+          </div>
+  
+          <div className="row">
+            <div className="col-md-12 text-center" id="subHeadline">
+              <h3>Rides</h3>
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-md-12">
+              <div className="card">
                 {this.state.rides.length ? (
                   <List>
                     {this.state.rides.map(trip => (
@@ -74,11 +84,11 @@ class Rides extends Component {
                 ) : (
                   <h2 className="text-center">No Rides Posted</h2>
                 )}
-              </Card>
-            </Col>
-          </Row>
+              </div>
+            </div>
+          </div>
 
-        </Container>
+        </div>
       </Fragment>
     );
   }

@@ -20,7 +20,7 @@ class SuppliesTable extends Component {
               <tr>
                 <th scope="col">Item</th>
                 <th scope="col">Claimed By</th>
-                <th scope="col">Claim</th>
+                <th scope="col">Claim it</th>
               </tr>
             </thead>
             <tbody>
@@ -36,7 +36,7 @@ class SuppliesTable extends Component {
             </tbody>
           </table>
         ) : (
-          <h2>No Supplies Yet</h2>
+          <h5 className="text-center">No supplies have been added yet.</h5>
         )}
       </Fragment>
     );
