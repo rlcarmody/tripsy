@@ -4,7 +4,6 @@ import React, { Component } from 'react';
 // eslint-disable-next-line no-unused-vars
 import { BrowserRouter as Router, Link } from 'react-router-dom';
 
-
 class Login extends Component {
   constructor(props) {
     super(props);
@@ -50,7 +49,6 @@ class Login extends Component {
                   <Link to="/">Sign up</Link>
                 </p>
               </section>
-
             </form>
           </div>
         );
