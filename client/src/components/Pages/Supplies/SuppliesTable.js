@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import TableRow from './TableRow';
+import SuppliesTableRow from './SuppliesTableRow';
 import API from '../../../utils/API';
 
 class SuppliesTable extends Component {
@@ -25,7 +25,7 @@ class SuppliesTable extends Component {
             </thead>
             <tbody>
               {this.props.supplies.map( supply => (
-                <TableRow
+                <SuppliesTableRow
                   id={supply._id}
                   item={supply.item}
                   claim={supply.claim}
