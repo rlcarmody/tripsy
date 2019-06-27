@@ -2,74 +2,75 @@
 import React, { Component, Fragment } from 'react';
 // eslint-disable-next-line no-unused-vars
 import { BrowserRouter as Router, Route, Link, withRouter } from 'react-router-dom';
-import { ListItem } from './layoutComponents/List';
-import { Row, Col, Container } from './layoutComponents/Grid';
-import API from '../utils/API';
+// eslint-disable-next-line no-unused-vars
+import { ListItem } from '../../layoutComponents/List';
+import { Row, Col, Container } from '../../layoutComponents/Grid';
+import API from '../../../utils/API';
 
 
-class InviteGuests extends Component {
+class AddSupplies extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      newGuest: '',
-      guests: [],
+      newItem: '',
+      items: [],
     };
   }
 
-  addGuest = () => {
-    // this.setState({ guests: [...this.state.guests, this.state.newGuest], newGuest: '' });
-    this.setState(currentState => ({ guests: [...currentState.guests, currentState.newGuest], newGuest: '' }));
+  addItem = () => {
+    this.setState(currentState => ({ items: [...currentState.items, currentState.newItem], newItem: '' }));
   }
 
   handleChange = (e) => {
-    // this.state.guests[index] = e.target.value;
-    this.setState({ newGuest: e.target.value });
+    this.setState({ newItem: e.target.value });
   }
 
   handleRemove = (index) => {
-    this.state.guests.splice(index, 1);
-    this.setState({ guests: this.state.guests });
+    this.state.items.splice(index, 1);
+    this.setState({ items: this.state.items });
   }
 
-  handleInviteGuests = (event) => {
+  handleAddSupplies = (event) => {
     event.preventDefault();
     // eslint-disable-next-line react/destructuring-assignment
     console.log('form was submitted with the following data:');
     console.log(this.state);
+    console.log('trip id is: ');
+    console.log(this.props.tripID);
 
-    API.sendInvite(this.props.tripID, this.state.guests)
+    API.addSupplies(this.props.tripID, this.state.items)
       .then(() => {
-        this.props.history.push('/home');
+        this.props.history.push('/Supplies');
       });
   }
 
   render() {
-      console.log(this.props.tripID)
+    console.log(this.props.tripID)
     return (
       <Fragment>
         <Container>
           <Row>
             <Col>
-              <h2 className="headline">Invite your friends!</h2>
+              <h2 className="headline">Create a Shopping List for your Trip!</h2>
             </Col>
           </Row>
-          <form onSubmit={this.handleInviteGuests}>
-            
+          <form onSubmit={this.handleAddSupplies}>
+
             <div className="formField">
-              <label className="formFieldLabel" htmlFor="email">
-                Your friend's email address...
+              <label className="formFieldLabel" htmlFor="item">
+                Supply...
                 <input
                   className="formFieldInput"
-                  type="email"
-                  name="email"
-                  id="email"
-                  value={this.state.newGuest}
+                  type="text"
+                  name="item"
+                  id="item"
+                  value={this.state.newItem}
                   onChange={this.handleChange}
                 />
               </label>
-              {this.state.guests.map((guest, index) => (
+              {this.state.items.map((item, index) => (
                 <div key={index}>
-                  {guest}
+                  {item}
                   <button onClick={this.handleRemove}>X</button>
 
                 </div>
@@ -78,8 +79,8 @@ class InviteGuests extends Component {
               <button
                 className="btn waves-light"
                 type="button"
-                onClick={this.addGuest}>
-                    Add Guest
+                onClick={this.addItem}>
+                    Add Item
               </button>
             </div>
             <br />
@@ -91,9 +92,15 @@ class InviteGuests extends Component {
             />
 
           </form>
+          <br />
+          <Link to="/tripDash">
+            <button type="button">
+              Skip This Step
+            </button>
+          </Link>
         </Container>
       </Fragment>
     );
   }
 }
-export default withRouter(InviteGuests);
+export default withRouter(AddSupplies);

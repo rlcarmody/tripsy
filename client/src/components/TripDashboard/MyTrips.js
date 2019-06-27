@@ -1,10 +1,11 @@
 import React, { Component, Fragment } from 'react';
 // eslint-disable-next-line no-unused-vars
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import API from '../utils/API';
-import { Col, Row, Container } from './layoutComponents/Grid';
-import { List } from './layoutComponents/List';
-import Card from './layoutComponents/Card';
+import API from '../../../utils/API';
+// eslint-disable-next-line no-unused-vars
+import { Col, Row, Container } from '../../layoutComponents/Grid';
+import { List } from '../../layoutComponents/List';
+import Card from '../../layoutComponents/Card';
 import Trip from './Trip';
 
 class MyTrips extends Component {
@@ -48,7 +49,9 @@ class MyTrips extends Component {
                         // eslint-disable-next-line no-underscore-dangle
                         key={trip._id}
                       />
+                      
                     ))}
+                    <Link to="/tripDash/:tripId">View This Trip</Link>
                   </List>
                 ) : (
                   <h2 className="text-center">No Saved Trips</h2>

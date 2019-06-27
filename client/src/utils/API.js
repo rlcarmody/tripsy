@@ -26,8 +26,8 @@ export default {
   findInvite(inviteID) {
     return axios.get(`/api/invitation/${inviteID}`);
   },
-  addSupplies(tripID) {
-    return axios.post(`/api/trips/supplies?tripID=${tripID}`);
+  addSupplies(tripID, supplies) {
+    return axios.post(`/api/trips/supplies?tripID=${tripID}`, { supplies });
   },
   getSupplies(tripID) {
     return axios.get(`/api/trips/supplies?tripID=${tripID}`);
@@ -38,8 +38,8 @@ export default {
   getMessages() {
     return axios.get('/api/tripID/');
   },
-  postRide() {
-    return axios.post('/api/rides');
+  postRide(body) {
+    return axios.post('/api/rides', body);
   },
   getRides(tripID) {
     return axios.get(`/api/rides?tripID=${tripID}`);
