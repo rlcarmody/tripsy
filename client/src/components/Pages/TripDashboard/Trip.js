@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import dateFns from 'date-fns';
-import { ListItem } from './layoutComponents/List';
-import { Row, Col } from './layoutComponents/Grid';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { ListItem } from '../../layoutComponents/List';
+import { Row, Col } from '../../layoutComponents/Grid';
 
 function Trip({
   name, location, startDate, endDate, organizer, description,
@@ -24,15 +25,23 @@ function Trip({
         <Col size="md-6">
           {startDate && endDate && (
           <p className="font-italic small">
-              Start: {dateFns.format(startDate, 'MMMM DD, YYYY')} End: {dateFns.format(endDate, 'MMMM DD, YYYY')}
+              Start:
+              {dateFns.format(startDate, 'MMMM DD, YYYY')} 
+              End:
+              {dateFns.format(endDate, 'MMMM DD, YYYY')}
           </p>
           )}
         </Col>
       </Row>
       <Row>
         <Col size="12 sm-8 md-10">
-          <p>{description}</p>
+          <p>
+            {description}
+          </p>
         </Col>
+      </Row>
+      <Row>
+        <Link to="/tripDash">View</Link>
       </Row>
     </ListItem>
   );

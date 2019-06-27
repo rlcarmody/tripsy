@@ -35,6 +35,7 @@
     "mongoose": "^5.5.15",
     "react-dom": "^16.8.6",
     "react-facebook-login": "^4.1.1",
+    "query-string": "^6.8.1",
     "socket.io": "^2.2.0"
   }
 }

@@ -1,14 +1,14 @@
 import React, { Component, Fragment } from 'react';
 import queryString from 'query-string';
 import PropTypes from 'prop-types';
-import API from '../../utils/API';
-import Trip from '../Trip';
-import Signup from './Signup';
-import { Container, Col, Row } from '../layoutComponents/Grid';
-import ActionButton from '../ActionButton';
-import Nav from '../layoutComponents/Nav';
-import Card from '../layoutComponents/Card';
-import { List } from '../layoutComponents/List';
+import API from '../../../utils/API';
+import Trip from '../TripDashboard/Trip';
+import Signup from '../Signup';
+import { Container, Col, Row } from '../../layoutComponents/Grid';
+import ActionButton from '../../layoutComponents/ActionButton';
+import Nav from '../../layoutComponents/Nav';
+import Card from '../../layoutComponents/Card';
+import { List } from '../../layoutComponents/List';
 import './Invitation.css';
 
 class Invitation extends Component {
