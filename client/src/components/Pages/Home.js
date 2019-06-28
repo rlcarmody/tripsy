@@ -26,7 +26,7 @@ class Home extends Component {
           </div>
           <div className="row">
             <div className="col-md-5" />
-            <div className="col-md-1" className="text-center">
+            <div className="col-md-1">
               <Link to="/NewTrip">
                 <button type="button" className="newTripBtn">New Trip</button>
               </Link>
@@ -35,8 +35,10 @@ class Home extends Component {
           </div>
           <div className="row">
             <div className="col-md-5" />
-            <div className="col-md-1" className="text-center">
-              <h4><i class="fas fa-chevron-down"></i></h4>
+            <div className="col-md-1 text-center">
+              <h4>
+                <i className="fas fa-chevron-down" />
+              </h4>
             </div>
             <div className="col-md-5" />
           </div>
