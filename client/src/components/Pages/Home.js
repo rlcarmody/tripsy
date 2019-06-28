@@ -12,35 +12,29 @@ class Home extends Component {
       <Fragment>
         <Nav />
         <Container id="home">
-          <div className="row text-center">
-            <div className="col-md-12">
+          <div className="row center-align">
+          <div className="col s12">
               <img id='logo' alt="logo" src={ require('../../images/tripsy.PNG') } />
             </div>
           </div>
           <div className="row">
-            <div className="col-md-2" />
-            <div className="col-md-8 text-center">
+            <div className="col s2" />
+            <div className="col s8 center-align">
               <h2 className="headline" id="headline"><strong>Trippin' Made Easy</strong></h2>
             </div>
-            <div className="col-md-2" />
+            <div className="col s2" />
           </div>
           <div className="row">
-            <div className="col-md-5" />
-            <div className="col-md-1">
+            <div className="col s1 offset-s5" className="center-align">
               <Link to="/NewTrip">
                 <button type="button" className="newTripBtn">New Trip</button>
               </Link>
             </div>
-            <div className="col-md-5" />
           </div>
           <div className="row">
-            <div className="col-md-5" />
-            <div className="col-md-1 text-center">
-              <h4>
-                <i className="fas fa-chevron-down" />
-              </h4>
+            <div className="col s1 offset-s5" className="center-align">
+              <h4><i class="fas fa-chevron-down"></i></h4>
             </div>
-            <div className="col-md-5" />
           </div>
 
           <div className="row myTripsDiv">

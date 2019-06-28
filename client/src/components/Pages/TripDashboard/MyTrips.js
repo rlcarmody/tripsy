@@ -32,16 +32,13 @@ class MyTrips extends Component {
 
         <Fragment>
           <div className="row">
-            <div className="col-md-3" />
-            <div className="col-md-6">
+            <div className="col s6 offset-s3">
               <h4 id="subHeadline">Your Upcoming Trips</h4>
             </div>
-            <div className="col-md-3" />
           </div>
           <div className="row">
             <div id="divider" />
-            <div className="col-md-2" />
-            <div className="col-md-8">
+            <div className="col s8 offset-s2">
               {this.state.trips.length ? (
                 <List>
                   {this.state.trips.map(trip => (
@@ -60,13 +57,12 @@ class MyTrips extends Component {
                   ))}
                 </List>
               ) : (
-                <div className="row text-center">
-                  <h4 className="text-center">No Saved Trips</h4>
+                <div className="row center-align">
+                  <h4 className="center-align">No Saved Trips</h4>
                 </div>
               )}
 
             </div>
-            <div className="col-md-2" />
           </div>
         </Fragment>
       );

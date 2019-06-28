@@ -49,9 +49,8 @@ class TripDash extends Component {
       <Fragment>
         <Nav />
         <div className="container">
-          <div className="row text-center">
-            <div className="col-md-4" />
-            <div className="col-md-4 text-center">
+          <div className="row center-align">
+            <div className="col s4 offset-s4 center-align">
 
               <Link to="/rides">
                 <button type="button" className="button btnNav">Rides</button>
@@ -64,11 +63,11 @@ class TripDash extends Component {
               </Link>
 
             </div>
-            <div className="col-md-4" />
           </div>
 
-          <div className="row text-center">
-            <div className="col-md-12">
+          
+          <div className="row center-align">
+          <div className="col s12">
 
               <h3 id="subHeadline">
                 {name}

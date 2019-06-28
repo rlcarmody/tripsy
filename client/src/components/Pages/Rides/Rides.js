@@ -38,9 +38,8 @@ class Rides extends Component {
 
         <div className="container" id="rides">
 
-          <div className="row align-center">
-            <div className="col-md-4" />
-            <div className="col-md-4 text-center">
+          <div className="row center-align">
+            <div className="col s4 offset-s4 center-align">
 
               <Link to="/supplies">
                 <button type="button" className="button btnNav">Supplies</button>
@@ -53,17 +52,16 @@ class Rides extends Component {
               </Link>
 
             </div>
-            <div className="col-md-4" />
           </div>
 
-          <div className="row text-center">
+          <div className="row center-align">
             <Link to="/postRide">
               <button type="button" className="button btnNav">Post A Ride</button>
             </Link>
           </div>
 
           <div className="row">
-            <div className="col-md-12 text-center" id="subHeadline">
+            <div className="col s12 center-align" id="subHeadline">
               <h3>Rides</h3>
             </div>
           </div>

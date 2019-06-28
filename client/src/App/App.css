@@ -16,15 +16,12 @@ h2, h3, h4, h5, p, th, tr {
     font-family: 'Montserrat', sans-serif;
 }
 
-.text-center {
-    text-align: center;
-}
-
 #divider { 
     border-bottom: 0.5px;
     border-color: gray;
     border-style: solid;
 }
+
 
 .button {
     background-color: rgb(62, 177, 142);
@@ -75,7 +72,8 @@ h2, h3, h4, h5, p, th, tr {
 
 #logo {
     display: block;
-    margin: 0 auto;     
+    margin: 0 auto;  
+    padding-left: 50px;
 }
 
 #headline {
@@ -105,13 +103,31 @@ h2, h3, h4, h5, p, th, tr {
     padding: 10px;
 }
 
-
 #newtrip {
     background-color: rgba(255,255,255,0.75);
     border-radius: 15px;
     background-size: cover;
-    padding: 10px;
+    padding: 15px;
+    margin-top: 50px;
     text-align: center;
+}
+
+#postride {
+    background-color: rgba(255,255,255,0.75);
+    border-radius: 15px;
+    background-size: cover;
+    padding: 15px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#addSupplies {
+    background-color: rgba(255,255,255,0.75);
+    border-radius: 15px;
+    background-size: cover;
+    padding: 15px;
+    text-align: center;
+    margin-bottom: 20px;
 }
 
 #messages {
@@ -127,20 +143,18 @@ h2, h3, h4, h5, p, th, tr {
 
 #login {
     text-align: center;
-    border-style: solid;
-    margin-top: 100px;
+    margin-top: 50px;
     border-radius: 15px;
-    padding: 5px;
-    background-color: white;
+    padding: 15px;
+    background-color: rgba(255,255,255,0.75);
     border-width: 5px;
 }
 
 #signup {
     text-align: center;
-    border-style: solid;
     margin-top: 50px;
     padding: 15px;
-    background-color: white;
+    background-color: rgba(255,255,255,0.75);
     border-radius: 15px;
     border-width: 5px;
 }
@@ -149,7 +163,6 @@ h2, h3, h4, h5, p, th, tr {
     #logo {
         display: block;
         margin: 0 auto;
-          
     }
     
     #headline {
@@ -183,5 +196,5 @@ h2, h3, h4, h5, p, th, tr {
     .newTripBtn:hover {
         box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
         transition: 200ms;
-    }
+    }    
   }

@@ -10,18 +10,18 @@ function Trip({
   return (
     <ListItem>
       <Row className="flex-wrap-reverse">
-        <Col size="md-8">
+        <Col s8>
           <h3 className="font-italic">{name}</h3>
           {location && <h5 className="font-italic">{location}</h5>}
         </Col>
       </Row>
       <Row>
-        <Col size="md-6">
+        <Col s6>
           {organizer && <p className="font-italic small">Organized by {organizer}</p>}
         </Col>
       </Row>
       <Row>
-        <Col size="md-6">
+        <Col s6>
           {startDate && endDate && (
           <p className="font-italic small">
               Start: {dateFns.format(startDate, 'MMMM DD, YYYY')} End: {dateFns.format(endDate, 'MMMM DD, YYYY')}

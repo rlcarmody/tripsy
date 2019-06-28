@@ -56,7 +56,7 @@ class Rides extends Component {
             </section>
           </Row>
           <Row>
-            <Col size="md-12">
+            <Col s12>
               <Card title="Rides">
                 {this.state.rides.length ? (
                   <List>
