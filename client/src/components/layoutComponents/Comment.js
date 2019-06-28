@@ -32,10 +32,6 @@ class Comment extends Component {
     this.scrollToBottom();
   }
 
-  componentWillUnmount() {
-    socket.close();
-  }
-
   submitMessage = (messageString) => {
     const { tripID } = this.props;
     // on submitting the CommentInput form, send the message, add it to the list and reset the input

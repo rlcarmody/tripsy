@@ -8,7 +8,6 @@ import API from '../../../utils/API';
 import Comment from '../../layoutComponents/Comment';
 import BingMap from './Map';
 import Nav from '../../layoutComponents/Nav';
-import Trip from './Trip';
 
 class TripDash extends Component {
   constructor(props) {
@@ -25,9 +24,11 @@ class TripDash extends Component {
 
   getOneTrip = () => {
     API.getOneTrip(this.props.tripID)
-      .then(res => this.setState({
-        trip: res.data,
-      })).catch(() => this.setState({
+      .then((res) => {
+        this.setState({
+          trip: res.data,
+        }, () => console.log(this.state));
+      }).catch(() => this.setState({
         trip: [],
       }));
   };
@@ -86,11 +87,11 @@ class TripDash extends Component {
           <div id="divider" />
 
           <div className="row">
-            <div className="col-md-6">
-              MAP
+            <div className="col s6">
+              {coordinates && <BingMap coordinates={coordinates} />}
             </div>
 
-            <div className="col-md-6">
+            <div className="col s6">
               <div className="card">
                 <h4>About This Trip</h4>
                 <div className="divider" />
