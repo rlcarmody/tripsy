@@ -2,12 +2,11 @@
 import React, { Component, Fragment } from 'react';
 // eslint-disable-next-line no-unused-vars
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import { Col, Row, Container } from '../../layoutComponents/Grid';
-import API from '../../../utils/API';
-import Comments from './Comments';
-import BingMap from './Map';
 import dateFns from 'date-fns';
-
+import PropTypes from 'prop-types';
+import API from '../../../utils/API';
+import Comment from '../../layoutComponents/Comment';
+import BingMap from './Map';
 import Nav from '../../layoutComponents/Nav';
 
 class TripDash extends Component {
@@ -19,20 +18,32 @@ class TripDash extends Component {
   }
 
   componentDidMount() {
-    console.log('The trip ID is: ' + this.props.tripID)
+    console.log(`The trip ID is: ${this.props.tripID}`);
     this.getOneTrip();
   }
 
   getOneTrip = () => {
     API.getOneTrip(this.props.tripID)
-      .then(res => this.setState({
-        trip: res.data,
-      })).catch(() => this.setState({
+      .then((res) => {
+        this.setState({
+          trip: res.data,
+        }, () => console.log(this.state));
+      }).catch(() => this.setState({
         trip: [],
       }));
   };
 
   render() {
+    const { tripID } = this.props;
+    const {
+      trip: {
+        coordinates,
+        name,
+        startDate,
+        endDate,
+        description,
+      },
+    } = this.state;
     return (
 
       <Fragment>
@@ -54,12 +65,21 @@ class TripDash extends Component {
             </div>
           </div>
 
+          
           <div className="row center-align">
-            <div className="col s12">
-              
-                <h3 id="subHeadline">{this.state.trip.name}</h3>
-                <p className="center-align">{dateFns.format(this.state.trip.startDate, 'MMMM DD, YYYY')} - {dateFns.format(this.state.trip.endDate, 'MMMM DD, YYYY')}</p>
-              
+          <div className="col s12">
+
+              <h3 id="subHeadline">
+                {name}
+              </h3>
+              <p className="text-center">
+                {dateFns.format(startDate, 'MMMM DD, YYYY')}
+                {' '}
+-
+                {' '}
+                {dateFns.format(endDate, 'MMMM DD, YYYY')}
+              </p>
+
             </div>
           </div>
 
@@ -67,24 +87,22 @@ class TripDash extends Component {
 
           <div className="row">
             <div className="col s6">
-              MAP
+              {coordinates && <BingMap coordinates={coordinates} />}
             </div>
-          
+
             <div className="col s6">
               <div className="card">
-                  <h4>About This Trip</h4>
-                  <div className="divider" />
-                  <p>
-                    {this.state.trip.description}
-                  </p>
+                <h4>About This Trip</h4>
+                <div className="divider" />
+                <p>
+                  {description}
+                </p>
               </div>
             </div>
           </div>
 
           <div className="row">
-            <section>
-              <h4>Comments</h4>
-            </section>
+            <Comment tripID={tripID} />
           </div>
 
         </div>
@@ -94,4 +112,9 @@ class TripDash extends Component {
     );
   }
 }
+
+TripDash.propTypes = {
+  tripID: PropTypes.string.isRequired,
+};
+
 export default TripDash;

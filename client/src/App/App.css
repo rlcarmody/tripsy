@@ -130,6 +130,17 @@ h2, h3, h4, h5, p, th, tr {
     margin-bottom: 20px;
 }
 
+#messages {
+    border-style: dashed;
+    height: 20px;
+    margin-top: 10px;
+}
+
+#chat {
+    height: 100px;
+    border-style: solid;
+}
+
 #login {
     text-align: center;
     margin-top: 50px;

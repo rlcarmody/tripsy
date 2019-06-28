@@ -1,14 +1,20 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import dateFns from 'date-fns';
+// eslint-disable-next-line no-unused-vars
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import { ListItem } from '../../layoutComponents/List';
-import { Row, Col } from '../../layoutComponents/Grid';
 import '../../../App/App.css';
 
 class Trip extends Component {
   render() {
-    const { name, location, startDate, endDate, organizer, description, key } = this.props;
+    const {
+      name,
+      location,
+      startDate,
+      endDate,
+      organizer,
+    } = this.props;
     return (
       <ListItem id="tripSection">
         <div className className="row flex-wrap">
@@ -37,21 +43,17 @@ class Trip extends Component {
           </Link>
         </div>
         <div id="divider" />
-      
+
       </ListItem>
     );
   }
-
-// Trip.propTypes = {
-//   name: PropTypes.string.isRequired,
-//   location: PropTypes.string.isRequired,
-//   startDate: PropTypes.string.isRequired,
-//   endDate: PropTypes.string.isRequired,
-//   organizer: PropTypes.string.isRequired,
-//   description: PropTypes.string,
-// };
-
-// Trip.defaultProps = {
-//   description: 'The organizer has not entered a description yet',
 }
+Trip.propTypes = {
+  name: PropTypes.string.isRequired,
+  location: PropTypes.string.isRequired,
+  startDate: PropTypes.string.isRequired,
+  endDate: PropTypes.string.isRequired,
+  organizer: PropTypes.string.isRequired,
+};
+
 export default Trip;
