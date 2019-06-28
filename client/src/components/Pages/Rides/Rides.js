@@ -1,84 +1,74 @@
 import React, { Component, Fragment } from 'react';
 // eslint-disable-next-line no-unused-vars
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import API from '../../../utils/API';
-import { List } from '../../layoutComponents/List';
-import { Row, Col, Container } from '../../layoutComponents/Grid';
-import Card from '../../layoutComponents/Card';
+import RidesTable from './RidesTable';
 import Nav from '../../layoutComponents/Nav';
-import SingleRide from './SingleRide';
+import API from '../../../utils/API';
+import { isThisSecond } from 'date-fns';
+import { Row, Col, Container } from '../../layoutComponents/Grid';
+
 
 class Rides extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      rides: [],
-    };
+  state={
+    rides: [],
   }
 
-  componentDidMount() {
-    console.log('The trip ID is: ' + this.props.tripID);
-    console.log(this.state.rides);
-    this.getRides();
-  }
-
-  getRides = () => {
+  componentDidMount = () => {
+    console.log(this.props.tripID);
     API.getRides(this.props.tripID)
-      .then(res => this.setState({
-        rides: res.data,
-      })).catch(() => this.setState({
-        rides: [],
-      }));
-  };
+      .then((data) => {
+        console.log(data);
+        this.setState({ rides: data.data });
+        console.log('component did mount! and API get was successful!');
+      });
+  }
+
+  handleOnSeatClaimed = () => {
+    console.log('seat claimed!');
+    API.getRides(this.props.tripID)
+      .then((data) => {
+        this.setState({ rides: data });
+      });
+  }
 
   render() {
     return (
-
       <Fragment>
         <Nav />
-        <Container id="rides">
-          <Row>
-            <Link to="/postRide">
-              <button type="button">Post a Ride</button>
-            </Link>
-          </Row>
-          <Row>
-            <section>
-              <Link to="/tripDash">
-                <button type="button">Trip</button>
-              </Link>
-              <Link to="/supplies">
-                <button type="button">Supplies</button>
-              </Link>
-              <Link to="/guests">
-                <button type="button">Guests</button>
-              </Link>
-            </section>
-          </Row>
-          <Row>
-            <Col size="md-12">
-              <Card title="Rides">
-                {this.state.rides.length ? (
-                  <List>
-                    {this.state.rides.map(trip => (
-                      <SingleRide
-                        vehicleType={SingleRide.vehicleType}
-                        availableSeats={SingleRide.availableSeats}
-                        departureDate={SingleRide.departureDate}
-                        driver={SingleRide.driver}
-                        // eslint-disable-next-line no-underscore-dangle
-                        key={SingleRide._id}
-                      />
-                    ))}
-                  </List>
-                ) : (
-                  <h2 className="text-center">No Rides Posted</h2>
-                )}
-              </Card>
-            </Col>
-          </Row>
 
-        </Container>
+        <div className="container" id="rides">
+
+          <div className="row center-align">
+            <div className="col s4 offset-s4 center-align">
+
+              <Link to="/supplies">
+                <button type="button" className="button btnNav">Supplies</button>
+              </Link>
+              <Link to="/tripDash">
+                <button type="button" className="button btnNav">This Trip</button>
+              </Link>
+              <Link to="/home">
+                <button type="button" className="button btnNav">My Trips</button>
+              </Link>
+
+            </div>
+          </div>
+
+          <div className="row center-align">
+            <Link to="/postRide">
+              <button type="button" className="button btnNav">Post A Ride</button>
+            </Link>
+          </div>
+
+          <div className="row">
+            <div className="col s12 center-align" id="subHeadline">
+              <h3>Rides</h3>
+            </div>
+          </div>
+
+          <RidesTable onSeatClaimed={this.handleOnSeatClaimed} rides={this.state.rides} />
+
+        </div>
       </Fragment>
     );
   }

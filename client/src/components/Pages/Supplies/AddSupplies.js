@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Route, Link, withRouter } from 'react-router-d
 import { ListItem } from '../../layoutComponents/List';
 import { Row, Col, Container } from '../../layoutComponents/Grid';
 import API from '../../../utils/API';
+import Nav from '../../layoutComponents/Nav';
 
 
 class AddSupplies extends Component {
@@ -48,13 +49,29 @@ class AddSupplies extends Component {
     console.log(this.props.tripID)
     return (
       <Fragment>
-        <Container>
-          <Row>
-            <Col>
-              <h2 className="headline">Create a Shopping List for your Trip!</h2>
-            </Col>
-          </Row>
-          <form onSubmit={this.handleAddSupplies}>
+        <Nav />
+        <div className="container">
+          <div className="row center-align">
+            <div className="col s4 offset-s4 center-align">
+
+              <Link to="/rides">
+                <button type="button" className="button btnNav">Rides</button>
+              </Link>
+              <Link to="/tripDash">
+                <button type="button" className="button btnNav">This Trip</button>
+              </Link>
+              <Link to="/home">
+                <button type="button" className="button btnNav">My Trips</button>
+              </Link>
+
+            </div>
+          </div>
+          <div className="row">
+            <div className="col s12 center-align">
+              <h4 id="subHeadline">Create a Shopping List for your Trip!</h4>
+            </div>
+          </div>
+          <form onSubmit={this.handleAddSupplies} id="addSupplies">
 
             <div className="formField">
               <label className="formFieldLabel" htmlFor="item">
@@ -90,15 +107,15 @@ class AddSupplies extends Component {
               id="btn"
               placeholder="Next"
             />
-
-          </form>
-          <br />
-          <Link to="/tripDash">
-            <button type="button">
+                      <br />
+                      <br/>
+            <Link to="/tripDash">
+            <button type="button" className="center-align">
               Skip This Step
             </button>
           </Link>
-        </Container>
+          </form>
+        </div>
       </Fragment>
     );
   }

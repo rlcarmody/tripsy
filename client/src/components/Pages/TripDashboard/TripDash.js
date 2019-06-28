@@ -1,12 +1,12 @@
 /* eslint-disable no-unused-vars */
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 // eslint-disable-next-line no-unused-vars
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-
+import dateFns from 'date-fns';
+import PropTypes from 'prop-types';
 import API from '../../../utils/API';
-import Comments from './Comments';
+import Comment from '../../layoutComponents/Comment';
 import BingMap from './Map';
-
 import Nav from '../../layoutComponents/Nav';
 
 class TripDash extends Component {
@@ -18,71 +18,103 @@ class TripDash extends Component {
   }
 
   componentDidMount() {
-    console.log('The trip ID is: ' + this.props.tripID)
+    console.log(`The trip ID is: ${this.props.tripID}`);
     this.getOneTrip();
   }
 
   getOneTrip = () => {
     API.getOneTrip(this.props.tripID)
-      .then(res => this.setState({
-        trip: res.data,
-      })).catch(() => this.setState({
+      .then((res) => {
+        this.setState({
+          trip: res.data,
+        }, () => console.log(this.state));
+      }).catch(() => this.setState({
         trip: [],
       }));
   };
 
   render() {
+    const { tripID } = this.props;
+    const {
+      trip: {
+        coordinates,
+        name,
+        startDate,
+        endDate,
+        description,
+      },
+    } = this.state;
     return (
 
-      <div>
+      <Fragment>
         <Nav />
-        <div className="container" id="tripdash">
-          <div className="row">
-            <section>
+        <div className="container">
+          <div className="row center-align">
+            <div className="col s4 offset-s4 center-align">
+
               <Link to="/rides">
-                <button type="button">Rides</button>
+                <button type="button" className="button btnNav">Rides</button>
               </Link>
               <Link to="/supplies">
-                <button type="button">Supplies</button>
+                <button type="button" className="button btnNav">Supplies</button>
               </Link>
-              <Link to="/guests">
-                <button type="button">Guests</button>
+              <Link to="/home">
+                <button type="button" className="button btnNav">My Trips</button>
               </Link>
-            </section>
-          </div>
-          <div className="headline row">
-            <section>
-              <h3>Trip Title</h3>
-            </section>
-          </div>
 
-          <div className="row">
-            <div className="col">
-              <section>
-
-
-                <BingMap coordinates={[44.834692, -119.8201757]} />
-
-              </section>
-            </div>
-            <div className="col">
-              <section>
-                <div className="aboutTrip">ABOUT TRIP</div>
-              </section>
             </div>
           </div>
 
+          
+          <div className="row center-align">
+          <div className="col s12">
+
+              <h3 id="subHeadline">
+                {name}
+              </h3>
+              <p className="text-center">
+                {dateFns.format(startDate, 'MMMM DD, YYYY')}
+                {' '}
+-
+                {' '}
+                {dateFns.format(endDate, 'MMMM DD, YYYY')}
+              </p>
+
+            </div>
+          </div>
+
+          <div id="divider" />
+
           <div className="row">
-            <section>
-              Comments
-            </section>
+            <div className="col s6">
+              {coordinates && <BingMap coordinates={coordinates} />}
+            </div>
+
+            <div className="col s6">
+              <div className="card">
+                <h4>About This Trip</h4>
+                <div className="divider" />
+                <p>
+                  {description}
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="row">
+            <Comment tripID={tripID} />
           </div>
 
         </div>
-      </div>
+      </Fragment>
 
 
     );
   }
 }
+
+TripDash.propTypes = {
+  tripID: PropTypes.string.isRequired,
+};
+
 export default TripDash;

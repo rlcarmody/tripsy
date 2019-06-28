@@ -15,7 +15,7 @@ class MyTrips extends Component {
 
     componentDidMount() {
       this.getTrips();
-      console.log(this.state.trips);
+      console.log('got trips');
     }
 
     getTrips = () => {
@@ -31,34 +31,39 @@ class MyTrips extends Component {
       return (
 
         <Fragment>
-          <Link to="/tripdash">Go to tripdash</Link>
+          <div className="row">
+            <div className="col s6 offset-s3">
+              <h4 id="subHeadline">Your Upcoming Trips</h4>
+            </div>
+          </div>
+          <div className="row">
+            <div id="divider" />
+            <div className="col s8 offset-s2">
+              {this.state.trips.length ? (
+                <List>
+                  {this.state.trips.map(trip => (
+                    <Trip
+                      name={trip.name}
+                      location={trip.location}
+                      organizer={trip.organizer.displayName}
+                      startDate={trip.startDate}
+                      endDate={trip.endDate}
+                      description={trip.description}
+                      setGlobalTrip={this.props.setGlobalTrip}
+                      id={trip._id}
+                      // eslint-disable-next-line no-underscore-dangle
+                      key={trip._id}
+                    />
+                  ))}
+                </List>
+              ) : (
+                <div className="row center-align">
+                  <h4 className="center-align">No Saved Trips</h4>
+                </div>
+              )}
 
-          <Row>
-            <Col size="md-12">
-              <Card title="My Trips">
-                {this.state.trips.length ? (
-                  <List>
-                    {this.state.trips.map(trip => (
-                      <Trip
-                        name={trip.name}
-                        location={trip.location}
-                        organizer={trip.organizer.displayName}
-                        startDate={trip.startDate}
-                        endDate={trip.endDate}
-                        description={trip.description}
-                        // eslint-disable-next-line no-underscore-dangle
-                        key={trip._id}
-                      />
-                      
-                    ))}
-                    <Link to="/tripDash/:tripId">View This Trip</Link>
-                  </List>
-                ) : (
-                  <h2 className="text-center">No Saved Trips</h2>
-                )}
-              </Card>
-            </Col>
-          </Row>
+            </div>
+          </div>
         </Fragment>
       );
     }

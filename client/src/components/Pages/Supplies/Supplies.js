@@ -7,6 +7,7 @@ import API from '../../../utils/API';
 import { isThisSecond } from 'date-fns';
 import { Row, Col, Container } from '../../layoutComponents/Grid';
 
+
 class Supplies extends Component {
   state={
     supplies: [],
@@ -35,36 +36,39 @@ class Supplies extends Component {
       <Fragment>
         <Nav />
 
-        <Container id="supplies">
-          <Row>
-            <Link to="/AddSupplies">
-              <button type="button">Create A Shopping List</button>
-            </Link>
-          </Row>
+        <div className="container" id="supplies">
 
-          <Row>
-            <section>
-            <Link to="/tripdash">
-                <button type="button">Trip</button>
-              </Link>
-              <Link to="/guests">
-                <button type="button">Guests</button>
-              </Link>
+          <div className="row center-align">
+            <div className="col s4 offset-s4 center-align">
+
               <Link to="/rides">
-                <button type="button">Rides</button>
+                <button type="button" className="button btnNav">Rides</button>
               </Link>
-            </section>
-          </Row>
+              <Link to="/home">
+                <button type="button" className="button btnNav">My Trips</button>
+              </Link>
+              <Link to="/tripDash">
+                <button type="button" className="button btnNav">This Trip</button>
+              </Link>
 
-          <Row className="headline">
-            <section>
+            </div>
+          </div>
+
+          <div className="row center-align">
+            <Link to="/AddSupplies">
+              <button type="button" className="button btnNav">Create A Supply List</button>
+            </Link>
+          </div>
+
+          <div className="row">
+            <div className="col s12 center-align" id="subHeadline">
               <h3>Supplies</h3>
-            </section>
-          </Row>
+            </div>
+          </div>
 
           <SuppliesTable onClaimed={this.handleOnClaimed} supplies={this.state.supplies} />
 
-        </Container>
+        </div>
       </Fragment>
     );
   }
