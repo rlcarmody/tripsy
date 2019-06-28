@@ -1,11 +1,14 @@
 /* eslint-disable no-unused-vars */
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 // eslint-disable-next-line no-unused-vars
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import dateFns from 'date-fns';
+import PropTypes from 'prop-types';
 import API from '../../../utils/API';
 import Comment from '../../layoutComponents/Comment';
 import BingMap from './Map';
 import Nav from '../../layoutComponents/Nav';
+import Trip from './Trip';
 
 class TripDash extends Component {
   constructor(props) {
@@ -16,7 +19,7 @@ class TripDash extends Component {
   }
 
   componentDidMount() {
-    console.log('The trip ID is: ' + this.props.tripID)
+    console.log(`The trip ID is: ${this.props.tripID}`);
     this.getOneTrip();
   }
 
@@ -30,55 +33,88 @@ class TripDash extends Component {
   };
 
   render() {
+    const { tripID } = this.props;
+    const {
+      trip: {
+        coordinates,
+        name,
+        startDate,
+        endDate,
+        description,
+      },
+    } = this.state;
     return (
 
-      <div>
+      <Fragment>
         <Nav />
-        <div className="container" id="tripdash">
-          <div className="row">
-            <section>
+        <div className="container">
+          <div className="row text-center">
+            <div className="col-md-4" />
+            <div className="col-md-4 text-center">
+
               <Link to="/rides">
-                <button type="button">Rides</button>
+                <button type="button" className="button btnNav">Rides</button>
               </Link>
               <Link to="/supplies">
-                <button type="button">Supplies</button>
+                <button type="button" className="button btnNav">Supplies</button>
               </Link>
-              <Link to="/guests">
-                <button type="button">Guests</button>
+              <Link to="/home">
+                <button type="button" className="button btnNav">My Trips</button>
               </Link>
-            </section>
-          </div>
-          <div className="headline row">
-            <section>
-              <h3>Trip Title</h3>
-            </section>
-          </div>
 
-          <div className="row">
-            <div className="col">
-              <section>
-
-
-                <BingMap coordinates={[44.834692, -119.8201757]} />
-
-              </section>
             </div>
-            <div className="col">
-              <section>
-                <div className="aboutTrip">ABOUT TRIP</div>
-              </section>
+            <div className="col-md-4" />
+          </div>
+
+          <div className="row text-center">
+            <div className="col-md-12">
+
+              <h3 id="subHeadline">
+                {name}
+              </h3>
+              <p className="text-center">
+                {dateFns.format(startDate, 'MMMM DD, YYYY')}
+                {' '}
+-
+                {' '}
+                {dateFns.format(endDate, 'MMMM DD, YYYY')}
+              </p>
+
             </div>
           </div>
 
+          <div id="divider" />
+
           <div className="row">
-            <Comment tripID="5d12ecbe4ab29e3e98870d91" />
+            <div className="col-md-6">
+              MAP
+            </div>
+
+            <div className="col-md-6">
+              <div className="card">
+                <h4>About This Trip</h4>
+                <div className="divider" />
+                <p>
+                  {description}
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="row">
+            <Comment tripID={tripID} />
           </div>
 
         </div>
-      </div>
+      </Fragment>
 
 
     );
   }
 }
+
+TripDash.propTypes = {
+  tripID: PropTypes.string.isRequired,
+};
+
 export default TripDash;
