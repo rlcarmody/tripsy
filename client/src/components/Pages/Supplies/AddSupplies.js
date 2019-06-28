@@ -48,12 +48,29 @@ class AddSupplies extends Component {
     console.log(this.props.tripID)
     return (
       <Fragment>
-        <Container>
-          <Row>
-            <Col>
-              <h2 className="headline">Create a Shopping List for your Trip!</h2>
-            </Col>
-          </Row>
+        <div className="container">
+          <div className="row text-center">
+            <div className="col-md-4" />
+            <div className="col-md-4 text-center">
+
+              <Link to="/rides">
+                <button type="button" className="button btnNav">Rides</button>
+              </Link>
+              <Link to="/tripDash">
+                <button type="button" className="button btnNav">This Trip</button>
+              </Link>
+              <Link to="/home">
+                <button type="button" className="button btnNav">My Trips</button>
+              </Link>
+
+            </div>
+            <div className="col-md-4" />
+          </div>
+          <div className="row">
+            <div className="col-md-12 text-center">
+              <h4 id="subHeadline">Create a Shopping List for your Trip!</h4>
+            </div>
+          </div>
           <form onSubmit={this.handleAddSupplies}>
 
             <div className="formField">
@@ -98,7 +115,7 @@ class AddSupplies extends Component {
               Skip This Step
             </button>
           </Link>
-        </Container>
+        </div>
       </Fragment>
     );
   }

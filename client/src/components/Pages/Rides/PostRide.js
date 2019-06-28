@@ -55,11 +55,28 @@ class PostRide extends Component {
         <Nav />
 
         <div className="container" id="postRide">
-          <Row>
-            <Col>
-              <h2 className="headline">Post a Ride</h2>
-            </Col>
-          </Row>
+        <div className="row text-center">
+            <div className="col-md-4" />
+            <div className="col-md-4 text-center">
+
+              <Link to="/supplies">
+                <button type="button" className="button btnNav">Supplies</button>
+              </Link>
+              <Link to="/tripDash">
+                <button type="button" className="button btnNav">This Trip</button>
+              </Link>
+              <Link to="/home">
+                <button type="button" className="button btnNav">My Trips</button>
+              </Link>
+
+            </div>
+            <div className="col-md-4" />
+          </div>
+          <div className="row">
+            <div className="col-md-12 text-center">
+              <h2 id="subHeadline">Post a Ride</h2>
+            </div>
+          </div>
           <form onSubmit={this.handlePostRide}>
             <div className="formField">
               <label className="formFieldLabel" htmlFor="vehicleType">
