@@ -58,8 +58,6 @@ class Signup extends Component {
 
         <form onSubmit={this.handleSignup}>
           <div className="formField">
-            <label className="formFieldLabel" htmlFor="name">
-              Name
               <input
                 className="formFieldInput"
                 type="text"
@@ -67,13 +65,11 @@ class Signup extends Component {
                 id="name"
                 value={this.state.name} 
                 onChange={this.handleInputChange}
+                placeholder="Enter your name"
               />
-            </label>
           </div>
 
           <div className="formField">
-            <label className="formFieldLabel" htmlFor="email">
-              E-mail Address
               <input
                 className="formFieldInput"
                 type="email"
@@ -81,13 +77,11 @@ class Signup extends Component {
                 id="email"
                 value={this.state.email}
                 onChange={this.handleInputChange}
+                placeholder="E-mail address"
               />
-            </label>
           </div>
 
           <div className="formField">
-            <label className="formFieldLabel" htmlFor="password">
-              Password
               <input
                 className="formFieldInput"
                 type="password"
@@ -95,13 +89,11 @@ class Signup extends Component {
                 id="password"
                 value={this.state.password}
                 onChange={this.handleInputChange} 
+                placeholder="Password"
               />
-            </label>
           </div>
 
           <div className="formField">
-            <label className="formFieldLabel" htmlFor="password">
-              Confirm Password
               <input
                 className="formFieldInput"
                 type="password"
@@ -109,8 +101,8 @@ class Signup extends Component {
                 id="confirmPassword"
                 value={this.state.confirmPassword}
                 onChange={this.handleInputChange}
+                placeholder="Confirm Password"
               />
-            </label>
           </div>
 
           <input

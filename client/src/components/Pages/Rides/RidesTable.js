@@ -40,7 +40,7 @@ class RidesTable extends Component {
             </tbody>
           </table>
         ) : (
-          <h5 className="text-center">No rides have been posted yet.</h5>
+          <h5 className="center-align">No rides have been posted yet.</h5>
         )}
       </Fragment>
     );

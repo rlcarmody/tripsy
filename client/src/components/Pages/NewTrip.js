@@ -48,16 +48,14 @@ class NewTrip extends Component {
   render() {
     return (
       <Fragment>
-        <div className="container" id="login">
+        <div className="container" id="newtrip">
           <Row>
-            <Col>
-              <h2 className="headline">Create a New Trip</h2>
-            </Col>
+        <div className="subHeadline center-align">
+          <h5>Create a new trip!</h5>
+        </div>
           </Row>
           <form onSubmit={this.handleCreateTrip}>
             <div className="formField">
-              <label className="formFieldLabel" htmlFor="name">
-                Trip Name
                 <input
                   className="formFieldInput"
                   type="text"
@@ -65,13 +63,11 @@ class NewTrip extends Component {
                   id="name"
                   value={this.state.name}
                   onChange={this.handleInputChange}
+                  placeholder="Trip Name"
                 />
-              </label>
             </div>
 
             <div className="formField">
-              <label className="formFieldLabel" htmlFor="location">
-                Destination
                 <input
                   className="formFieldInput"
                   type="text"
@@ -79,13 +75,12 @@ class NewTrip extends Component {
                   id="location"
                   value={this.state.location}
                   onChange={this.handleInputChange}
+                  placeholder="Destination"
                 />
-              </label>
             </div>
 
             <div className="formField">
-              <label className="formFieldLabel" htmlFor="startDate">
-                Start Date
+                <span class="helper-text">Start Date</span>
                 <input
                   className="formFieldInput"
                   type="date"
@@ -94,12 +89,10 @@ class NewTrip extends Component {
                   value={this.state.startDate}
                   onChange={this.handleInputChange}
                 />
-              </label>
             </div>
 
             <div className="formField">
-              <label className="formFieldLabel" htmlFor="endDate">
-                End Date
+            <span class="helper-text">End Date</span>
                 <input
                   className="formFieldInput"
                   type="date"
@@ -108,27 +101,27 @@ class NewTrip extends Component {
                   value={this.state.endDate}
                   onChange={this.handleInputChange}
                 />
-              </label>
             </div>
 
             <div className="formField">
-              <label className="formFieldLabel" htmlFor="description">
-                Trip Description
-                <input
-                  className="formFieldInput"
-                  type="text"
-                  name="description"
-                  id="description"
-                  value={this.state.description}
-                  onChange={this.handleInputChange}
-                />
-              </label>
+              <div class="row">
+                <div class="input-field">
+          <textarea 
+              value={this.state.description}
+              onChange={this.handleInputChange} 
+              className="formFieldInput" 
+              id="textarea1" 
+              class="materialize-textarea" 
+              placeholder="Trip Description"
+              />
+        </div>
+      </div>
             </div>
 
             <input
               className="btn waves-light formButton"
               type="submit"
-              id="btn"
+              id="btnSubmit"
               placeholder="Next"
             />
 

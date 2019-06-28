@@ -38,9 +38,8 @@ class TripDash extends Component {
       <Fragment>
         <Nav />
         <div className="container">
-          <div className="row text-center">
-            <div className="col-md-4" />
-            <div className="col-md-4 text-center">
+          <div className="row center-align">
+            <div className="col s4 offset-s4 center-align">
 
               <Link to="/rides">
                 <button type="button" className="button btnNav">Rides</button>
@@ -53,14 +52,13 @@ class TripDash extends Component {
               </Link>
 
             </div>
-            <div className="col-md-4" />
           </div>
 
-          <div className="row text-center">
-            <div className="col-md-12">
+          <div className="row center-align">
+            <div className="col s12">
               
                 <h3 id="subHeadline">{this.state.trip.name}</h3>
-                <p className="text-center">{dateFns.format(this.state.trip.startDate, 'MMMM DD, YYYY')} - {dateFns.format(this.state.trip.endDate, 'MMMM DD, YYYY')}</p>
+                <p className="center-align">{dateFns.format(this.state.trip.startDate, 'MMMM DD, YYYY')} - {dateFns.format(this.state.trip.endDate, 'MMMM DD, YYYY')}</p>
               
             </div>
           </div>
@@ -68,11 +66,11 @@ class TripDash extends Component {
           <div id="divider" />
 
           <div className="row">
-            <div className="col-md-6">
+            <div className="col s6">
               MAP
             </div>
           
-            <div className="col-md-6">
+            <div className="col s6">
               <div className="card">
                   <h4>About This Trip</h4>
                   <div className="divider" />

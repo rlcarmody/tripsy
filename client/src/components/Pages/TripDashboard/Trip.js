@@ -12,30 +12,24 @@ class Trip extends Component {
     return (
       <ListItem id="tripSection">
         <div className className="row flex-wrap">
-          <div className="col-md-3" />
-          <div className="col-md-6" size="md-12">
+          <div className="col s6 offset-s3">
             <h4>{name}</h4>
             {location && <h5 className="font-italic">{location}</h5>}
           </div>
-          <div className="col-md-3" />
         </div>
         <div className="row">
-          <div className="col-md-3" />
-          <div className="col-md-6">
+          <div className="col s6 offset-s3">
             {organizer && <p className="font-italic small">Organized by {organizer}</p>}
           </div>
-          <div className="col-md-3" />
         </div>
         <div className="row">
-          <div className="col-md-3" />
-          <div className="col=md-6">
+          <div className="col s6 offset-s3">
             {startDate && endDate && (
             <p>
                 Trip Starts on {dateFns.format(startDate, 'MMMM DD, YYYY')}
             </p>
             )}
           </div>
-          <div className="col-md-3" />
         </div>
         <div className="row">
           <Link to="/tripDash">
