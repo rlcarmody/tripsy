@@ -63,7 +63,7 @@ class Supplies extends Component {
           </div>
           <section>
             <h5 className="center-align">Add Items to This List:</h5>
-            <AddSuppliesForm />
+            <AddSuppliesForm tripID={this.props.tripID} />
             <br />
           </section>
 

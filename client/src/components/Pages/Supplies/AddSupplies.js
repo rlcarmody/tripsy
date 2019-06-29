@@ -37,12 +37,23 @@ class AddSupplies extends Component {
               <h4 id="subHeadline">Create a Shopping List for your Trip!</h4>
             </div>
           </div>
+<<<<<<< HEAD
           <AddSuppliesForm />
           <br />
           <p>
             <Link to="/tripDash" id="linkP">
               Skip This Step
             </Link>
+=======
+          <AddSuppliesForm tripID={this.props.tripID} />
+          <br />
+          <p>
+          <Link to="/tripDash" id="linkP">
+
+              Skip This Step
+
+          </Link>
+>>>>>>> 4866c2cbe9647ffdf1588b2ba46dfc8589f69a37
           </p>
         </div>
       </Fragment>
