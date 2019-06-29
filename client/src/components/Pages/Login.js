@@ -1,7 +1,7 @@
 /* eslint-disable prefer-destructuring */
 /* eslint-disable react/jsx-one-expression-per-line */
 /* eslint-disable react/no-unused-state */
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 // eslint-disable-next-line no-unused-vars
 import { BrowserRouter as Router, Link } from 'react-router-dom';
 import API from '../../utils/API';
@@ -25,7 +25,7 @@ class Login extends Component {
     // eslint-disable-next-line react/destructuring-assignment
     console.log('login was submitted with the following data:');
     console.log(this.state);
-    
+
     API.loginUser({displayName: this.state.name, email: this.state.email})
       .then(result => {
         console.log(result);
@@ -45,55 +45,62 @@ class Login extends Component {
 
   render() {
     return (
-      <div className="container" id="login">
-        <div className="subHeadline">
-          <h5>Welcome to Tripsy! Log in to get started.</h5>
+      <Fragment>
+        <div className="row">
+          <div className="col s6" id="signUpLeft">
+            <img id='logo' alt="logo" src={ require('../../images/tripsy.PNG') } />
+            <h2 className="headline" id="headline"><strong>Trippin' Made Easy</strong></h2>
+          </div>
+          <div className="col s6" id="signUpRight">
+            <div className="subHeadline">
+              <h5 id="subHeadline">Welcome to Tripsy! Log in to get started.</h5>
+            </div>
+
+            <form onSubmit={this.handleLogin}>
+
+              <div className="formField">
+                <input
+                  className="formFieldInput"
+                  type="email"
+                  name="email"
+                  id="email"
+                  placeholder="Your Email Address"
+                  value={this.state.email}
+                  onChange={this.handleInputChange}
+                />
+              </div>
+
+              <div className="formField">
+                <input
+                  className="formFieldInput"
+                  type="password"
+                  name="password"
+                  id="password"
+                  placeholder="Your Password"
+                  value={this.state.password}
+                  onChange={this.handleInputChange}
+                />
+              </div>
+
+              <input
+                className="btn waves-light formButton"
+                type="submit"
+                id="btnSubmit"
+                value="Log in!"
+              />
+
+              <section>
+                <p id="welcomePageP">
+                  Don’t have an account?
+                  <Link to="/" id="signUpP"> Sign up</Link>
+                  <br />
+                </p>
+              </section>
+
+            </form>
+          </div>
         </div>
-
-        <form onSubmit={this.handleLogin}>
-
-          <div className="formField">
-            <input
-              className="formFieldInput"
-              type="email"
-              name="email"
-              id="email"
-              value={this.state.email}
-              onChange={this.handleInputChange}
-              placeholder="E-mail Address"
-            />
-          </div>
-
-          <div className="formField">
-            <input
-              className="formFieldInput"
-              type="password"
-              name="password"
-              id="password"
-              value={this.state.password}
-              onChange={this.handleInputChange}
-              placeholder="Password"
-            />
-          </div>
-
-          <input
-            className="btn waves-light formButton"
-            type="submit"
-            id="btnSubmit"
-            placeholder="Log in"
-          />
-
-          <section>
-            <p>
-              Don’t have an account?
-              <Link to="/">Sign up</Link>
-              <br />
-              <Link to="/home">Enter</Link>
-            </p>
-          </section>
-
-        </form>
-      </div>
+      </Fragment>
     );
   }
 }

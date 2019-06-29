@@ -37,7 +37,7 @@ class Trip extends Component {
             )}
           </div>
         </div>
-        <div className="row">
+        <div className="row center-align">
           <Link to="/tripDash">
             <button type="button" className="button viewTripBtn" onClick={() => {this.props.setGlobalTrip(this.props.id)}}>View Trip</button>
           </Link>
