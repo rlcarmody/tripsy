@@ -51,12 +51,31 @@ class InviteGuests extends Component {
       <Fragment>
         <Nav checkLoginStatus={this.props.checkLoginStatus} />
         <Container>
+        <div className="row center-align">
+            <div className="col s12 center-align">
+            <Link to="/rides">
+                <button type="button" className="button btnNav">Rides</button>
+              </Link>
+              <Link to="/supplies">
+                <button type="button" className="button btnNav">Supplies</button>
+              </Link>
+              <Link to="/inviteGuests">
+                <button type="button" className="button btnNav">Invite Guests</button>
+              </Link>
+              <Link to="/tripDash">
+                <button type="button" className="button btnAction">This Trip</button>
+              </Link>
+              <Link to="/home">
+                <button type="button" className="button btnNav">My Trips</button>
+              </Link>
+            </div>
+          </div>
           <Row>
-            <Col>
+            <div className="col s12 center-align">
               <h2 id="subHeadline">Invite your friends!</h2>
-            </Col>
+            </div>
           </Row>
-          <form onSubmit={this.handleInviteGuests}>
+          <form onSubmit={this.handleInviteGuests} id="inviteguests">
             
             <div className="formField">
               

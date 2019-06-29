@@ -49,6 +49,9 @@ class Supplies extends Component {
               <Link to="/rides">
                 <button type="button" className="button btnNav">Rides</button>
               </Link>
+              <Link to="/inviteGuests">
+                <button type="button" className="button btnNav">Invite Guests</button>
+              </Link>
               <Link to="/tripDash">
                 <button type="button" className="button btnAction">This Trip</button>
               </Link>
