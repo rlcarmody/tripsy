@@ -5,7 +5,7 @@ const publicKey = process.env.PUBLIC_KEY.replace(/\\n/g, "\n");
 
 const options = {
   issuer: "Tripsy",
-  expiresIn: "24h",
+  expiresIn: "96h",
   algorithm: "RS256"
 };
 
@@ -19,7 +19,7 @@ const auth = {
   },
   verifyToken: cookies => {
     try {
-      const token = cookies.authToken;
+      const token = cookies.accessToken;
       return jwt.verify(token, publicKey, options);
     } catch (e) {
       return false;

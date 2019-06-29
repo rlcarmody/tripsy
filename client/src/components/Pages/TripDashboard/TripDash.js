@@ -47,7 +47,7 @@ class TripDash extends Component {
     return (
 
       <Fragment>
-        <Nav />
+        <Nav checkLoginStatus={this.props.checkLoginStatus} />
         <div className="container">
           <div className="row center-align">
             <div className="col s4 offset-s4 center-align">
@@ -83,14 +83,12 @@ class TripDash extends Component {
             </div>
           </div>
 
-          <div id="divider" />
-
           <div className="row">
-            <div className="col s6">
+            <div className="col m12 l6">
               {coordinates && <BingMap coordinates={coordinates} />}
             </div>
 
-            <div className="col s6">
+            <div className="col m12 l6">
               <div className="card">
                 <h4>About This Trip</h4>
                 <div className="divider" />

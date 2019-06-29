@@ -10,7 +10,7 @@ class Home extends Component {
   render() {
     return (
       <Fragment>
-        <Nav />
+        <Nav checkLoginStatus={this.props.checkLoginStatus} />
         <Container id="home">
           <div className="row center-align">
           <div className="col s12">
@@ -32,8 +32,8 @@ class Home extends Component {
             </div>
           </div>
           <div className="row">
-            <div className="col s1 offset-s5" className="center-align">
-              <h4><i class="fas fa-chevron-down"></i></h4>
+            <div className="col s1 offset-s5 center-align">
+              <h4><i className="fas fa-chevron-down"></i></h4>
             </div>
           </div>
 

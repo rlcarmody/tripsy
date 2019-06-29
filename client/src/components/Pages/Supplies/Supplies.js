@@ -35,7 +35,7 @@ class Supplies extends Component {
   render() {
     return (
       <Fragment>
-        <Nav />
+        <Nav checkLoginStatus={this.props.checkLoginStatus} />
 
         <div className="container" id="supplies">
 

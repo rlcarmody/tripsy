@@ -49,7 +49,7 @@ class NewTrip extends Component {
   render() {
     return (
       <Fragment>
-        <Nav />
+        <Nav checkLoginStatus={this.props.checkLoginStatus} />
         <div className="container" id="login">
           <Row>
             <div className="subHeadline center-align">

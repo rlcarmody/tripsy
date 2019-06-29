@@ -9,7 +9,7 @@ class Guests extends Component {
     return (
       <Fragment>
 
-        <Nav />
+        <Nav checkLoginStatus={this.props.checkLoginStatus} />
 
         <div className="container" id="guests">
 
