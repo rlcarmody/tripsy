@@ -7,10 +7,10 @@ export default class Nav extends Component {
     return (
       <nav>
         <div className="nav-wrapper">
-          <Link to="/home"><img alt="logo" src={ require('../../images/tripsy_noText.png') } width='60' height='40' />HOME</Link>
-          <ul id="nav-mobile" className="right hide-on-med-and-down">
+          <Link to="/home"><img alt="logo" src={ require('../../images/tripsy_noText.png') } width='60' height='40' /></Link>
+          <p id="nav-mobile" className="right signOutLink">
             <Link to="/login">SIGN OUT</Link>
-          </ul>
+          </p>
         </div>
       </nav>
     );

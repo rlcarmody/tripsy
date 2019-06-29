@@ -5,7 +5,6 @@ import RidesTable from './RidesTable';
 import Nav from '../../layoutComponents/Nav';
 import API from '../../../utils/API';
 import { isThisSecond } from 'date-fns';
-import { Row, Col, Container } from '../../layoutComponents/Grid';
 
 
 class Rides extends Component {
@@ -58,7 +57,7 @@ class Rides extends Component {
 
           <div className="row text-center">
             <Link to="/postRide">
-              <button type="button" className="button btnNav">Post A Ride</button>
+              <button type="button" className="button btnAction">Post A Ride</button>
             </Link>
           </div>
 

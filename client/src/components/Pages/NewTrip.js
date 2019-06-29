@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Route, Link, withRouter } from 'react-router-d
 // eslint-disable-next-line no-unused-vars
 import { Row, Col, Container } from '../layoutComponents/Grid';
 import API from '../../utils/API';
+import Nav from '../layoutComponents/Nav';
 
 
 class NewTrip extends Component {
@@ -48,6 +49,7 @@ class NewTrip extends Component {
   render() {
     return (
       <Fragment>
+        <Nav />
         <div className="container" id="login">
           <Row>
             <Col>
