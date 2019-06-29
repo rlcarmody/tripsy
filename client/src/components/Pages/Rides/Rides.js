@@ -13,6 +13,7 @@ class Rides extends Component {
   }
 
   componentDidMount = () => {
+    console.log('Ride ID is ' + this.props.rideID)
     console.log(this.props.tripID);
     API.getRides(this.props.tripID)
       .then((data) => {
@@ -26,7 +27,7 @@ class Rides extends Component {
     console.log('seat claimed!');
     API.getRides(this.props.tripID)
       .then((data) => {
-        this.setState({ rides: data });
+        this.setState({ rides: data.data });
       });
   }
 
@@ -43,8 +44,8 @@ class Rides extends Component {
               <Link to="/supplies">
                 <button type="button" className="button btnNav">Supplies</button>
               </Link>
-              <Link to="/guests">
-                <button type="button" className="button btnNav">Guests</button>
+              <Link to="/inviteGuests">
+                <button type="button" className="button btnNav">Invite Guests</button>
               </Link>
               <Link to="/tripDash">
                 <button type="button" className="button btnAction">This Trip</button>

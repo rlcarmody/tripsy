@@ -32,7 +32,7 @@ class Trip extends Component {
           <div className="col s6 offset-s3">
             {startDate && endDate && (
             <p>
-                Trip Starts on {dateFns.format(startDate, 'MMMM DD, YYYY')}
+              Trip Starts on {dateFns.format(startDate, 'MMMM DD, YYYY')}
             </p>
             )}
           </div>
