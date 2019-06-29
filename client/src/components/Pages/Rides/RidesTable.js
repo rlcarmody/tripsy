@@ -22,7 +22,6 @@ class RidesTable extends Component {
                 <th scope="col">Departure</th>
                 <th scope="col">Seats Available</th>
                 <th scope="col">Claim a Seat</th>
-                <th scope="col">Riders</th>
               </tr>
             </thead>
             <tbody>
@@ -31,7 +30,6 @@ class RidesTable extends Component {
                   id={ride._id}
                   provider={ride.provider}
                   vehicleType={ride.vehicleType}
-                  riders={ride.riders}
                   departureDate={ride.departureDate}
                   availableSeats={ride.availableSeats}
                   onSeatClaimed={this.handleOnSeatClaimed}
@@ -40,7 +38,7 @@ class RidesTable extends Component {
             </tbody>
           </table>
         ) : (
-          <h5 className="center-align">No rides have been posted yet.</h5>
+          <h5 className="center-align">No rides have been posted yet</h5>
         )}
       </Fragment>
     );

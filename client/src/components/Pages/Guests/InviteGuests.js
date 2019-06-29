@@ -53,23 +53,23 @@ class InviteGuests extends Component {
         <Container>
           <Row>
             <Col>
-              <h2 className="headline">Invite your friends!</h2>
+              <h2 id="subHeadline">Invite your friends!</h2>
             </Col>
           </Row>
           <form onSubmit={this.handleInviteGuests}>
             
             <div className="formField">
-              <label className="formFieldLabel" htmlFor="email">
-                Your friend's email address...
-                <input
-                  className="formFieldInput"
-                  type="email"
-                  name="email"
-                  id="email"
-                  value={this.state.newGuest}
-                  onChange={this.handleChange}
-                />
-              </label>
+              
+              <input
+                className="formFieldInput"
+                type="email"
+                name="email"
+                id="email"
+                placeholder= "Your Friend's Email Address..."
+                value={this.state.newGuest}
+                onChange={this.handleChange}
+              />
+   
               {this.state.guests.map((guest, index) => (
                 <div key={index} className="chip">
                   {guest}
@@ -96,12 +96,10 @@ class InviteGuests extends Component {
 
           </form>
           <br />
-          <p id="linkP">
-          <Link to="/addSupplies">
-            
+          <p>
+            <Link  id="linkP" to="/addSupplies">
               Skip This Step
-              
-          </Link>
+            </Link>
           </p>
         </Container>
       </Fragment>

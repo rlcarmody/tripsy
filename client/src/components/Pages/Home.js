@@ -13,27 +13,27 @@ class Home extends Component {
         <Nav checkLoginStatus={this.props.checkLoginStatus} />
         <Container id="home">
           <div className="row center-align">
-          <div className="col s12">
+            <div className="col s12">
               <img id='logo' alt="logo" src={ require('../../images/tripsy.PNG') } />
             </div>
           </div>
           <div className="row">
-            <div className="col s2" />
-            <div className="col s8 center-align">
+            <div className="col s12 center-align">
               <h2 className="headline" id="headline"><strong>Trippin' Made Easy</strong></h2>
             </div>
-            <div className="col s2" />
           </div>
           <div className="row">
-            <div className="col s1 offset-s5" className="center-align">
+            <div className="col s12 center-align">
               <Link to="/NewTrip">
                 <button type="button" className="newTripBtn">New Trip</button>
               </Link>
             </div>
           </div>
           <div className="row">
-            <div className="col s1 offset-s5 center-align">
-              <h4><i className="fas fa-chevron-down"></i></h4>
+            <div className="col s12 center-align">
+              <h5><i className="fas fa-chevron-down"></i></h5>
+              <h5 id="subHeadline">Your Upcoming Trips</h5>
+              
             </div>
           </div>
 

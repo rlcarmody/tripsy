@@ -6,7 +6,6 @@ import Home from '../components/Pages/Home';
 import TripDash from '../components/Pages/TripDashboard/TripDash';
 import Rides from '../components/Pages/Rides/Rides';
 import Supplies from '../components/Pages/Supplies/Supplies';
-import Guests from '../components/Pages/Guests/Guests';
 import NewTrip from '../components/Pages/NewTrip';
 import Invitation from '../components/Pages/Guests/Invitation';
 import InviteGuests from '../components/Pages/Guests/InviteGuests';
@@ -14,6 +13,8 @@ import PostRide from '../components/Pages/Rides/PostRide';
 import AddSupplies from '../components/Pages/Supplies/AddSupplies';
 import AddSuppliesForm from '../components/Pages/Supplies/AddSuppliesForm';
 import API from '../utils/API';
+import RidesTable from '../components/Pages/Rides/RidesTable';
+import RidesTableRow from '../components/Pages/Rides/RidesTableRow';
 
 class App extends Component {
 state= {
@@ -59,14 +60,16 @@ componentDidMount() {
           {isAuthenticated && <Route path="/rides" render={() => <Rides tripID={this.state.tripID} rideID={this.state.rideID} checkLoginStatus={this.checkLoginStatus} />} />}
 
           {isAuthenticated && <Route path="/postRide" render={() => <PostRide onNewRide={this.handleNewRide} tripID={this.state.tripID} checkLoginStatus={this.checkLoginStatus} />} />}
+        
+          {isAuthenticated && <Route path="/ridesTableRow" render={() => <RidesTableRow tripID={this.state.tripID} rideID={this.state.rideID} />} />}
+
+          {isAuthenticated && <Route path="/ridesTable" render={() => <RidesTable tripID={this.state.tripID} rideID={this.state.rideID} />} />}
 
           {isAuthenticated && <Route path="/supplies" render={() => <Supplies tripID={this.state.tripID} />} checkLoginStatus={this.checkLoginStatus} />}
 
           {isAuthenticated && <Route path="/AddSupplies" render={() => <AddSupplies tripID={this.state.tripID} checkLoginStatus={this.checkLoginStatus} />} />}
 
           {isAuthenticated && <Route path="/AddSuppliesForm" render={() => <AddSuppliesForm tripID={this.state.tripID} checkLoginStatus={this.checkLoginStatus} />} />}
-
-          {/* {isAuthenticated && <Route path="/guests" component={Guests} checkLoginStatus={this.checkLoginStatus} />} */}
 
           <Route path="/invitation" render={() => <Invitation checkLoginStatus={this.checkLoginStatus} isAuthenticated={isAuthenticated} />} />
 

@@ -11,14 +11,16 @@ export default class Nav extends Component {
 
   render() {
     return (
+
       <nav>
         <div className="nav-wrapper">
-          <Link to="/home"><img alt="logo" src={ require('../../images/tripsy_noText.png') } width='60' height='40' /></Link>
-          <button id="nav-mobile" className="right signOutLink btn-flat" onClick={this.handleClick}>
+          <Link to="/home" className="brand-logo left"><img alt="logo" src={ require('../../images/tripsy_noText.png') } width='60' height='40' /></Link>
+          <button type="button" id="nav-mobile" className="right signOutLink btn-flat" onClick={this.handleClick}>
             SIGN OUT
           </button>
         </div>
       </nav>
+
     );
   }
 }
