@@ -52,7 +52,7 @@ class PostRide extends Component {
   render() {
     return (
       <Fragment>
-        <Nav />
+        <Nav checkLoginStatus={this.props.checkLoginStatus} />
 
         <div className="container">
           <div className="row center-align">

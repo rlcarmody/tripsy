@@ -1,9 +1,14 @@
 const Ride = require('../models/Schema/Ride');
+const auth = require('../auth');
 
 module.exports = {
   //post - done
   createRide(req, res) {
-    const { userID } = req.cookies;
+    const user = auth.verifyToken(req.cookies);
+    if (!user) {
+      return res.status(401).end();
+    }
+    const userID = user.id;
     const { body: rideDetails } = req;
     rideDetails.provider = userID;
 
@@ -26,7 +31,11 @@ module.exports = {
   },
   //update - done
   claimRide(req, res) {
-    const { userID } = req.cookies;
+    const user = auth.verifyToken(req.cookies);
+    if (!user) {
+      return res.status(401).end();
+    }
+    const userID = user.id;
     Ride.findByIdAndUpdate(req.query.rideID, { $push: { riders: userID}, $inc: { availableSeats: -1 } })
       .then(result => res.json(result))
       .catch(err => res.status(404).json(err));

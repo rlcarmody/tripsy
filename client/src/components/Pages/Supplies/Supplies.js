@@ -14,6 +14,10 @@ class Supplies extends Component {
     supplies: [],
   }
 
+  updateSupplies = (supplyArray) => {
+    this.setState(currentState => ({ supplies: [...currentState.supplies, ...supplyArray] }));
+  }
+
   componentDidMount = () => {
     console.log(this.props.tripID);
     API.getSupplies(this.props.tripID)
@@ -35,7 +39,7 @@ class Supplies extends Component {
   render() {
     return (
       <Fragment>
-        <Nav />
+        <Nav checkLoginStatus={this.props.checkLoginStatus} />
 
         <div className="container" id="supplies">
 
@@ -63,7 +67,7 @@ class Supplies extends Component {
           </div>
           <section>
             <h5 className="center-align">Add Items to This List:</h5>
-            <AddSuppliesForm tripID={this.props.tripID} />
+            <AddSuppliesForm updateSupplies={this.updateSupplies} tripID={this.props.tripID} />
             <br />
           </section>
 

@@ -32,8 +32,11 @@
     "dotenv": "^8.0.0",
     "express": "^4.16.3",
     "if-env": "^1.0.4",
+    "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.5.15",
     "query-string": "^6.8.1",
+    "react-dom": "^16.8.6",
+    "react-facebook-login": "^4.1.1",
     "socket.io": "^2.2.0"
   }
 }

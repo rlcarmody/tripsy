@@ -15,7 +15,7 @@ class AddSupplies extends Component {
     console.log(this.props.tripID)
     return (
       <Fragment>
-        <Nav />
+        <Nav checkLoginStatus={this.props.checkLoginStatus} />
         <div className="container">
           <div className="row center-align">
             <div className="col s12 center-align">

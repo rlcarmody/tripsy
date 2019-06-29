@@ -36,8 +36,10 @@ class AddSuppliesForm extends Component {
     console.log(this.props.tripID);
 
     API.addSupplies(this.props.tripID, this.state.items)
-      .then(() => {
+      .then((results) => {
         this.props.history.push('/Supplies');
+        this.props.updateSupplies(results.data);
+        this.setState({ items: [] });
       });
   }
 
@@ -56,7 +58,6 @@ class AddSuppliesForm extends Component {
                 name="item"
                 id="item"
                 placeholder="Gummy Bears"
-                class="Save List"
                 value={this.state.newItem}
                 onChange={this.handleChange}
               />

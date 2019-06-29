@@ -49,7 +49,7 @@ class InviteGuests extends Component {
       console.log(this.props.tripID)
     return (
       <Fragment>
-        <Nav />
+        <Nav checkLoginStatus={this.props.checkLoginStatus} />
         <Container>
           <Row>
             <Col>
