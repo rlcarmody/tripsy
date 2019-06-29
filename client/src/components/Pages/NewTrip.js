@@ -34,103 +34,95 @@ class NewTrip extends Component {
     // eslint-disable-next-line react/destructuring-assignment
     console.log('form was submitted with the following data:');
     console.log(this.state);
-    
+
     API.createTrip(this.state)
-      .then(result => {
+      .then((result) => {
         console.log('trip id is: ' + result.data._id)
         this.props.onNewTrip(result.data._id);
-        this.props.history.push('/inviteGuests')
+        this.props.history.push('/inviteGuests');
       })
-      .catch(error => {
+      .catch((error) => {
         return(error);
-      })
+      });
   }
 
   render() {
     return (
       <Fragment>
         <Nav />
-        <div className="container" id="login">
+        <div className="container">
           <Row>
-            <Col>
-              <h2 className="headline">Create a New Trip</h2>
-            </Col>
+            <div className="subHeadline center-align">
+              <h5>Create a new trip!</h5>
+            </div>
           </Row>
           <form onSubmit={this.handleCreateTrip}>
             <div className="formField">
-              <label className="formFieldLabel" htmlFor="name">
-                Trip Name
-                <input
-                  className="formFieldInput"
-                  type="text"
-                  name="name"
-                  id="name"
-                  value={this.state.name}
-                  onChange={this.handleInputChange}
-                />
-              </label>
+              <input
+                className="formFieldInput"
+                type="text"
+                name="name"
+                id="name"
+                value={this.state.name}
+                onChange={this.handleInputChange}
+                placeholder="Trip Name"
+              />
             </div>
 
             <div className="formField">
-              <label className="formFieldLabel" htmlFor="location">
-                Destination
-                <input
-                  className="formFieldInput"
-                  type="text"
-                  name="location"
-                  id="location"
-                  value={this.state.location}
-                  onChange={this.handleInputChange}
-                />
-              </label>
+              <input
+                className="formFieldInput"
+                type="text"
+                name="location"
+                id="location"
+                value={this.state.location}
+                onChange={this.handleInputChange}
+                placeholder="Destination"
+              />
             </div>
 
             <div className="formField">
-              <label className="formFieldLabel" htmlFor="startDate">
-                Start Date
-                <input
-                  className="formFieldInput"
-                  type="date"
-                  name="startDate"
-                  id="startDate"
-                  value={this.state.startDate}
-                  onChange={this.handleInputChange}
-                />
-              </label>
+              <span className="helper-text">Start Date</span>
+              <input
+                className="formFieldInput"
+                type="date"
+                name="startDate"
+                id="startDate"
+                value={this.state.startDate}
+                onChange={this.handleInputChange}
+              />
             </div>
 
             <div className="formField">
-              <label className="formFieldLabel" htmlFor="endDate">
-                End Date
-                <input
-                  className="formFieldInput"
-                  type="date"
-                  name="endDate"
-                  id="endDate"
-                  value={this.state.endDate}
-                  onChange={this.handleInputChange}
-                />
-              </label>
+              <span className="helper-text">End Date</span>
+              <input
+                className="formFieldInput"
+                type="date"
+                name="endDate"
+                id="endDate"
+                value={this.state.endDate}
+                onChange={this.handleInputChange}
+              />
             </div>
 
             <div className="formField">
-              <label className="formFieldLabel" htmlFor="description">
-                Trip Description
-                <input
-                  className="formFieldInput"
-                  type="text"
-                  name="description"
-                  id="description"
-                  value={this.state.description}
-                  onChange={this.handleInputChange}
-                />
-              </label>
+              <div className="row">
+                <div className="input-field">
+                  <textarea
+                    value={this.state.description}
+                    onChange={this.handleInputChange}
+                    className="materialize-textarea"
+                    placeholder="Trip Description"
+                    name="description"
+                  />
+                </div>
+              </div>
             </div>
 
             <input
               className="btn waves-light formButton"
               type="submit"
-              id="btn"
+              id="btnSubmit"
               placeholder="Next"
             />
 

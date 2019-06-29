@@ -71,9 +71,9 @@ class InviteGuests extends Component {
                 />
               </label>
               {this.state.guests.map((guest, index) => (
-                <div key={index}>
+                <div key={index} className="chip">
                   {guest}
-                  <button onClick={this.handleRemove}>X</button>
+                  <i onClick={this.handleRemove} className="material-icons">close</i>
 
                 </div>
               ))}

@@ -17,9 +17,8 @@ class AddSupplies extends Component {
       <Fragment>
         <Nav />
         <div className="container">
-          <div className="row text-center">
-            <div className="col-md-4" />
-            <div className="col-md-4 text-center">
+          <div className="row center-align">
+            <div className="col s4 offset-s4 center-align">
 
               <Link to="/rides">
                 <button type="button" className="button btnNav">Rides</button>
@@ -32,10 +31,9 @@ class AddSupplies extends Component {
               </Link>
 
             </div>
-            <div className="col-md-4" />
           </div>
           <div className="row">
-            <div className="col-md-12 text-center">
+            <div className="col s12 center-align">
               <h4 id="subHeadline">Create a Shopping List for your Trip!</h4>
             </div>
           </div>

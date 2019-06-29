@@ -36,7 +36,7 @@ class SuppliesTable extends Component {
             </tbody>
           </table>
         ) : (
-          <h5 className="text-center">No supplies have been added yet.</h5>
+          <h5 className="center-align">No supplies have been added yet.</h5>
         )}
       </Fragment>
     );

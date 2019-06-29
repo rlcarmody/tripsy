@@ -10,13 +10,13 @@ function SingleRide({
   return (
     <ListItem>
       <Row className="flex-wrap-reverse">
-        <Col size="md-8">
+        <Col s8>
           <h3 className="font-italic">{vehicleType}</h3>
           {driver && <h5 className="font-italic">Ride offerred by: {driver}</h5>}
         </Col>
       </Row>
       <Row>
-        <Col size="md-6">
+        <Col s6>
           {departureDate && (
           <p className="font-italic small">
               Departing: {dateFns.format(departureDate, 'MMMM DD, YYYY')}}
@@ -25,10 +25,10 @@ function SingleRide({
         </Col>
       </Row>
       <Row>
-        <Col size="md-6">
+        <Col s6>
           {availableSeats && <p className="font-italic small">Seats Available: {availableSeats}</p>}
         </Col>
-        <Col size="md-6">
+        <Col s6>
             <button>Claim Seat</button>
         </Col>
       </Row>

@@ -54,10 +54,9 @@ class PostRide extends Component {
       <Fragment>
         <Nav />
 
-        <div className="container" id="postRide">
-        <div className="row text-center">
-            <div className="col-md-4" />
-            <div className="col-md-4 text-center">
+        <div className="container">
+        <div className="row center-align">
+            <div className="col s4 offset-s4 center-align">
 
               <Link to="/supplies">
                 <button type="button" className="button btnNav">Supplies</button>
@@ -70,17 +69,14 @@ class PostRide extends Component {
               </Link>
 
             </div>
-            <div className="col-md-4" />
           </div>
           <div className="row">
-            <div className="col-md-12 text-center">
+            <div className="col s12 center-align">
               <h2 id="subHeadline">Post a Ride</h2>
             </div>
           </div>
-          <form onSubmit={this.handlePostRide}>
+          <form  id="postride" onSubmit={this.handlePostRide}>
             <div className="formField">
-              <label className="formFieldLabel" htmlFor="vehicleType">
-                Vehicle Type
                 <input
                   className="formFieldInput"
                   type="text"
@@ -88,35 +84,31 @@ class PostRide extends Component {
                   id="vehicleType"
                   value={this.state.vehicleType} 
                   onChange={this.handleInputChange}
+                  placeholder="Vehicle Type"
                 />
-              </label>
             </div>
             <div className="formField">
-              <label className="formFieldLabel" htmlFor="availableSeats">
-                Available Seats
                 <input
                   className="formFieldInput"
                   type="number"
                   name="availableSeats"
                   id="availableSeats"
                   value={this.state.availableSeats}
-                  onChange={this.handleInputChange} 
+                  onChange={this.handleInputChange}
+                  placeholder="Available Seats"
                 />
-              </label>
             </div>
 
             <div className="formField">
-              <label className="formFieldLabel" htmlFor="departureDate">
-                Departure date & Time
+              <span class="helper-text">Departure date & Time</span>
                 <input
                   className="formFieldInput"
                   type="date"
                   name="departureDate"
                   id="departureDate"
                   value={this.state.departureDate}
-                  onChange={this.handleInputChange} 
+                  onChange={this.handleInputChange}
                 />
-              </label>
             </div>
 
             <input
