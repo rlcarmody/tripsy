@@ -14,6 +14,7 @@ class Trip extends Component {
       startDate,
       endDate,
       organizer,
+      isInvitation
     } = this.props;
     return (
       <ListItem id="tripSection">
@@ -37,11 +38,13 @@ class Trip extends Component {
             )}
           </div>
         </div>
+        {!isInvitation && (
         <div className="row center-align">
           <Link to="/tripDash">
             <button type="button" className="button viewTripBtn" onClick={() => {this.props.setGlobalTrip(this.props.id)}}>View Trip</button>
           </Link>
         </div>
+        )}
         <div id="divider" />
 
       </ListItem>
@@ -54,6 +57,11 @@ Trip.propTypes = {
   startDate: PropTypes.string.isRequired,
   endDate: PropTypes.string.isRequired,
   organizer: PropTypes.string.isRequired,
+  isInvitation: PropTypes.bool,
+};
+
+Trip.defaultProps = {
+  isInvitation: false,
 };
 
 export default Trip;

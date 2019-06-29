@@ -90,7 +90,7 @@ class Invitation extends Component {
               )}
           </div>
           <List>
-            <Trip {...this.state} />
+            <Trip {...this.state} isInvitation />
           </List>
         </Fragment>
       );
