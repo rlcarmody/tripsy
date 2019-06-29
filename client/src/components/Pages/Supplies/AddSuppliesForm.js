@@ -46,7 +46,7 @@ class AddSuppliesForm extends Component {
     return (
       <Fragment>
 
-          <form onSubmit={this.handleAddSupplies}>
+          <form onSubmit={this.handleAddSupplies} id="addSupplies">
 
             <div className="formField">
               

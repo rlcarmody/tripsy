@@ -43,8 +43,8 @@ class Rides extends Component {
               <Link to="/supplies">
                 <button type="button" className="button btnNav">Supplies</button>
               </Link>
-              <Link to="/guests">
-                <button type="button" className="button btnNav">Guests</button>
+              <Link to="/inviteGuests">
+                <button type="button" className="button btnNav">Invite Guests</button>
               </Link>
               <Link to="/tripDash">
                 <button type="button" className="button btnAction">This Trip</button>
