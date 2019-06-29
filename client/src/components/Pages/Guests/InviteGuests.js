@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Route, Link, withRouter } from 'react-router-d
 import { ListItem } from '../../layoutComponents/List';
 import { Row, Col, Container } from '../../layoutComponents/Grid';
 import API from '../../../utils/API';
+import Nav from '../../layoutComponents/Nav';
 
 
 class InviteGuests extends Component {
@@ -48,6 +49,7 @@ class InviteGuests extends Component {
       console.log(this.props.tripID)
     return (
       <Fragment>
+        <Nav />
         <Container>
           <Row>
             <Col>
@@ -94,11 +96,13 @@ class InviteGuests extends Component {
 
           </form>
           <br />
+          <p id="linkP">
           <Link to="/addSupplies">
-            <button type="button">
+            
               Skip This Step
-            </button>
+              
           </Link>
+          </p>
         </Container>
       </Fragment>
     );

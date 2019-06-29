@@ -13,6 +13,7 @@ import Invitation from '../components/Pages/Guests/Invitation';
 import InviteGuests from '../components/Pages/Guests/InviteGuests';
 import PostRide from '../components/Pages/Rides/PostRide';
 import AddSupplies from '../components/Pages/Supplies/AddSupplies';
+import AddSuppliesForm from '../components/Pages/Supplies/AddSuppliesForm';
 
 class App extends Component {
 state= {
@@ -52,6 +53,8 @@ state= {
         <Route path="/supplies" render={() => <Supplies tripID={this.state.tripID} />} />
 
         <Route path="/AddSupplies" render={() => <AddSupplies tripID={this.state.tripID} />} />
+
+        <Route path="/AddSuppliesForm" render={() => <AddSuppliesForm tripID={this.state.tripID} />} />
 
         <Route path="/guests" component={Guests} />
 

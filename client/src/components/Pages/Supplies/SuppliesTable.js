@@ -3,7 +3,6 @@ import SuppliesTableRow from './SuppliesTableRow';
 import API from '../../../utils/API';
 
 class SuppliesTable extends Component {
-
   handleOnClaimed = (id) => {
     console.log('onClaimed');
     const { onClaimed } = this.props;
@@ -20,14 +19,15 @@ class SuppliesTable extends Component {
               <tr>
                 <th scope="col">Item</th>
                 <th scope="col">Claimed By</th>
-                <th scope="col">Claim it</th>
+                <th scope="col">Claim it!</th>
               </tr>
             </thead>
             <tbody>
               {this.props.supplies.map( supply => (
                 <SuppliesTableRow
+                  key={supply._id}
                   id={supply._id}
-                  item={supply.item}
+                  item={supply.name}
                   claim={supply.claim}
                   claimedBy={supply.claimedBy}
                   onClaimed={this.handleOnClaimed}
