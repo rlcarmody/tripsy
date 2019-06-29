@@ -50,7 +50,7 @@ class NewTrip extends Component {
     return (
       <Fragment>
         <Nav />
-        <div className="container" id="login">
+        <div className="container">
           <Row>
             <div className="subHeadline center-align">
               <h5>Create a new trip!</h5>

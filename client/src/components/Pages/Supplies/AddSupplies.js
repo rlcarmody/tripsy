@@ -18,13 +18,13 @@ class AddSupplies extends Component {
         <Nav />
         <div className="container">
           <div className="row center-align">
-            <div className="col s4 offset-s4 center-align">
+            <div className="col s12 center-align">
 
               <Link to="/rides">
                 <button type="button" className="button btnNav">Rides</button>
               </Link>
               <Link to="/tripDash">
-                <button type="button" className="button btnNav">This Trip</button>
+                <button type="button" className="button btnAction">This Trip</button>
               </Link>
               <Link to="/home">
                 <button type="button" className="button btnNav">My Trips</button>

@@ -31,14 +31,10 @@ class MyTrips extends Component {
       return (
 
         <Fragment>
-          <div className="row">
-            <div className="col s6 offset-s3">
-              <h4 id="subHeadline">Your Upcoming Trips</h4>
-            </div>
-          </div>
+
           <div className="row">
             <div id="divider" />
-            <div className="col s8 offset-s2">
+            <div className="col s12">
               {this.state.trips.length ? (
                 <List>
                   {this.state.trips.map(trip => (

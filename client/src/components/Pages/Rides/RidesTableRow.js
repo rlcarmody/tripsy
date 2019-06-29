@@ -7,7 +7,7 @@ class RidesTableRow extends Component {
   }
 
   render() {
-    const { provider, vehicleType, departureDate, availableSeats, riders } = this.props;
+    const { provider, vehicleType, departureDate, availableSeats } = this.props;
     return (
       <Fragment>
         <tr>
@@ -22,9 +22,6 @@ class RidesTableRow extends Component {
           </td>
           <td>
             <p>{availableSeats}</p>
-          </td>
-          <td>
-            <p>{riders.displayName}</p>
           </td>
           <td>
             <button onClick={() => this.props.onSeatClaimed(this.props.id)} type="button" className="button">Claim Seat</button>

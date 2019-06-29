@@ -50,13 +50,16 @@ class TripDash extends Component {
         <Nav />
         <div className="container">
           <div className="row center-align">
-            <div className="col s4 offset-s4 center-align">
+            <div className="col s12 center-align">
 
               <Link to="/rides">
                 <button type="button" className="button btnNav">Rides</button>
               </Link>
               <Link to="/supplies">
                 <button type="button" className="button btnNav">Supplies</button>
+              </Link>
+              <Link to="/inviteGuests">
+                <button type="button" className="button btnNav">Invite Guests</button>
               </Link>
               <Link to="/home">
                 <button type="button" className="button btnNav">My Trips</button>
@@ -83,7 +86,7 @@ class TripDash extends Component {
             </div>
           </div>
 
-          <div id="divider" />
+          <div id="dividerLite" />
 
           <div className="row">
             <div className="col s6">
