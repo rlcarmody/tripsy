@@ -16,6 +16,11 @@ const UserSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'Trip',
   }],
+  facebookID: {
+    type: String,
+    required: true
+  },
+  pictureURL: String
 });
 
 const User = mongoose.model('User', UserSchema);

@@ -2,6 +2,7 @@ const Trip = require('../models/Schema/Trip');
 const User = require('../models/Schema/User');
 const emailer = require('../emailer');
 const geocoder = require('../geocoder');
+const auth = require('../auth');
 
 const insertCoordinates = async ({_id, location}) => {
   const coordinates = await geocoder(location);
@@ -12,7 +13,11 @@ const insertCoordinates = async ({_id, location}) => {
 module.exports = {
   //post - done
   create(req, res) {
-    const { userID } = req.cookies;
+    const user = auth.verifyToken(req.cookies);
+    if (!user) {
+      return res.status(401).end();
+    }
+    const userID = user.id;
     const { body: tripDetails } = req;
     tripDetails.organizer = userID;
     tripDetails.members = [userID];
@@ -58,7 +63,11 @@ module.exports = {
   },
   //update - done
   acceptInvite(req, res) {
-    const { userID }  = req.cookies;
+    const user = auth.verifyToken(req.cookies);
+    if (!user) {
+      return res.status(401).end();
+    }
+    const userID  = user.id;
     const { tripID } = req.query;
     Trip.findByIdAndUpdate(tripID, { $push: { members: userID } })
       .then(result =>  {

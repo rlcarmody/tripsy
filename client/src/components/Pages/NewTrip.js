@@ -49,14 +49,14 @@ class NewTrip extends Component {
   render() {
     return (
       <Fragment>
-        <Nav />
-        <div className="container">
+        <Nav checkLoginStatus={this.props.checkLoginStatus} />
+        <div className="container" id="login">
           <Row>
-            <div className="subHeadline center-align">
-              <h5>Create a new trip!</h5>
+          <div className="col s12 center-align">
+              <h2 id="subHeadline">Create a new trip!</h2>
             </div>
           </Row>
-          <form onSubmit={this.handleCreateTrip}>
+          <form onSubmit={this.handleCreateTrip} id="newtrip">
             <div className="formField">
               <input
                 className="formFieldInput"

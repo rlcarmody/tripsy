@@ -2,11 +2,14 @@ import axios from 'axios';
 
 export default {
 
-  createNewUser(body) {
+  loginOrCreateUser(body) {
     return axios.post('/api/users/create', body);
   },
-  loginUser(body) {
-    return axios.post('/api/users/login', body);
+  checkLoginStatus() {
+    return axios.get('/api/users/login');
+  },
+  logoutUser() {
+    return axios.post('/api/users/logout');
   },
   createTrip(body) {
     return axios.post('/api/trips', body);

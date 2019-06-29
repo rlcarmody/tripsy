@@ -10,6 +10,9 @@ body {
     background-image: linear-gradient(to bottom right, rgb(174, 218, 243), rgb(178, 252, 215));
     background-repeat: no-repeat;
     background-attachment: fixed;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
 }
 
 h2, h3, h4, h5, p, th, tr {
@@ -183,27 +186,24 @@ h2, h3, h4, h5, p, th, tr {
 }
 
 #newtrip {
-    background-color: rgba(255,255,255,0.75);
-    border-radius: 15px;
-    background-size: cover;
     padding: 15px;
-    margin-top: 50px;
     text-align: center;
+    margin-bottom: 20px;
 }
 
 #postride {
-    background-color: rgba(255,255,255,0.75);
-    border-radius: 15px;
-    background-size: cover;
     padding: 15px;
     text-align: center;
     margin-bottom: 20px;
 }
 
 #addSupplies {
-    background-color: rgba(255,255,255,0.75);
-    border-radius: 15px;
-    background-size: cover;
+    padding: 15px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#inviteguests {
     padding: 15px;
     text-align: center;
     margin-bottom: 20px;
@@ -220,25 +220,24 @@ h2, h3, h4, h5, p, th, tr {
     border-style: solid;
 }
 
-#login {
-    text-align: center;
-    margin-top: 50px;
-    border-radius: 15px;
-    padding: 15px;
-    background-color: rgba(255,255,255,0.75);
-    border-width: 5px;
-}
-
 #signUpLeft {
     background-color: rgb(174, 218, 243);
-    height: 100vw;
-    padding: 15px;
+    height: 100vh;
+    box-sizing: border-box;
 }
 
 #signUpRight {
     background-color: rgb(49, 121, 85);
     height: 100vw;
     padding: 15px;
+}
+
+#fbLogin {
+    width: 100%;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    padding: 3em;
 }
 
 @media only screen and (max-width: 600px) {

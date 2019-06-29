@@ -52,7 +52,7 @@ class PostRide extends Component {
   render() {
     return (
       <Fragment>
-        <Nav />
+        <Nav checkLoginStatus={this.props.checkLoginStatus} />
 
         <div className="container">
           <div className="row center-align">
@@ -60,8 +60,11 @@ class PostRide extends Component {
               <Link to="/supplies">
                 <button type="button" className="button btnNav">Supplies</button>
               </Link>
+              <Link to="/inviteGuests">
+                <button type="button" className="button btnNav">Invite Guests</button>
+              </Link>
               <Link to="/tripDash">
-                <button type="button" className="button btnNav">This Trip</button>
+                <button type="button" className="button btnAction">This Trip</button>
               </Link>
               <Link to="/home">
                 <button type="button" className="button btnNav">My Trips</button>

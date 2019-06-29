@@ -1,27 +1,69 @@
 const User = require('../models/Schema/User');
+const auth = require('../auth');
+const GRAPH_API_URL = 'https://graph.facebook.com/me?access_token=';
+const axios = require('axios');
 
 module.exports = {
   //post
-  create(req, res) {
-    User.create(req.body)
-      .then((data) => res.cookie('userID', data._id, {
-        maxAge: 86400000,
-        httpOnly: true,
-        sameSite: true,
-      }).json(data))
-      .catch(err => res.status(422).json(err))
+  findOrCreate(req, res) {
+    const { accessToken,
+      email,
+      id,
+      name,
+      picture: {
+        data: {
+          url
+        }
+      }
+    } = req.body;
+
+    axios.get(`${GRAPH_API_URL}${accessToken}`)
+      .then((result) => {
+        if (result.data.id === id) {
+          User.findOne({ facebookID: id })
+            .then((result) => {
+              if (!result) {
+                User.create({
+                  displayName: name,
+                  email,
+                  facebookID: id,
+                  pictureURL: url,
+                }).then(result => {
+                  const token = auth.generateToken(result._id);
+                  res.cookie('accessToken', token, {
+                    maxAge: 86400000,
+                    httpOnly: true,
+                    sameSite: true,
+                  }).end();
+                })
+              } else {
+                const token = auth.generateToken(result._id);
+                res.cookie('accessToken', token, {
+                  maxAge: 86400000,
+                  httpOnly: true,
+                  sameSite: true,
+                }).end();
+              }
+            })
+        }
+      });
   },
   //post
   login(req, res) {
-    User.findOne({ email: req.body.email })
-      .then(data => res.cookie('userID', data._id, {
-        maxAge: 86400000,
-        httpOnly: true,
-        sameSite: true,
-      }).json(data));
+   const user = auth.verifyToken(req.cookies);
+   const isAuthenticated = !user ? false : true;
+   res.json({isAuthenticated});
+  },
+  logout(req, res) {
+    res.cookie('accessToken').end();
   },
   getTrips(req, res) {
-    User.findById(req.cookies.userID)
+    const user = auth.verifyToken(req.cookies);
+    if (!user) {
+      return res.status(401).end();
+    }
+    const userID = user.id;
+    User.findById(userID)
       .select('displayName')
       .populate({
         path: 'trips',

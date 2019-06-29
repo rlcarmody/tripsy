@@ -14,7 +14,7 @@ module.exports = {
       })
       .then(data => {
         const { email, expiration, tripID } = data;
-        data.expiration < Date.now() ? res.status(410).end() : res.json({email, expiration, tripID, isSignedIn: req.cookies.userID});
+        data.expiration < Date.now() ? res.status(410).end() : res.json({email, expiration, tripID, });
       })
       .catch(err => res.status(404).json(err));
   },  

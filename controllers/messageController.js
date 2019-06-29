@@ -1,10 +1,15 @@
 const Message = require('../models/Schema/Message');
+const auth = require('../auth');
 
 module.exports = {
   //post - done
   postMessage(req, res) {
     const io = req.app.get('io');
-    const userID = req.cookies.userID;
+    const user = auth.verifyToken(req.cookies);
+    if (!user) {
+      return res.status(401).end();
+    }
+    const userID = user.id;
     const { messageBody, tripID } = req.body;
     Message.create({ userID, messageBody, tripID })
       .then(result => result.populate(
