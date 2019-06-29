@@ -55,9 +55,8 @@ class PostRide extends Component {
         <Nav />
 
         <div className="container">
-        <div className="row center-align">
-            <div className="col s4 offset-s4 center-align">
-
+          <div className="row center-align">
+            <div className="col s12 center-align">
               <Link to="/supplies">
                 <button type="button" className="button btnNav">Supplies</button>
               </Link>
@@ -67,7 +66,6 @@ class PostRide extends Component {
               <Link to="/home">
                 <button type="button" className="button btnNav">My Trips</button>
               </Link>
-
             </div>
           </div>
           <div className="row">

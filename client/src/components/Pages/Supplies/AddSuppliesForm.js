@@ -62,9 +62,9 @@ class AddSuppliesForm extends Component {
               />
               
               {this.state.items.map((item, index) => (
-                <div key={index}>
+                <div key={index} className="chip">
                   {item}
-                  <button className="button" id="btnDelete" onClick={this.handleRemove}>X</button>
+                  <i onClick={this.handleRemove} className="material-icons">close</i>
 
                 </div>
               ))}
