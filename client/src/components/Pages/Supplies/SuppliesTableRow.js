@@ -7,6 +7,7 @@ class TableRow extends Component {
 
   render() {
     const { item, claimedBy } = this.props;
+    console.log('suppliestablerow item', item);
     return (
       <Fragment>
         <tr>
@@ -14,8 +15,8 @@ class TableRow extends Component {
             <p>{item}</p>
           </td>
           <td>
-            <p>{claimedBy}</p>
-            
+            <p>{(claimedBy || {}).displayName}</p>
+
           </td>
           <td>
             <button onClick={() => this.props.onClaimed(this.props.id)} type="button" className="button">Claim</button>

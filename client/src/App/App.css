@@ -7,13 +7,39 @@ Nav .nav-wrapper {
 }
 
 body {    
-    background-image: linear-gradient(to bottom right, rgb(174, 218, 243), rgb(49, 121, 85));
+    background-image: linear-gradient(to bottom right, rgb(174, 218, 243), rgb(178, 252, 215));
     background-repeat: no-repeat;
     background-attachment: fixed;
 }
 
 h2, h3, h4, h5, p, th, tr {
     font-family: 'Montserrat', sans-serif;
+    text-align: center;
+}
+
+#signUpP {
+    color: rgb(136, 241, 241);
+    transition: .2s ease-in-out;
+}
+
+#signUpP:hover {
+    transform: scale(1.1)
+}
+
+#linkP {
+    color: green
+}
+
+.signOutLink {
+    padding-bottom: 10px
+}
+
+#welcomePageP {
+    color: whitesmoke
+}
+
+.text-center {
+    text-align: center
 }
 
 #divider { 
@@ -38,6 +64,29 @@ h2, h3, h4, h5, p, th, tr {
     transition: 200ms;
 }
 
+.btn {
+    margin: 2px;
+}
+
+#btnDelete {
+    background-color: rgb(202, 204, 58);
+    border: none;
+    color: whitesmoke;
+    text-align: center;
+    display: inline-block;
+    width: auto;
+    font-size: 14px;
+    font-family: 'Montserrat', sans-serif;
+    padding-left: 4px;
+    padding-right: 4px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    margin: 5px;
+    border-radius: 3px;
+    box-shadow: 0 3px 2px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    transition: 200ms; 
+}
+
 .button:hover {
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 12px 30px 0 rgba(0,0,0,0.19);
     transition: 200ms;
@@ -48,6 +97,21 @@ h2, h3, h4, h5, p, th, tr {
     margin-left: 10px;
     margin-right: 10px;
     margin-bottom: 10px;
+}
+
+.btnAction {
+    background-color: rgb(202, 204, 58);
+    border: none;
+    color: whitesmoke;
+    text-align: center;
+    display: inline-block;
+    width: auto;
+    font-size: 16px;
+    font-family: 'Montserrat', sans-serif;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 3px 2px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    transition: 200ms;
 }
 
 .newTripBtn{
@@ -150,13 +214,16 @@ h2, h3, h4, h5, p, th, tr {
     border-width: 5px;
 }
 
-#signup {
-    text-align: center;
-    margin-top: 50px;
+#signUpLeft {
+    background-color: rgb(174, 218, 243);
+    height: 100vw;
     padding: 15px;
-    background-color: rgba(255,255,255,0.75);
-    border-radius: 15px;
-    border-width: 5px;
+}
+
+#signUpRight {
+    background-color: rgb(49, 121, 85);
+    height: 100vw;
+    padding: 15px;
 }
 
 @media only screen and (max-width: 600px) {
