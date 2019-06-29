@@ -5,8 +5,7 @@ import FacebookLogin from 'react-facebook-login';
 import { Redirect, withRouter } from 'react-router-dom';
 import API from '../../../utils/API';
 import Trip from '../TripDashboard/Trip';
-import Signup from '../Signup';
-import { Container, Col, Row } from '../../layoutComponents/Grid';
+import { Container } from '../../layoutComponents/Grid';
 import ActionButton from '../../layoutComponents/ActionButton';
 import Nav from '../../layoutComponents/Nav';
 import Card from '../../layoutComponents/Card';
@@ -25,6 +24,7 @@ class Invitation extends Component {
     endDate: '',
     organizer: '',
     tripID: '',
+    accepted: false,
   }
 
 
@@ -62,38 +62,38 @@ class Invitation extends Component {
     API.acceptInvite(tripID)
       .then(() => {
         checkLoginStatus();
+        this.setState({ accepted: true });
       });
   };
 
   render() {
     const { location: { search, pathname }, history, isAuthenticated } = this.props;
-    return (
-      <Fragment>
-        {isAuthenticated && <Nav />}
-        <Container>
-          <Card className="invitation">
+    const { accepted } = this.state;
+    return accepted
+      ? <Redirect to="/home" />
+      : (
+        <Fragment>
+          {isAuthenticated && <Nav />}
+          {!isAuthenticated
+            && <h4>You were invited on this trip. Please log in to accept</h4>}
+          <div style={{ margin: '2em' }} className="center-align">
+            {isAuthenticated
+              && <ActionButton buttonText="Accept Invitation" buttonFunction={this.handleAccept} />}
             {!isAuthenticated
-              && <h4>You were invited on this trip. Please create an account to accept</h4>}
-            <List>
-              <Trip {...this.state} />
-              <div style={{ margin: '2em' }}>
-                {isAuthenticated
-                  && <ActionButton buttonText="Accept Invitation" buttonFunction={this.handleAccept} />}
-                {!isAuthenticated
-                  && (
-                  <FacebookLogin
-                    appId={REACT_APP_FACEBOOK_KEY}
-                    fields="name, email, picture"
-                    callback={this.props.checkLoginStatus}
-                    icon="fa-facebook"
-                  />
-                  )}
-              </div>
-            </List>
-          </Card>
-        </Container>
-      </Fragment>
-    );
+              && (
+              <FacebookLogin
+                appId={REACT_APP_FACEBOOK_KEY}
+                fields="name, email, picture"
+                callback={this.props.checkLoginStatus}
+                icon="fa-facebook"
+              />
+              )}
+          </div>
+          <List>
+            <Trip {...this.state} />
+          </List>
+        </Fragment>
+      );
   }
 }
 
