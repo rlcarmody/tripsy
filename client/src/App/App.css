@@ -15,6 +15,11 @@ body {
     margin: 0;
 }
 
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: rgb(121, 121, 121);
+    opacity: 1; /* Firefox */
+  }
+
 h2, h3, h4, h5, p, th, tr {
     font-family: 'Montserrat', sans-serif;
     text-align: center;
