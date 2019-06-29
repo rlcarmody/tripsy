@@ -56,7 +56,6 @@ class AddSuppliesForm extends Component {
                 name="item"
                 id="item"
                 placeholder="Gummy Bears"
-                class="Save List"
                 value={this.state.newItem}
                 onChange={this.handleChange}
               />

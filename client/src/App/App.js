@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
 import Signup from '../components/Pages/Signup';
 import Home from '../components/Pages/Home';
@@ -46,38 +46,39 @@ componentDidMount() {
     const { isAuthenticated } = this.state;
     return (
       <Router>
+        <Switch>
 
-        { isAuthenticated && <Route path="/home" render={() => <Home setGlobalTrip={this.handleNewTrip} checkLoginStatus={this.checkLoginStatus} />} />}
+          { isAuthenticated && <Route path="/home" render={() => <Home setGlobalTrip={this.handleNewTrip} checkLoginStatus={this.checkLoginStatus} />} />}
 
-        { isAuthenticated && <Route path="/NewTrip" render={() => <NewTrip onNewTrip={this.handleNewTrip} checkLoginStatus={this.checkLoginStatus} />} />}
+          { isAuthenticated && <Route path="/NewTrip" render={() => <NewTrip onNewTrip={this.handleNewTrip} checkLoginStatus={this.checkLoginStatus} />} />}
 
-        { isAuthenticated && <Route path="/inviteGuests" render={() => <InviteGuests tripID={this.state.tripID} checkLoginStatus={this.checkLoginStatus} />} />}
+          { isAuthenticated && <Route path="/inviteGuests" render={() => <InviteGuests tripID={this.state.tripID} checkLoginStatus={this.checkLoginStatus} />} />}
 
-        { isAuthenticated && <Route path="/tripdash" render={() => <TripDash tripID={this.state.tripID} checkLoginStatus={this.checkLoginStatus} />} />}
+          { isAuthenticated && <Route path="/tripdash" render={() => <TripDash tripID={this.state.tripID} checkLoginStatus={this.checkLoginStatus} />} />}
 
-        {isAuthenticated && <Route path="/rides" render={() => <Rides tripID={this.state.tripID} rideID={this.state.rideID} checkLoginStatus={this.checkLoginStatus} />} />}
+          {isAuthenticated && <Route path="/rides" render={() => <Rides tripID={this.state.tripID} rideID={this.state.rideID} checkLoginStatus={this.checkLoginStatus} />} />}
 
-        {isAuthenticated && <Route path="/postRide" render={() => <PostRide onNewRide={this.handleNewRide} tripID={this.state.tripID} checkLoginStatus={this.checkLoginStatus} />} />}
+          {isAuthenticated && <Route path="/postRide" render={() => <PostRide onNewRide={this.handleNewRide} tripID={this.state.tripID} checkLoginStatus={this.checkLoginStatus} />} />}
 
-        {isAuthenticated && <Route path="/supplies" render={() => <Supplies tripID={this.state.tripID} />} checkLoginStatus={this.checkLoginStatus} />}
+          {isAuthenticated && <Route path="/supplies" render={() => <Supplies tripID={this.state.tripID} />} checkLoginStatus={this.checkLoginStatus} />}
 
-        {isAuthenticated && <Route path="/AddSupplies" render={() => <AddSupplies tripID={this.state.tripID} checkLoginStatus={this.checkLoginStatus} />} />}
+          {isAuthenticated && <Route path="/AddSupplies" render={() => <AddSupplies tripID={this.state.tripID} checkLoginStatus={this.checkLoginStatus} />} />}
 
-        {isAuthenticated && <Route path="/AddSuppliesForm" render={() => <AddSuppliesForm tripID={this.state.tripID} checkLoginStatus={this.checkLoginStatus} />} />}
+          {isAuthenticated && <Route path="/AddSuppliesForm" render={() => <AddSuppliesForm tripID={this.state.tripID} checkLoginStatus={this.checkLoginStatus} />} />}
 
-        {isAuthenticated && <Route path="/guests" component={Guests} checkLoginStatus={this.checkLoginStatus} />}
+          {/* {isAuthenticated && <Route path="/guests" component={Guests} checkLoginStatus={this.checkLoginStatus} />} */}
 
-        <Route path="/invitation" component={Invitation} />
+          <Route path="/invitation" render={() => <Invitation checkLoginStatus={this.checkLoginStatus} isAuthenticated={isAuthenticated} />} />
 
-        <Route
-          render={() => (
-            <Signup
-              isAuthenticated={isAuthenticated}
-              checkLoginStatus={this.checkLoginStatus}
-            />
-          )}
-        />
-
+          <Route
+            render={() => (
+              <Signup
+                isAuthenticated={isAuthenticated}
+                checkLoginStatus={this.checkLoginStatus}
+              />
+            )}
+          />
+        </Switch>
       </Router>
 
 

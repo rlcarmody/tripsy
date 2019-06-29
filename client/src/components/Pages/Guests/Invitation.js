@@ -1,6 +1,8 @@
 import React, { Component, Fragment } from 'react';
 import queryString from 'query-string';
 import PropTypes from 'prop-types';
+import FacebookLogin from 'react-facebook-login';
+import { Redirect, withRouter } from 'react-router-dom';
 import API from '../../../utils/API';
 import Trip from '../TripDashboard/Trip';
 import Signup from '../Signup';
@@ -11,10 +13,11 @@ import Card from '../../layoutComponents/Card';
 import { List } from '../../layoutComponents/List';
 import './Invitation.css';
 
+const { REACT_APP_FACEBOOK_KEY } = process.env;
+
 class Invitation extends Component {
   state = {
     inviteID: '',
-    isSignedIn: false,
     name: '',
     location: '',
     description: '',
@@ -26,13 +29,13 @@ class Invitation extends Component {
 
 
   componentDidMount() {
-    const { location: { search } } = this.props;
+    const { location: { search }, checkLoginStatus } = this.props;
     const { inviteID } = queryString.parse(search);
     this.setState({ inviteID });
+    checkLoginStatus();
     API.findInvite(inviteID)
       .then((data) => {
         const {
-          isSignedIn,
           tripID: {
             _id,
             name,
@@ -46,53 +49,48 @@ class Invitation extends Component {
           },
         } = data.data;
         this.setState({
-          isSignedIn, name, location, description, startDate, endDate, organizer, tripID: _id,
+          name, location, description, startDate, endDate, organizer, tripID: _id,
         });
       })
       .catch(err => console.log(err));
   }
 
-  refreshInvite = () => {
-    this.setState({ isSignedIn: true });
-  };
-
   handleAccept = (event) => {
     event.preventDefault();
-    const { history } = this.props;
+    const { checkLoginStatus } = this.props;
     const { tripID } = this.state;
     API.acceptInvite(tripID)
       .then(() => {
-        history.push('/home');
+        checkLoginStatus();
       });
   };
 
   render() {
-    const { location: { search, pathname }, history } = this.props;
-    const { isSignedIn } = this.state;
+    const { location: { search, pathname }, history, isAuthenticated } = this.props;
     return (
       <Fragment>
-        {isSignedIn && <Nav />}
+        {isAuthenticated && <Nav />}
         <Container>
-          <Row>
-            <Col>
-              <Card className="invitation">
-                {!isSignedIn && <h4>You were invited on this trip. Please create an account to accept</h4>}
-                <List>
-                  <Trip {...this.state} />
-                  {isSignedIn && <ActionButton buttonText="Accept Invitation" buttonFunction={this.handleAccept} />}
-                </List>
-              </Card>
-            </Col>
-            {!isSignedIn && (
-            <Col>
-              <Signup
-                redirectURL={pathname + search}
-                history={history}
-                callback={this.refreshInvite}
-              />
-            </Col>
-            )}
-          </Row>
+          <Card className="invitation">
+            {!isAuthenticated
+              && <h4>You were invited on this trip. Please create an account to accept</h4>}
+            <List>
+              <Trip {...this.state} />
+              <div style={{ margin: '2em' }}>
+                {isAuthenticated
+                  && <ActionButton buttonText="Accept Invitation" buttonFunction={this.handleAccept} />}
+                {!isAuthenticated
+                  && (
+                  <FacebookLogin
+                    appId={REACT_APP_FACEBOOK_KEY}
+                    fields="name, email, picture"
+                    callback={this.props.checkLoginStatus}
+                    icon="fa-facebook"
+                  />
+                  )}
+              </div>
+            </List>
+          </Card>
         </Container>
       </Fragment>
     );
@@ -105,11 +103,12 @@ Invitation.propTypes = {
     pathname: PropTypes.string.isRequired,
     search: PropTypes.string.isRequired,
   }).isRequired,
-  history: PropTypes.shape({
-    action: PropTypes.string.isRequired,
-    block: PropTypes.func.isRequired,
-    push: PropTypes.func.isRequired,
-  }).isRequired,
+  checkLoginStatus: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool,
 };
 
-export default Invitation;
+Invitation.defaultProps = {
+  isAuthenticated: false,
+};
+
+export default withRouter(Invitation);
