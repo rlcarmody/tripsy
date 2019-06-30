@@ -89,11 +89,11 @@ class TripDash extends Component {
           <div id="dividerLite" />
 
           <div className="row">
-            <div className="col m12 l6">
+            <div className="col s12 m12 l6">
               {coordinates && <BingMap coordinates={coordinates} />}
             </div>
 
-            <div className="col m12 l6">
+            <div className="col s12 m12 l6">
               <div className="card">
                 <h4>About This Trip</h4>
                 <div className="divider" />

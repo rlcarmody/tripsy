@@ -74,5 +74,15 @@ module.exports = {
       })
       .then(user => res.json(user))
       .catch(err => res.status(404).json(err));
+  },
+  getUserNameAndPicture(req, res) {
+    const user = auth.verifyToken(req.cookies);
+    if (!user) {
+      return res.status(401).end();
+    }
+    User.findById(user.id)
+      .select('displayName pictureURL')
+      .then(user => res.json(user))
+      .catch(err => res.status(404).json(err));
   }
 }

@@ -6,7 +6,7 @@ const Message = ({ name, message, picture }) => (
     <div className="messageName">
       {name}:
     </div>
-    <div className="messageRow">
+    <div className="centeredRow">
       <img src={picture} alt={name} className="chatPicture" /> {message}
     </div>
   </div>

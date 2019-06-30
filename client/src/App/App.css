@@ -271,7 +271,7 @@ h2, h3, h4, h5, p, th, tr {
     box-sizing: content-box;
 }
 
-.messageRow {
+.centeredRow {
     display: flex;
     align-items: center;
 }
@@ -280,6 +280,11 @@ h2, h3, h4, h5, p, th, tr {
     padding: 5px 5px 0;
     font-size: .75em;
     font-style: italic;
+}
+
+.circlePic {
+    border-radius: 50%;
+    margin-left: 5px;
 }
 
 @media only screen and (max-width: 600px) {
