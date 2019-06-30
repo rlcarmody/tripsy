@@ -67,6 +67,9 @@ module.exports = {
       .select('displayName')
       .populate({
         path: 'trips',
+        options: {
+          sort: 'startDate'
+        },
         populate: {
           path: 'organizer',
           select: 'displayName'
