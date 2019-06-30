@@ -17,6 +17,7 @@ class CommentInput extends Component {
     const { message } = this.state;
     return (
       <form
+        div
         id="chatWindow"
         action="."
         onSubmit={(e) => {
@@ -25,15 +26,21 @@ class CommentInput extends Component {
           this.setState({ message: '' });
         }}
       >
-        <input
-          type="text"
-          placeholder="Thoughts?"
-          value={this.state.message}
-          onChange={e => this.setState({ message: e.target.value })}
-        />
-        <button type="submit" className="button">Send</button>
+        <div className="row">
+          <div className="input-field">
+            <input
+              type="text"
+              placeholder="Thoughts?"
+              value={message}
+              onChange={e => this.setState({ message: e.target.value })}
+            />
+            <button type="submit" className="prefix">
+              <i className="material-icons" id="sendMessage">send</i>
+            </button>
+          </div>
+        </div>
       </form>
-    )
+    );
   }
 }
 
