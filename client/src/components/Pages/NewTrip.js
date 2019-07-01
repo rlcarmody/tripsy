@@ -39,7 +39,7 @@ class NewTrip extends Component {
       .then((result) => {
         console.log('trip id is: ' + result.data._id)
         this.props.onNewTrip(result.data._id);
-        this.props.history.push('/inviteGuests');
+        this.props.history.push('/inviteGuests/fromNew');
       })
       .catch((error) => {
         return(error);
@@ -50,13 +50,15 @@ class NewTrip extends Component {
     return (
       <Fragment>
         <Nav checkLoginStatus={this.props.checkLoginStatus} />
-        <div className="container" id="login">
+        <div className="container">
           <Row>
-          <div className="col s12 center-align">
+            <div className="col s12 center-align">
               <h2 id="subHeadline">Create a new trip!</h2>
             </div>
           </Row>
-          <form onSubmit={this.handleCreateTrip} id="newtrip">
+          <Row>
+            <div className="col s12">
+            <form onSubmit={this.handleCreateTrip} id="newtrip">
             <div className="formField">
               <input
                 className="formFieldInput"
@@ -94,7 +96,7 @@ class NewTrip extends Component {
             </div>
 
             <div className="formField">
-              <span className="helper-text">End Date</span>
+              <span className="helper-text left-align">End Date</span>
               <input
                 className="formFieldInput"
                 type="date"
@@ -123,10 +125,13 @@ class NewTrip extends Component {
               className="btn waves-light formButton"
               type="submit"
               id="btnSubmit"
-              placeholder="Next"
+              value="Next"
             />
 
-          </form>
+            </form>
+            </div>
+          </Row>
+          
         </div>
       </Fragment>
     );

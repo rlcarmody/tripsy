@@ -17,7 +17,7 @@ class Trip extends Component {
       isInvitation
     } = this.props;
     return (
-      <ListItem id="tripSection">
+      <ListItem id="tripSection" className="align-center">
         <div className className="row flex-wrap">
           <div className="col s6 offset-s3">
             <h4>{name}</h4>

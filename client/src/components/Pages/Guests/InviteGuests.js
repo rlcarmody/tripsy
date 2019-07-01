@@ -36,17 +36,26 @@ class InviteGuests extends Component {
   handleInviteGuests = (event) => {
     event.preventDefault();
     // eslint-disable-next-line react/destructuring-assignment
-    console.log('form was submitted with the following data:');
-    console.log(this.state);
+    //console.log('form was submitted with the following data:');
+    //console.log(this.state);
+    console.log('in function');
 
     API.sendInvite(this.props.tripID, this.state.guests)
       .then(() => {
-        this.props.history.push('/AddSupplies');
-      });
-  }
-
+        console.log('before if');
+        if (this.props.match.params.var === 'fromNew') {
+          console.log('made it to add supplies');
+          this.props.history.push('/AddSupplies');
+        }
+        else {
+          console.log('made it to tripdash');
+          this.props.history.push('/tripDash');
+        }
+      },
+      );
+ }
   render() {
-      console.log(this.props.tripID)
+      //console.log(this.props)
     return (
       <Fragment>
         <Nav checkLoginStatus={this.props.checkLoginStatus} />

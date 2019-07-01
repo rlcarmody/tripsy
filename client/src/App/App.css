@@ -7,7 +7,7 @@ Nav .nav-wrapper {
 }
 
 body {    
-    background-image: linear-gradient(to bottom right, rgb(174, 218, 243), rgb(178, 252, 215));
+    background-image: linear-gradient(to bottom right, rgb(174, 218, 243), rgb(178, 252, 233));
     background-repeat: no-repeat;
     background-attachment: fixed;
     box-sizing: border-box;
@@ -17,17 +17,13 @@ body {
 
 h2, h3, h4, h5, p, th, tr {
     font-family: 'Montserrat', sans-serif;
-    text-align: center;
+    
 }
 
 #signUpP {
     color: rgb(136, 241, 241);
-    transition: .2s ease-in-out;
 }
 
-#signUpP:hover {
-    transform: scale(1.1)
-}
 
 #linkP {
     color: green;
@@ -71,7 +67,6 @@ h2, h3, h4, h5, p, th, tr {
     background-color: rgb(62, 177, 142);
     border: none;
     color: whitesmoke;
-    text-align: center;
     display: inline-block;
     width: auto;
     font-size: 16px;
@@ -161,17 +156,20 @@ h2, h3, h4, h5, p, th, tr {
 #headline {
     font-family: 'Cabin Condensed', sans-serif;
     font-size: 7vw;
-    color: whitesmoke;
-    text-shadow: 2px 2px #303030;
+    color: black;
     text-align: center;
 }
 
 #subHeadline {
     font-family: 'Cabin Condensed', sans-serif;
     font-size: 4vw;
-    color: whitesmoke;
+    color: black;
     text-align: center;
-    text-shadow: 1px 1px #303030;
+   
+}
+
+span {
+    color: rgb(173, 173, 173);
 }
 
 .fas {
@@ -187,7 +185,7 @@ h2, h3, h4, h5, p, th, tr {
 
 #newtrip {
     padding: 15px;
-    text-align: center;
+ 
     margin-bottom: 20px;
 }
 
@@ -249,14 +247,14 @@ h2, h3, h4, h5, p, th, tr {
     #headline {
         font-family: 'Cabin Condensed', sans-serif;
         font-size: 12vw;
-        color: whitesmoke;
+        color: black;
     
     }
 
     #subHeadline {
         font-family: 'Cabin Condensed', sans-serif;
         font-size: 8vw;
-        color: whitesmoke;
+        color: black;
     }
 
     .newTripBtn{

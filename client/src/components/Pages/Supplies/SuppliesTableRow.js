@@ -19,7 +19,7 @@ class TableRow extends Component {
 
           </td>
           <td>
-            <button onClick={() => this.props.onClaimed(this.props.id)} type="button" className="button">Claim</button>
+            <button onClick={() => this.props.onClaimed(this.props.id)} type="button" className="button align-center">Claim</button>
           </td>
         </tr>
       </Fragment>

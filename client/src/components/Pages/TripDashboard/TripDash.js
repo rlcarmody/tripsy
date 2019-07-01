@@ -58,7 +58,7 @@ class TripDash extends Component {
               <Link to="/supplies">
                 <button type="button" className="button btnNav">Supplies</button>
               </Link>
-              <Link to="/inviteGuests">
+              <Link to="/inviteGuests/fromDash">
                 <button type="button" className="button btnNav">Invite Guests</button>
               </Link>
               <Link to="/home">
