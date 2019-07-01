@@ -9,7 +9,10 @@ export default {
     return axios.get('/api/users/login');
   },
   logoutUser() {
-    return axios.post('/api/users/logout');
+    return axios.get('/api/users/logout');
+  },
+  getUserDetails() {
+    return axios.get('/api/users/userDetails');
   },
   createTrip(body) {
     return axios.post('/api/trips', body);

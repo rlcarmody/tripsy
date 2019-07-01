@@ -8,6 +8,9 @@ router.route('/login')
   .get(userController.login);
 
 router.route('/logout')
-  .post(userController.logout);
+  .get(userController.logout);
+
+router.route('/userDetails')
+  .get(userController.getUserNameAndPicture);
 
 module.exports = router;

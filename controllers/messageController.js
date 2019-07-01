@@ -15,7 +15,7 @@ module.exports = {
       .then(result => result.populate(
         {
           path: 'userID',
-          select: 'displayName'
+          select: 'displayName pictureURL'
         }).execPopulate()
         .then(msg => {
           io.emit(msg.tripID, msg)
@@ -29,7 +29,7 @@ module.exports = {
     Message.find({ tripID: req.query.tripID })
       .populate({
         path: 'userID',
-        select: 'displayName'
+        select: 'displayName pictureURL'
       })
       .then(results => res.json(results))
       .catch(err => res.status(404).json(err));

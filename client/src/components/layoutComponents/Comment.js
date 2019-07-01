@@ -55,6 +55,7 @@ class Comment extends Component {
               key={msg._id}
               message={msg.messageBody}
               name={msg.userID.displayName}
+              picture={msg.userID.pictureURL}
             />
           ))}
         </div>

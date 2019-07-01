@@ -225,6 +225,20 @@ h2, h3, h4, h5, p, th, tr {
     border-style: solid;
 }
 
+#chatBox {
+    overflow: -moz-scrollbars-none;
+    -ms-overflow-style: none;
+    border-radius: 8px;
+    padding: 5px;
+}
+
+#chatBox::-webkit-scrollbar {
+    width: 5px !important;
+}
+#chatBox::-webkit-scrollbar-thumb{
+    background-color: rgb(174, 218, 243);
+}
+
 #signUpLeft {
     background-color: rgb(174, 218, 243);
     height: 100vh;
@@ -243,6 +257,34 @@ h2, h3, h4, h5, p, th, tr {
     align-content: center;
     justify-content: center;
     padding: 3em;
+}
+
+#sendMessage {
+    color: rgb(174, 218, 243);
+    cursor: pointer;
+}
+
+.chatPicture {
+    width: 25px;
+    border-radius: 50%;
+    padding: 2px 5px;
+    box-sizing: content-box;
+}
+
+.centeredRow {
+    display: flex;
+    align-items: center;
+}
+
+.messageName {
+    padding: 5px 5px 0;
+    font-size: .75em;
+    font-style: italic;
+}
+
+.circlePic {
+    border-radius: 50%;
+    margin-left: 5px;
 }
 
 @media only screen and (max-width: 600px) {
