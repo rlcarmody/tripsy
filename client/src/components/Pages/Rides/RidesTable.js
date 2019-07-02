@@ -4,7 +4,6 @@ import API from '../../../utils/API';
 
 class RidesTable extends Component {
   handleOnSeatClaimed = (id) => {
-    console.log('onSeatClaimed');
     const { onSeatClaimed } = this.props;
     API.claimRide(id)
       .then(() => onSeatClaimed());

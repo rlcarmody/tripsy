@@ -1,11 +1,6 @@
 import React, { Component, Fragment } from 'react';
-// eslint-disable-next-line no-unused-vars
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import API from '../../../utils/API';
-// eslint-disable-next-line no-unused-vars
-import { Col, Row, Container } from '../../layoutComponents/Grid';
 import { List } from '../../layoutComponents/List';
-import Card from '../../layoutComponents/Card';
 import Trip from './Trip';
 
 class MyTrips extends Component {
@@ -15,7 +10,6 @@ class MyTrips extends Component {
 
     componentDidMount() {
       this.getTrips();
-      console.log('got trips');
     }
 
     getTrips = () => {
@@ -34,7 +28,7 @@ class MyTrips extends Component {
 
           <div className="row">
             <div id="divider" />
-            <div className="col s12">
+            <div className="col s12 center-align">
               {this.state.trips.length ? (
                 <List>
                   {this.state.trips.map(trip => (

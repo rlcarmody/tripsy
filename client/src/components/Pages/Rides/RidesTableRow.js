@@ -2,29 +2,25 @@ import React, { Component, Fragment } from 'react';
 import dateFns from 'date-fns';
 
 class RidesTableRow extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     const { provider, vehicleType, departureDate, availableSeats } = this.props;
     return (
       <Fragment>
         <tr>
           <td>
-            <p>{provider.displayName}</p>
+            <p className="align-center">{provider.displayName}</p>
           </td>
           <td>
-            <p>{vehicleType}</p>
+            <p className="align-center">{vehicleType}</p>
           </td>
           <td>
-            <p>{dateFns.format(departureDate, 'MMMM DD, YYYY')}</p>
+            <p className="align-center">{dateFns.format(departureDate, 'MMMM DD, YYYY')}</p>
           </td>
           <td>
-            <p>{availableSeats}</p>
+            <p className="align-center">{availableSeats}</p>
           </td>
           <td>
-            <button onClick={() => this.props.onSeatClaimed(this.props.id)} type="button" className="button">Claim Seat</button>
+            <button onClick={() => this.props.onSeatClaimed(this.props.id)} type="button" className="button align-center">Claim Seat</button>
           </td>
         </tr>
       </Fragment>

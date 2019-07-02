@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React, { Component, Fragment } from 'react';
 // eslint-disable-next-line no-unused-vars
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
@@ -18,7 +17,6 @@ class TripDash extends Component {
   }
 
   componentDidMount() {
-    console.log(`The trip ID is: ${this.props.tripID}`);
     this.getOneTrip();
   }
 
@@ -58,7 +56,7 @@ class TripDash extends Component {
               <Link to="/supplies">
                 <button type="button" className="button btnNav">Supplies</button>
               </Link>
-              <Link to="/inviteGuests">
+              <Link to="/inviteGuests/fromDash">
                 <button type="button" className="button btnNav">Invite Guests</button>
               </Link>
               <Link to="/home">
