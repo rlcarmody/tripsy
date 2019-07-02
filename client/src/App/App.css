@@ -7,6 +7,11 @@ body {
     margin: 0;
 }
 
+button {
+    background: none;
+    border: none;
+}
+
 .homeScreen {
     min-height: 100%;
 }
