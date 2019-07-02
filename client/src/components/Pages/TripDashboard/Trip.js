@@ -4,7 +4,6 @@ import dateFns from 'date-fns';
 // eslint-disable-next-line no-unused-vars
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import { ListItem } from '../../layoutComponents/List';
-import '../../../App/App.css';
 
 class Trip extends Component {
   render() {
@@ -14,10 +13,11 @@ class Trip extends Component {
       startDate,
       endDate,
       organizer,
-      isInvitation
+      isInvitation,
     } = this.props;
+
     return (
-      <ListItem id="tripSection" className="align-center">
+      <ListItem className="center-align">
         <div className className="row flex-wrap">
           <div className="col s6 offset-s3">
             <h4>{name}</h4>
@@ -33,7 +33,7 @@ class Trip extends Component {
           <div className="col s6 offset-s3">
             {startDate && endDate && (
             <p>
-              Trip Starts on {dateFns.format(startDate, 'MMMM DD, YYYY')}
+              This Trip Starts on {dateFns.format(startDate, 'MMMM DD, YYYY')}
             </p>
             )}
           </div>
@@ -41,7 +41,7 @@ class Trip extends Component {
         {!isInvitation && (
         <div className="row center-align">
           <Link to="/tripDash">
-            <button type="button" className="button viewTripBtn" onClick={() => {this.props.setGlobalTrip(this.props.id)}}>View Trip</button>
+            <button type="button" className="button viewTripBtn" onClick={() => {this.props.setGlobalTrip(this.props.id, this.props.name)}}>View Trip</button>
           </Link>
         </div>
         )}

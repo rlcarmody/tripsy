@@ -1,18 +1,12 @@
-/* eslint-disable react/destructuring-assignment */
 import React, { Component, Fragment } from 'react';
 // eslint-disable-next-line no-unused-vars
 import { BrowserRouter as Router, Route, Link, withRouter } from 'react-router-dom';
-// eslint-disable-next-line no-unused-vars
-import { ListItem } from '../../layoutComponents/List';
-import { Row, Col, Container } from '../../layoutComponents/Grid';
-import API from '../../../utils/API';
 import Nav from '../../layoutComponents/Nav';
 import AddSuppliesForm from './AddSuppliesForm';
 
 class AddSupplies extends Component {
 
   render() {
-    console.log(this.props.tripID)
     return (
       <Fragment>
         <Nav checkLoginStatus={this.props.checkLoginStatus} />
@@ -39,11 +33,9 @@ class AddSupplies extends Component {
           </div>
           <AddSuppliesForm tripID={this.props.tripID} />
           <br />
-          <p>
-          <Link to="/tripDash" id="linkP">
-
+          <p id="linkP">
+          <Link id="linkP" to="/tripDash">
               Skip This Step
-
           </Link>
           </p>
         </div>

@@ -4,7 +4,6 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import RidesTable from './RidesTable';
 import Nav from '../../layoutComponents/Nav';
 import API from '../../../utils/API';
-import { isThisSecond } from 'date-fns';
 
 
 class Rides extends Component {
@@ -13,18 +12,13 @@ class Rides extends Component {
   }
 
   componentDidMount = () => {
-    console.log('Ride ID is ' + this.props.rideID)
-    console.log(this.props.tripID);
     API.getRides(this.props.tripID)
       .then((data) => {
-        console.log(data);
         this.setState({ rides: data.data });
-        console.log('component did mount! and API get was successful!');
       });
   }
 
   handleOnSeatClaimed = () => {
-    console.log('seat claimed!');
     API.getRides(this.props.tripID)
       .then((data) => {
         this.setState({ rides: data.data });

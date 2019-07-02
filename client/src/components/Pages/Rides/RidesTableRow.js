@@ -2,10 +2,6 @@ import React, { Component, Fragment } from 'react';
 import dateFns from 'date-fns';
 
 class RidesTableRow extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     const { provider, vehicleType, departureDate, availableSeats } = this.props;
     return (

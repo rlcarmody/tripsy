@@ -4,7 +4,6 @@ import API from '../../../utils/API';
 
 class SuppliesTable extends Component {
   handleOnClaimed = (id) => {
-    console.log('onClaimed');
     const { onClaimed } = this.props;
     API.claimSupplies(id)
       .then(() => onClaimed());

@@ -1,11 +1,7 @@
-/* eslint-disable react/destructuring-assignment */
 import React, { Component, Fragment } from 'react';
 // eslint-disable-next-line no-unused-vars
-// eslint-disable-next-line object-curly-newline
-// eslint-disable-next-line no-unused-vars
 import { BrowserRouter as Router, Route, Link, withRouter } from 'react-router-dom';
-// eslint-disable-next-line no-unused-vars
-import { Row, Col, Container } from '../layoutComponents/Grid';
+import { Row } from '../layoutComponents/Grid';
 import API from '../../utils/API';
 import Nav from '../layoutComponents/Nav';
 
@@ -37,8 +33,8 @@ class NewTrip extends Component {
 
     API.createTrip(this.state)
       .then((result) => {
-        console.log('trip id is: ' + result.data._id)
-        this.props.onNewTrip(result.data._id);
+        console.log('trip name is: ' + result.data.name)
+        this.props.onNewTrip(result.data._id, result.data.name);
         this.props.history.push('/inviteGuests/fromNew');
       })
       .catch((error) => {
@@ -58,80 +54,80 @@ class NewTrip extends Component {
           </Row>
           <Row>
             <div className="col s12">
-            <form onSubmit={this.handleCreateTrip} id="newtrip">
-            <div className="formField">
-              <input
-                className="formFieldInput"
-                type="text"
-                name="name"
-                id="name"
-                value={this.state.name}
-                onChange={this.handleInputChange}
-                placeholder="Trip Name"
-              />
-            </div>
-
-            <div className="formField">
-              <input
-                className="formFieldInput"
-                type="text"
-                name="location"
-                id="location"
-                value={this.state.location}
-                onChange={this.handleInputChange}
-                placeholder="Destination"
-              />
-            </div>
-
-            <div className="formField">
-              <span className="helper-text">Start Date</span>
-              <input
-                className="formFieldInput"
-                type="date"
-                name="startDate"
-                id="startDate"
-                value={this.state.startDate}
-                onChange={this.handleInputChange}
-              />
-            </div>
-
-            <div className="formField">
-              <span className="helper-text left-align">End Date</span>
-              <input
-                className="formFieldInput"
-                type="date"
-                name="endDate"
-                id="endDate"
-                value={this.state.endDate}
-                onChange={this.handleInputChange}
-              />
-            </div>
-
-            <div className="formField">
-              <div className="row">
-                <div className="input-field">
-                  <textarea
-                    value={this.state.description}
+              <form onSubmit={this.handleCreateTrip} id="newtrip">
+                <div className="formField">
+                  <input
+                    className="formFieldInput"
+                    type="text"
+                    name="name"
+                    id="name"
+                    value={this.state.name}
                     onChange={this.handleInputChange}
-                    className="materialize-textarea"
-                    placeholder="Trip Description"
-                    name="description"
+                    placeholder="Trip Name"
                   />
                 </div>
-              </div>
-            </div>
 
-            <input
-              className="btn waves-light formButton"
-              type="submit"
-              id="btnSubmit"
-              value="Next"
-            />
+                <div className="formField">
+                  <input
+                    className="formFieldInput"
+                    type="text"
+                    name="location"
+                    id="location"
+                    value={this.state.location}
+                    onChange={this.handleInputChange}
+                    placeholder="Destination"
+                  />
+                </div>
 
-            </form>
+                <div className="formField">
+                  <span className="helper-text">Start Date</span>
+                  <input
+                    className="formFieldInput"
+                    type="date"
+                    name="startDate"
+                    id="startDate"
+                    value={this.state.startDate}
+                    onChange={this.handleInputChange}
+                  />
+                </div>
+
+                <div className="formField">
+                  <span className="helper-text left-align">End Date</span>
+                  <input
+                    className="formFieldInput"
+                    type="date"
+                    name="endDate"
+                    id="endDate"
+                    value={this.state.endDate}
+                    onChange={this.handleInputChange}
+                  />
+                </div>
+
+                <div className="formField">
+                  <div className="row">
+                    <div className="input-field">
+                      <textarea
+                        value={this.state.description}
+                        onChange={this.handleInputChange}
+                        className="materialize-textarea"
+                        placeholder="Trip Description"
+                        name="description"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <input
+                  className="btn waves-light formButton"
+                  type="submit"
+                  id="btnSubmit"
+                  value="Next"
+                />
+
+              </form>
             </div>
           </Row>
-          
+
         </div>
       </Fragment>
     );
