@@ -14,26 +14,38 @@ class Trip extends Component {
       endDate,
       organizer,
       isInvitation,
+      setGlobalTrip,
+      id,
     } = this.props;
 
     return (
       <ListItem className="center-align">
-        <div className className="row flex-wrap">
+        <div className="row flex-wrap">
           <div className="col s6 offset-s3">
-            <h4>{name}</h4>
-            {location && <h5 className="font-italic">{location}</h5>}
+            <h4>
+              {name}
+            </h4>
+            {location && (
+            <h5 className="font-italic">
+                {location}
+            </h5>
+            )}
           </div>
         </div>
         <div className="row">
           <div className="col s6 offset-s3">
-            {organizer && <p className="font-italic small">Organized by {organizer}</p>}
+            {organizer && (
+              <p className="font-italic small">
+                {`Organized by ${organizer}`}
+              </p>
+            )}
           </div>
         </div>
         <div className="row">
           <div className="col s6 offset-s3">
             {startDate && endDate && (
             <p>
-              This Trip Starts on {dateFns.format(startDate, 'MMMM DD, YYYY')}
+              {`This Trip Starts on ${dateFns.format(startDate, 'MMMM DD, YYYY')}`}
             </p>
             )}
           </div>
@@ -41,7 +53,7 @@ class Trip extends Component {
         {!isInvitation && (
         <div className="row center-align">
           <Link to="/tripDash">
-            <button type="button" className="button viewTripBtn" onClick={() => {this.props.setGlobalTrip(this.props.id, this.props.name)}}>View Trip</button>
+            <button type="button" className="button viewTripBtn" onClick={() => { setGlobalTrip(id, name); }}>View Trip</button>
           </Link>
         </div>
         )}
@@ -58,6 +70,8 @@ Trip.propTypes = {
   endDate: PropTypes.string.isRequired,
   organizer: PropTypes.string.isRequired,
   isInvitation: PropTypes.bool,
+  setGlobalTrip: PropTypes.func.isRequired,
+  id: PropTypes.string.isRequired,
 };
 
 Trip.defaultProps = {

@@ -4,10 +4,11 @@ import PropTypes from 'prop-types';
 const Message = ({ name, message, picture }) => (
   <div>
     <div className="messageName">
-      {name}:
+      {`${name}:`}
     </div>
     <div className="centeredRow">
-      <img src={picture} alt={name} className="chatPicture" /> {message}
+      <img src={picture} alt={name} className="chatPicture" />
+      {message}
     </div>
   </div>
 );

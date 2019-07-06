@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import PropTypes from 'prop-types';
 import RidesTableRow from './RidesTableRow';
 import API from '../../../utils/API';
 
@@ -10,9 +11,10 @@ class RidesTable extends Component {
   }
 
   render() {
+    const { rides } = this.props;
     return (
       <Fragment>
-        {this.props.rides.length ? (
+        {rides.length ? (
           <table className="table">
             <thead>
               <tr>
@@ -24,7 +26,7 @@ class RidesTable extends Component {
               </tr>
             </thead>
             <tbody>
-              {this.props.rides.map( ride => (
+              {rides.map(ride => (
                 <RidesTableRow
                   id={ride._id}
                   provider={ride.provider}
@@ -44,3 +46,8 @@ class RidesTable extends Component {
   }
 }
 export default RidesTable;
+
+RidesTable.propTypes = {
+  onSeatClaimed: PropTypes.func.isRequired,
+  rides: PropTypes.arrayOf(PropTypes.any).isRequired,
+};

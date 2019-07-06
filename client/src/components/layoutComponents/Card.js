@@ -1,4 +1,5 @@
-import React from "react";
+import React from 'react';
+import PropTypes from 'prop-types';
 
 function Card({ title, children, className }) {
   return (
@@ -18,3 +19,12 @@ function Card({ title, children, className }) {
 }
 
 export default Card;
+
+Card.propTypes = {
+  title: PropTypes.string.isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]).isRequired,
+  className: PropTypes.string.isRequired,
+};

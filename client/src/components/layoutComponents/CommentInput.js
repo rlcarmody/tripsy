@@ -1,4 +1,3 @@
-/* global io */
 // import statements for React and component
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';

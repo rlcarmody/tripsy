@@ -21,18 +21,19 @@ class TripDash extends Component {
   }
 
   getOneTrip = () => {
-    API.getOneTrip(this.props.tripID)
+    const { tripID } = this.props;
+    API.getOneTrip(tripID)
       .then((res) => {
         this.setState({
           trip: res.data,
-        }, () => console.log(this.state));
+        });
       }).catch(() => this.setState({
         trip: [],
       }));
   };
 
   render() {
-    const { tripID } = this.props;
+    const { tripID, checkLoginStatus } = this.props;
     const {
       trip: {
         coordinates,
@@ -45,7 +46,7 @@ class TripDash extends Component {
     return (
 
       <Fragment>
-        <Nav checkLoginStatus={this.props.checkLoginStatus} />
+        <Nav checkLoginStatus={checkLoginStatus} />
         <div className="container">
           <div className="row center-align">
             <div className="col s12 center-align">
@@ -66,9 +67,8 @@ class TripDash extends Component {
             </div>
           </div>
 
-          
           <div className="row center-align">
-          <div className="col s12">
+            <div className="col s12">
 
               <h3 id="subHeadline">
                 {name}
@@ -81,7 +81,7 @@ class TripDash extends Component {
                 {dateFns.format(endDate, 'MMMM DD, YYYY')}
               </p>
 
-          </div>
+            </div>
           </div>
 
           <div id="dividerLite" />
@@ -116,6 +116,7 @@ class TripDash extends Component {
 
 TripDash.propTypes = {
   tripID: PropTypes.string.isRequired,
+  checkLoginStatus: PropTypes.func.isRequired,
 };
 
 export default TripDash;
