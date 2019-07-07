@@ -66,22 +66,23 @@ class Invitation extends Component {
   };
 
   facebookResponse = (response) => {
+    const { checkLoginStatus } = this.props;
     if (!response.accessToken) {
       M.toast({ html: 'Login failed' });
     } else {
       API.loginOrCreateUser(response)
-        .then(() => this.props.checkLoginStatus());
+        .then(() => checkLoginStatus());
     }
   }
 
   render() {
-    const { isAuthenticated } = this.props;
+    const { isAuthenticated, checkLoginStatus } = this.props;
     const { accepted } = this.state;
     return accepted
       ? <Redirect to="/home" />
       : (
         <Fragment>
-          {isAuthenticated && <Nav checkLoginStatus={this.props.checkLoginStatus} />}
+          {isAuthenticated && <Nav checkLoginStatus={checkLoginStatus} />}
           {!isAuthenticated
             && <h4>You were invited on this trip. Please log in to accept</h4>}
           <div style={{ margin: '2em' }} className="center-align">

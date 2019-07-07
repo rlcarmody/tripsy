@@ -12,11 +12,12 @@ const { REACT_APP_FACEBOOK_KEY } = process.env;
 
 class Signup extends Component {
   facebookResponse = (response) => {
+    const { checkLoginStatus } = this.props;
     if (!response.accessToken) {
       M.toast({ html: 'Login failed' });
     } else {
       API.loginOrCreateUser(response)
-        .then(() => this.props.checkLoginStatus());
+        .then(() => checkLoginStatus());
     }
   }
 
@@ -25,8 +26,12 @@ class Signup extends Component {
     return !isAuthenticated ? (
       <Fragment>
         <div id="signUpLeft">
-          <img id="logo" alt="logo" src={require('../../images/tripsy.PNG') } />
-          <h2 className="headline" id="headline"><strong>Trippin' Made Easy</strong></h2>
+          <img id="logo" alt="logo" src="./images/tripsy.PNG" />
+          <h2 className="headline" id="headline">
+            <strong>
+              {'Trippin\' Made Easy'}
+            </strong>
+          </h2>
           <div id="fbLogin">
             <FacebookLogin
               appId={REACT_APP_FACEBOOK_KEY}
@@ -45,4 +50,5 @@ export default Signup;
 
 Signup.propTypes = {
   isAuthenticated: PropTypes.bool.isRequired,
+  checkLoginStatus: PropTypes.func.isRequired,
 };

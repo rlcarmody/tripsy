@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
-// eslint-disable-next-line no-unused-vars
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import { Container } from '../layoutComponents/Grid';
 import Nav from '../layoutComponents/Nav';
 import MyTrips from './TripDashboard/MyTrips';
@@ -8,19 +8,24 @@ import MyTrips from './TripDashboard/MyTrips';
 
 class Home extends Component {
   render() {
+    const { checkLoginStatus, setGlobalTrip } = this.props;
     return (
       <Fragment>
-        <Nav checkLoginStatus={this.props.checkLoginStatus} />
+        <Nav checkLoginStatus={checkLoginStatus} />
         <Container id="home">
           <div className="homeScreen">
             <div className="row center-align">
               <div className="col s12">
-                <img id='logo' alt="logo" src={ require('../../images/tripsy.PNG') } />
+                <img id="logo" alt="logo" src="./images/tripsy.PNG" />
               </div>
             </div>
             <div className="row">
               <div className="col s12 center-align">
-                <h2 className="headline" id="headline"><strong>Trippin' Made Easy</strong></h2>
+                <h2 className="headline" id="headline">
+                  <strong>
+                    {'Trippin\' Made Easy'}
+                  </strong>
+                </h2>
               </div>
             </div>
             <div className="row">
@@ -41,7 +46,7 @@ class Home extends Component {
           </div>
 
           <div className="row myTripsDiv">
-            <MyTrips setGlobalTrip={this.props.setGlobalTrip} />
+            <MyTrips setGlobalTrip={setGlobalTrip} />
           </div>
 
         </Container>
@@ -50,3 +55,8 @@ class Home extends Component {
   }
 }
 export default Home;
+
+Home.propTypes = {
+  checkLoginStatus: PropTypes.func.isRequired,
+  setGlobalTrip: PropTypes.func.isRequired,
+};

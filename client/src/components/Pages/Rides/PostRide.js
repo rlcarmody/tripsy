@@ -1,6 +1,8 @@
+/* eslint-disable no-underscore-dangle */
 import React, { Component, Fragment } from 'react';
+import PropTypes from 'prop-types';
 // eslint-disable-next-line no-unused-vars
-import { BrowserRouter as Router, Route, Link, withRouter } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import API from '../../../utils/API';
 import Nav from '../../layoutComponents/Nav';
 
@@ -16,8 +18,8 @@ class PostRide extends Component {
   }
 
   componentDidMount() {
-    console.log('the trip name is: ' + this.props.tripName);
-    this.setState({ tripID: this.props.tripID });
+    const { tripID } = this.props;
+    this.setState({ tripID });
   }
 
   handleInputChange = (event) => {
@@ -29,18 +31,20 @@ class PostRide extends Component {
 
   handlePostRide = (event) => {
     event.preventDefault();
-
+    const { onNewRide } = this.props;
     API.postRide(this.state)
-      .then(result => {
-        this.props.onNewRide(result.data._id);
+      .then((result) => {
+        onNewRide(result.data._id);
         this.props.history.push('/rides');
       });
   }
 
   render() {
+    const { checkLoginStatus } = this.props;
+    const { vehicleType, availableSeats, departureDate } = this.state;
     return (
       <Fragment>
-        <Nav checkLoginStatus={this.props.checkLoginStatus} />
+        <Nav checkLoginStatus={checkLoginStatus} />
 
         <div className="container">
           <div className="row center-align">
@@ -64,14 +68,14 @@ class PostRide extends Component {
               <h2 id="subHeadline">Post a Ride</h2>
             </div>
           </div>
-          <form  id="postride" onSubmit={this.handlePostRide}>
+          <form id="postride" onSubmit={this.handlePostRide}>
             <div className="formField">
               <input
                 className="formFieldInput"
                 type="text"
                 name="vehicleType"
                 id="vehicleType"
-                value={this.state.vehicleType} 
+                value={vehicleType}
                 onChange={this.handleInputChange}
                 placeholder="Vehicle Type"
               />
@@ -82,20 +86,20 @@ class PostRide extends Component {
                 type="number"
                 name="availableSeats"
                 id="availableSeats"
-                value={this.state.availableSeats}
+                value={availableSeats}
                 onChange={this.handleInputChange}
                 placeholder="Available Seats"
               />
             </div>
 
             <div className="formField">
-              <span class="helper-text">Departure Date</span>
+              <span className="helper-text">Departure Date</span>
               <input
                 className="formFieldInput"
                 type="date"
                 name="departureDate"
                 id="departureDate"
-                value={this.state.departureDate}
+                value={departureDate}
                 onChange={this.handleInputChange}
               />
             </div>
@@ -114,3 +118,9 @@ class PostRide extends Component {
   }
 }
 export default withRouter(PostRide);
+
+PostRide.propTypes = {
+  tripID: PropTypes.string.isRequired,
+  checkLoginStatus: PropTypes.func.isRequired,
+  onNewRide: PropTypes.func.isRequired,
+};

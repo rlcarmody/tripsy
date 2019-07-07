@@ -1,4 +1,6 @@
+/* eslint-disable no-underscore-dangle */
 import React, { Component, Fragment } from 'react';
+import PropTypes from 'prop-types';
 import API from '../../../utils/API';
 import { List } from '../../layoutComponents/List';
 import Trip from './Trip';
@@ -22,6 +24,8 @@ class MyTrips extends Component {
     };
 
     render() {
+      const { trips } = this.state;
+      const { setGlobalTrip } = this.props;
       return (
 
         <Fragment>
@@ -29,9 +33,9 @@ class MyTrips extends Component {
           <div className="row">
             <div id="divider" />
             <div className="col s12 center-align">
-              {this.state.trips.length ? (
+              {trips.length ? (
                 <List>
-                  {this.state.trips.map(trip => (
+                  {trips.map(trip => (
                     <Trip
                       name={trip.name}
                       location={trip.location}
@@ -39,9 +43,8 @@ class MyTrips extends Component {
                       startDate={trip.startDate}
                       endDate={trip.endDate}
                       description={trip.description}
-                      setGlobalTrip={this.props.setGlobalTrip}
+                      setGlobalTrip={setGlobalTrip}
                       id={trip._id}
-                      // eslint-disable-next-line no-underscore-dangle
                       key={trip._id}
                     />
                   ))}
@@ -59,3 +62,7 @@ class MyTrips extends Component {
     }
 }
 export default MyTrips;
+
+MyTrips.propTypes = {
+  setGlobalTrip: PropTypes.func.isRequired,
+};

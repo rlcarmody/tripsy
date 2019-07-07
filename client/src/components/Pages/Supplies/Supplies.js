@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
-// eslint-disable-next-line no-unused-vars
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import SuppliesTable from './SuppliesTable';
 import Nav from '../../layoutComponents/Nav';
 import API from '../../../utils/API';
@@ -17,23 +17,27 @@ class Supplies extends Component {
   }
 
   componentDidMount = () => {
-    API.getSupplies(this.props.tripID)
+    const { tripID } = this.props;
+    API.getSupplies(tripID)
       .then((data) => {
         this.setState({ supplies: data.data });
       });
   }
 
   handleOnClaimed = () => {
-    API.getSupplies(this.props.tripID)
+    const { tripID } = this.props;
+    API.getSupplies(tripID)
       .then((data) => {
         this.setState({ supplies: data.data });
       });
   }
 
   render() {
+    const { checkLoginStatus, tripID } = this.props;
+    const { supplies } = this.state;
     return (
       <Fragment>
-        <Nav checkLoginStatus={this.props.checkLoginStatus} />
+        <Nav checkLoginStatus={checkLoginStatus} />
 
         <div className="container" id="supplies">
 
@@ -52,7 +56,6 @@ class Supplies extends Component {
               <Link to="/home">
                 <button type="button" className="button btnNav">My Trips</button>
               </Link>
-              
 
             </div>
           </div>
@@ -64,11 +67,11 @@ class Supplies extends Component {
           </div>
           <section>
             <h5 className="center-align">Add Items to This List:</h5>
-            <AddSuppliesForm updateSupplies={this.updateSupplies} tripID={this.props.tripID} />
+            <AddSuppliesForm updateSupplies={this.updateSupplies} tripID={tripID} />
             <br />
           </section>
 
-          <SuppliesTable onClaimed={this.handleOnClaimed} supplies={this.state.supplies} />
+          <SuppliesTable onClaimed={this.handleOnClaimed} supplies={supplies} />
 
         </div>
       </Fragment>
@@ -76,3 +79,8 @@ class Supplies extends Component {
   }
 }
 export default Supplies;
+
+Supplies.propTypes = {
+  checkLoginStatus: PropTypes.func.isRequired,
+  tripID: PropTypes.string.isRequired,
+};

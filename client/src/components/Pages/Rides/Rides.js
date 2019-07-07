@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import PropTypes from 'prop-types';
 // eslint-disable-next-line no-unused-vars
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import RidesTable from './RidesTable';
@@ -12,23 +13,27 @@ class Rides extends Component {
   }
 
   componentDidMount = () => {
-    API.getRides(this.props.tripID)
+    const { tripID } = this.props;
+    API.getRides(tripID)
       .then((data) => {
         this.setState({ rides: data.data });
       });
   }
 
   handleOnSeatClaimed = () => {
-    API.getRides(this.props.tripID)
+    const { tripID } = this.props;
+    API.getRides(tripID)
       .then((data) => {
         this.setState({ rides: data.data });
       });
   }
 
   render() {
+    const { checkLoginStatus } = this.props;
+    const { rides } = this.state;
     return (
       <Fragment>
-        <Nav checkLoginStatus={this.props.checkLoginStatus} />
+        <Nav checkLoginStatus={checkLoginStatus} />
 
         <div className="container" id="rides">
 
@@ -63,7 +68,7 @@ class Rides extends Component {
             </div>
           </div>
 
-          <RidesTable onSeatClaimed={this.handleOnSeatClaimed} rides={this.state.rides} />
+          <RidesTable onSeatClaimed={this.handleOnSeatClaimed} rides={rides} />
 
         </div>
       </Fragment>
@@ -71,3 +76,8 @@ class Rides extends Component {
   }
 }
 export default Rides;
+
+Rides.propTypes = {
+  checkLoginStatus: PropTypes.func.isRequired,
+  tripID: PropTypes.string.isRequired,
+};

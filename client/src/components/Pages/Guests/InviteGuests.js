@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
-// eslint-disable-next-line no-unused-vars
-import { BrowserRouter as Router, Route, Link, withRouter } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { Link, withRouter } from 'react-router-dom';
 import { Row, Container } from '../../layoutComponents/Grid';
 import API from '../../../utils/API';
 import Nav from '../../layoutComponents/Nav';
@@ -22,14 +22,15 @@ class InviteGuests extends Component {
     this.setState({ newGuest: e.target.value });
   }
 
-  handleRemove = (index) => {
-    this.state.guests.splice(index, 1);
-    this.setState({ guests: this.state.guests });
+  handleRemove = (email) => {
+    this.setState(currState => ({ guests: currState.guests.filter(guest => guest !== email) }));
   }
 
   handleInviteGuests = (event) => {
+    const { tripID } = this.props;
+    const { guests } = this.state;
     event.preventDefault();
-    API.sendInvite(this.props.tripID, this.state.guests)
+    API.sendInvite(tripID, guests)
       .then(() => {
         if (this.props.match.params.var === 'fromNew') {
           this.props.history.push('/AddSupplies');
@@ -40,9 +41,11 @@ class InviteGuests extends Component {
   }
 
   render() {
+    const { checkLoginStatus } = this.props;
+    const { newGuest, guests } = this.state;
     return (
       <Fragment>
-        <Nav checkLoginStatus={this.props.checkLoginStatus} />
+        <Nav checkLoginStatus={checkLoginStatus} />
         <Container>
           <div className="row center-align">
             <div className="col s12 center-align">
@@ -78,14 +81,16 @@ class InviteGuests extends Component {
                 name="email"
                 id="email"
                 placeholder="Your Friend's Email Address..."
-                value={this.state.newGuest}
+                value={newGuest}
                 onChange={this.handleChange}
               />
 
-              {this.state.guests.map((guest, index) => (
-                <div key={index} className="chip">
+              {guests.map(guest => (
+                <div key={guest} className="chip">
                   {guest}
-                  <i onClick={this.handleRemove} className="material-icons">close</i>
+                  <button type="button" onClick={() => this.handleRemove(guest)}>
+                    <i className="material-icons">close</i>
+                  </button>
                 </div>
               ))}
             </div>
@@ -118,3 +123,8 @@ class InviteGuests extends Component {
   }
 }
 export default withRouter(InviteGuests);
+
+InviteGuests.propTypes = {
+  tripID: PropTypes.string.isRequired,
+  checkLoginStatus: PropTypes.func.isRequired,
+};
