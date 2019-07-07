@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import dateFns from 'date-fns';
-// eslint-disable-next-line no-unused-vars
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { format, addMinutes } from 'date-fns';
+import { Link } from 'react-router-dom';
 import { ListItem } from '../../layoutComponents/List';
+
+const TZ_OFFSET = new Date().getTimezoneOffset();
 
 class Trip extends Component {
   render() {
@@ -45,7 +46,7 @@ class Trip extends Component {
           <div className="col s6 offset-s3">
             {startDate && endDate && (
             <p>
-              {`This Trip Starts on ${dateFns.format(startDate, 'MMMM DD, YYYY')}`}
+              {`This Trip Starts on ${format(addMinutes(startDate, TZ_OFFSET), 'MMMM DD, YYYY')}`}
             </p>
             )}
           </div>

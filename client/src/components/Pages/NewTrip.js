@@ -1,6 +1,7 @@
+/* eslint-disable no-underscore-dangle */
 import React, { Component, Fragment } from 'react';
-// eslint-disable-next-line no-unused-vars
-import { BrowserRouter as Router, Route, Link, withRouter } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
 import { Row } from '../layoutComponents/Grid';
 import API from '../../utils/API';
 import Nav from '../layoutComponents/Nav';
@@ -27,25 +28,23 @@ class NewTrip extends Component {
 
   handleCreateTrip = (event) => {
     event.preventDefault();
-    // eslint-disable-next-line react/destructuring-assignment
-    console.log('form was submitted with the following data:');
-    console.log(this.state);
-
+    const { onNewTrip, history } = this.props;
     API.createTrip(this.state)
       .then((result) => {
-        console.log('trip name is: ' + result.data.name)
-        this.props.onNewTrip(result.data._id, result.data.name);
-        this.props.history.push('/inviteGuests/fromNew');
+        onNewTrip(result.data._id, result.data.name);
+        history.push('/inviteGuests/fromNew');
       })
-      .catch((error) => {
-        return(error);
-      });
+      .catch(error => error);
   }
 
   render() {
+    const { checkLoginStatus } = this.props;
+    const {
+      name, location, startDate, endDate, description,
+    } = this.state;
     return (
       <Fragment>
-        <Nav checkLoginStatus={this.props.checkLoginStatus} />
+        <Nav checkLoginStatus={checkLoginStatus} />
         <div className="container">
           <Row>
             <div className="col s12 center-align">
@@ -61,7 +60,7 @@ class NewTrip extends Component {
                     type="text"
                     name="name"
                     id="name"
-                    value={this.state.name}
+                    value={name}
                     onChange={this.handleInputChange}
                     placeholder="Trip Name"
                   />
@@ -73,7 +72,7 @@ class NewTrip extends Component {
                     type="text"
                     name="location"
                     id="location"
-                    value={this.state.location}
+                    value={location}
                     onChange={this.handleInputChange}
                     placeholder="Destination"
                   />
@@ -86,7 +85,7 @@ class NewTrip extends Component {
                     type="date"
                     name="startDate"
                     id="startDate"
-                    value={this.state.startDate}
+                    value={startDate}
                     onChange={this.handleInputChange}
                   />
                 </div>
@@ -98,7 +97,7 @@ class NewTrip extends Component {
                     type="date"
                     name="endDate"
                     id="endDate"
-                    value={this.state.endDate}
+                    value={endDate}
                     onChange={this.handleInputChange}
                   />
                 </div>
@@ -107,7 +106,7 @@ class NewTrip extends Component {
                   <div className="row">
                     <div className="input-field">
                       <textarea
-                        value={this.state.description}
+                        value={description}
                         onChange={this.handleInputChange}
                         className="materialize-textarea"
                         placeholder="Trip Description"
@@ -134,3 +133,11 @@ class NewTrip extends Component {
   }
 }
 export default withRouter(NewTrip);
+
+NewTrip.propTypes = {
+  onNewTrip: PropTypes.func.isRequired,
+  checkLoginStatus: PropTypes.func.isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func,
+  }).isRequired,
+};

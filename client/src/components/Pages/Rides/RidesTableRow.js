@@ -1,6 +1,8 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import dateFns from 'date-fns';
+import { format, addMinutes } from 'date-fns';
+
+const TZ_OFFSET = new Date().getTimezoneOffset();
 
 class RidesTableRow extends Component {
   render() {
@@ -22,7 +24,7 @@ class RidesTableRow extends Component {
           </td>
           <td>
             <p className="align-center">
-              {dateFns.format(departureDate, 'MMMM DD, YYYY')}
+              {format(addMinutes(departureDate, TZ_OFFSET), 'MMMM DD, YYYY')}
             </p>
           </td>
           <td>
@@ -41,7 +43,10 @@ class RidesTableRow extends Component {
 export default RidesTableRow;
 
 RidesTableRow.propTypes = {
-  provider: PropTypes.string.isRequired,
+  provider: PropTypes.shape({
+    _id: PropTypes.string,
+    displayName: PropTypes.string,
+  }).isRequired,
   vehicleType: PropTypes.string.isRequired,
   departureDate: PropTypes.string.isRequired,
   availableSeats: PropTypes.number.isRequired,

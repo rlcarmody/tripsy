@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 // eslint-disable-next-line no-unused-vars

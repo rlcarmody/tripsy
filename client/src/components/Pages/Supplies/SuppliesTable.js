@@ -1,4 +1,6 @@
+/* eslint-disable no-underscore-dangle */
 import React, { Component, Fragment } from 'react';
+import PropTypes from 'prop-types';
 import SuppliesTableRow from './SuppliesTableRow';
 import API from '../../../utils/API';
 
@@ -10,9 +12,10 @@ class SuppliesTable extends Component {
   }
 
   render() {
+    const { supplies } = this.props;
     return (
       <Fragment>
-        {this.props.supplies.length ? (
+        {supplies.length ? (
           <table className="table">
             <thead>
               <tr>
@@ -22,7 +25,7 @@ class SuppliesTable extends Component {
               </tr>
             </thead>
             <tbody>
-              {this.props.supplies.map( supply => (
+              {supplies.map(supply => (
                 <SuppliesTableRow
                   key={supply._id}
                   id={supply._id}
@@ -42,3 +45,8 @@ class SuppliesTable extends Component {
   }
 }
 export default SuppliesTable;
+
+SuppliesTable.propTypes = {
+  onClaimed: PropTypes.func.isRequired,
+  supplies: PropTypes.arrayOf(PropTypes.any).isRequired,
+};

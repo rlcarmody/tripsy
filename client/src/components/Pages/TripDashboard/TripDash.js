@@ -1,12 +1,13 @@
 import React, { Component, Fragment } from 'react';
-// eslint-disable-next-line no-unused-vars
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import dateFns from 'date-fns';
+import { Link } from 'react-router-dom';
+import { format, addMinutes } from 'date-fns';
 import PropTypes from 'prop-types';
 import API from '../../../utils/API';
 import Comment from '../../layoutComponents/Comment';
 import BingMap from './Map';
 import Nav from '../../layoutComponents/Nav';
+
+const TZ_OFFSET = new Date().getTimezoneOffset();
 
 class TripDash extends Component {
   constructor(props) {
@@ -74,11 +75,11 @@ class TripDash extends Component {
                 {name}
               </h3>
               <p className="text-center">
-                {dateFns.format(startDate, 'MMMM DD, YYYY')}
+                {format(addMinutes(startDate, TZ_OFFSET), 'MMMM DD, YYYY')}
                 {' '}
 -
                 {' '}
-                {dateFns.format(endDate, 'MMMM DD, YYYY')}
+                {format(addMinutes(endDate, TZ_OFFSET), 'MMMM DD, YYYY')}
               </p>
 
             </div>
@@ -108,8 +109,6 @@ class TripDash extends Component {
 
         </div>
       </Fragment>
-
-
     );
   }
 }

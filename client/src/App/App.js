@@ -68,7 +68,7 @@ render() {
 
         { isAuthenticated && <Route path="/ridesTable" render={() => <RidesTable tripID={tripID} rideID={rideID} />} />}
 
-        { isAuthenticated && <Route path="/supplies" render={() => <Supplies tripID={tripID} />} checkLoginStatus={this.checkLoginStatus} />}
+        { isAuthenticated && <Route path="/supplies" render={() => <Supplies tripID={tripID} checkLoginStatus={this.checkLoginStatus} />} />}
 
         { isAuthenticated && <Route path="/AddSupplies" render={() => <AddSupplies tripID={tripID} checkLoginStatus={this.checkLoginStatus} />} />}
 

@@ -16,7 +16,6 @@ class CommentInput extends Component {
     const { message } = this.state;
     return (
       <form
-        div
         id="chatWindow"
         action="."
         onSubmit={(e) => {

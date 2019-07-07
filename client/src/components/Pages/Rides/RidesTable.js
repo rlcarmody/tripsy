@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import RidesTableRow from './RidesTableRow';
@@ -29,6 +30,7 @@ class RidesTable extends Component {
               {rides.map(ride => (
                 <RidesTableRow
                   id={ride._id}
+                  key={ride._id}
                   provider={ride.provider}
                   vehicleType={ride.vehicleType}
                   departureDate={ride.departureDate}
