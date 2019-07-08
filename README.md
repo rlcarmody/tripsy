@@ -3,7 +3,7 @@
 
 ## Picture this:
 
-You have some friends, or maybe some family. You all decide it would be great to getout of town, maybe rent a campsite at a lake or a house at the beach. Someone takes the initiative to book a place for you all to stay.  They send the listing with the location out to everyone’s email. Someone else volunteers to organize the meals, and they put together a spreadsheet of the supplies needed so everyone can sign up tobring something. They share it with everyone on Drive. A few people with reliable cars volunteer to bring riders. A group text gets started in which the ride situation gets painstakingly fleshed out.
+You have some friends, or maybe some family. You all decide it would be great to get out of town, maybe rent a campsite at a lake or a house at the beach. Someone takes the initiative to book a place for you all to stay.  They send the listing with the location out to everyone’s email. Someone else volunteers to organize the meals, and they put together a spreadsheet of the supplies needed so everyone can sign up tobring something. They share it with everyone on Drive. A few people with reliable cars volunteer to bring riders. A group text gets started in which the ride situation gets painstakingly fleshed out.
 
 Meanwhile, it is discovered that someone was left out of the group text and someone else was accidentally excluded from the email chain which listed the address. Nobody used the spreadsheet because nobody opens Drive invitations. No supplies have been purchased. Texts and emails are flying left and right as the date of departure nears and the fog of confusion and frustration thickens into a putrid stew that spoils your vacation before it even begins.
 
@@ -38,9 +38,10 @@ Technologies used in this application include:
 ### Test Accounts:
 
 The Facebook authentication is live, however we understand that there may be reservations using a personal account to explore the project.  The following accounts are official test accounts that are authorized to access this application:
-
+```javascript
 UserName: orpdmvietr_1562558312@tfbnw.net
 Password: f8SyFTbz3K
 
 UserName: acukmzbvtd_1562557902@tfbnw.net
 Password: 7yw2zDV6HW
+```
