@@ -9,12 +9,12 @@ Meanwhile, it is discovered that someone was left out of the group text and some
 
 *Now imagine an alternative*:
 
-Your group decides it’s time for a vacation. A self starter amongst you logs into their Tripsy account and creates a new trip. They fill in the dates of the trip, the destination location, and write up a concise but thorough description of the impending sojourn.They then invite you all to join the trip, and you go ahead and make your own Tripsy accounts.
+Your group decides it’s time for a vacation. A self starter amongst you logs into their Tripsy account and creates a new trip. They fill in the dates of the trip, the destination location, and write up a concise but thorough description of the impending sojourn. They then invite you all to join the trip, and you go ahead and make your own Tripsy accounts.
 
 Comfortably settled in to your Tripsy dashboard, you see the July trip to the Redwoods in your trips section. There you have access to all the logistical information you could need as you prepare to get out of dodge.  Epicure that you
-are, you take it upon yourself to start the shopping list. With Tripsy this is a simple task, you simply click the groceries icon and are prompted to create a list ofeverything you would love to eat and drink and use on the trip. Your fellow trippers can now sign up to bring whatever they like off of the list.
+are, you take it upon yourself to start the shopping list. With Tripsy this is a simple task, you simply click the supplies icon and are prompted to create a list ofeverything you would love to eat and drink and use on the trip. Your fellow trippers can now sign up to bring whatever they like off of the list.
 
-Those owners of trusty vehicles can use Tripsy too.  Rather than enter into group text purgatory, they simply click the rides icon and fill in the number of seats they have available, how much they would like riders to contribute towards gas, and when they plan to depart and return. They can now kick up their feet and stare at the walls, uninterrupted by the buzz of text chatter, while the transportationally impaired quietly claim the open seats.
+Those owners of trusty vehicles can use Tripsy too.  Rather than enter into group text purgatory, they simply click the rides icon and fill in the number of seats they have available, and when they plan to depart. They can now kick up their feet and stare at the walls, uninterrupted by the buzz of text chatter, while the transportationally impaired quietly claim the open seats.
 
 The day of departure finally arrives. Ride groups come together seamlessly, each member has purchased the supplies they signed up for, and everyone knows exactly where to go. When even the slightest whiff of uncertainty wafts by on the gentle July breeze you simply slip your phone from your pocket and check Tripsy. Tripsy is more than a travel app;  it’s your most type A friend, without the damn attitude.
 

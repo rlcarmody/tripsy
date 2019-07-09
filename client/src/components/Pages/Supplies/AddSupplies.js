@@ -4,7 +4,7 @@ import { Link, withRouter } from 'react-router-dom';
 import Nav from '../../layoutComponents/Nav';
 import AddSuppliesForm from './AddSuppliesForm';
 
-const AddSupplies = ({ checkLoginStatus, tripID }) => (
+const AddSupplies = ({ checkLoginStatus, tripID, tripName }) => (
   <Fragment>
     <Nav checkLoginStatus={checkLoginStatus} />
     <div className="container">
@@ -25,7 +25,7 @@ const AddSupplies = ({ checkLoginStatus, tripID }) => (
       </div>
       <div className="row">
         <div className="col s12 center-align">
-          <h4 id="subHeadline">Create a Shopping List for your Trip!</h4>
+          <h4 id="subHeadline">Create a Shopping List for {tripName}!</h4>
         </div>
       </div>
       <AddSuppliesForm tripID={tripID} />

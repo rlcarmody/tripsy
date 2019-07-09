@@ -18,7 +18,7 @@ class PostRide extends Component {
   }
 
   componentDidMount() {
-    const { tripID } = this.props;
+    const { tripID, tripName } = this.props;
     this.setState({ tripID });
   }
 
@@ -65,7 +65,7 @@ class PostRide extends Component {
           </div>
           <div className="row">
             <div className="col s12 center-align">
-              <h2 id="subHeadline">Post a Ride</h2>
+              <h2 id="subHeadline">Post a Ride to {this.props.tripName}</h2>
             </div>
           </div>
           <form id="postride" onSubmit={this.handlePostRide}>
