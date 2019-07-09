@@ -13,7 +13,7 @@ class Rides extends Component {
   }
 
   componentDidMount = () => {
-    const { tripID } = this.props;
+    const { tripID, tripName } = this.props;
     API.getRides(tripID)
       .then((data) => {
         this.setState({ rides: data.data });
@@ -64,7 +64,7 @@ class Rides extends Component {
 
           <div className="row">
             <div className="col s12 center-align" id="subHeadline">
-              <h3>Rides</h3>
+              <h3>Rides to {this.props.tripName}</h3>
             </div>
           </div>
 

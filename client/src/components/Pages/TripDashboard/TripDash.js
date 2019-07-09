@@ -19,6 +19,7 @@ class TripDash extends Component {
 
   componentDidMount() {
     this.getOneTrip();
+    console.log(this.props.tripName);
   }
 
   getOneTrip = () => {

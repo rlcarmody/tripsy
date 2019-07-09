@@ -20,6 +20,7 @@ class App extends Component {
 state= {
 
   tripID: undefined,
+  tripName: undefined,
   rideID: undefined,
   isAuthenticated: false,
 }
@@ -28,9 +29,9 @@ componentDidMount() {
   this.checkLoginStatus();
 }
 
-handleNewTrip = (id) => {
+handleNewTrip = (id, name) => {
   this.setState({ tripID: id });
-  // this.setState({ tripName: tripName });
+  this.setState({ tripName: name });
 }
 
 handleNewRide = (id) => {
@@ -46,7 +47,7 @@ checkLoginStatus = () => {
 }
 
 render() {
-  const { isAuthenticated, tripID, rideID } = this.state;
+  const { isAuthenticated, tripID, tripName, rideID } = this.state;
   return (
     <Router>
       <Switch>
@@ -54,25 +55,25 @@ render() {
 
         { isAuthenticated && <Route path="/NewTrip" render={() => <NewTrip onNewTrip={this.handleNewTrip} checkLoginStatus={this.checkLoginStatus} />} />}
 
-        { isAuthenticated && <Route path="/inviteGuests/:var" render={() => <InviteGuests tripID={tripID} checkLoginStatus={this.checkLoginStatus} />} />}
+        { isAuthenticated && <Route path="/inviteGuests/:var" render={() => <InviteGuests tripID={tripID} tripName={tripName} checkLoginStatus={this.checkLoginStatus} />} />}
 
-        { isAuthenticated && <Route path="/inviteGuests" render={() => <InviteGuests tripID={tripID} checkLoginStatus={this.checkLoginStatus} />} />}
+        { isAuthenticated && <Route path="/inviteGuests" render={() => <InviteGuests tripID={tripID} tripName={tripName} checkLoginStatus={this.checkLoginStatus} />} />}
 
         { isAuthenticated && <Route path="/tripdash" render={() => <TripDash tripID={tripID} checkLoginStatus={this.checkLoginStatus} />} />}
 
-        { isAuthenticated && <Route path="/rides" render={() => <Rides tripID={tripID} rideID={rideID} checkLoginStatus={this.checkLoginStatus} />} />}
+        { isAuthenticated && <Route path="/rides" render={() => <Rides tripID={tripID} tripName={tripName} rideID={rideID} checkLoginStatus={this.checkLoginStatus} />} />}
 
-        { isAuthenticated && <Route path="/postRide" render={() => <PostRide onNewRide={this.handleNewRide} tripID={tripID} checkLoginStatus={this.checkLoginStatus} />} />}
+        { isAuthenticated && <Route path="/postRide" render={() => <PostRide onNewRide={this.handleNewRide} tripID={tripID} tripName={tripName} checkLoginStatus={this.checkLoginStatus} />} />}
 
         { isAuthenticated && <Route path="/ridesTableRow" render={() => <RidesTableRow tripID={tripID} rideID={rideID} />} />}
 
         { isAuthenticated && <Route path="/ridesTable" render={() => <RidesTable tripID={tripID} rideID={rideID} />} />}
 
-        { isAuthenticated && <Route path="/supplies" render={() => <Supplies tripID={tripID} checkLoginStatus={this.checkLoginStatus} />} />}
+        { isAuthenticated && <Route path="/supplies" render={() => <Supplies tripID={tripID} tripName={tripName} checkLoginStatus={this.checkLoginStatus} />} />}
 
-        { isAuthenticated && <Route path="/AddSupplies" render={() => <AddSupplies tripID={tripID} checkLoginStatus={this.checkLoginStatus} />} />}
+        { isAuthenticated && <Route path="/AddSupplies" render={() => <AddSupplies tripID={tripID} tripName={tripName} checkLoginStatus={this.checkLoginStatus} />} />}
 
-        { isAuthenticated && <Route path="/AddSuppliesForm" render={() => <AddSuppliesForm tripID={tripID} checkLoginStatus={this.checkLoginStatus} />} />}
+        { isAuthenticated && <Route path="/AddSuppliesForm" render={() => <AddSuppliesForm tripID={tripID} tripName={tripName} checkLoginStatus={this.checkLoginStatus} />} />}
 
         <Route path="/invitation" render={() => <Invitation checkLoginStatus={this.checkLoginStatus} isAuthenticated={isAuthenticated} />} />
 

@@ -27,7 +27,7 @@ class InviteGuests extends Component {
   }
 
   handleInviteGuests = (event) => {
-    const { tripID } = this.props;
+    const { tripID, tripName } = this.props;
     const { guests } = this.state;
     event.preventDefault();
     API.sendInvite(tripID, guests)
@@ -68,8 +68,8 @@ class InviteGuests extends Component {
           </div>
 
           <Row>
-            <div className="col s12 center-align">
-              <h2 id="subHeadline">Invite your friends!</h2>
+            <div className="col s12 center-align" id="subHeadline">
+              <h2 id="subHeadline">Invite your friends to {this.props.tripName}!</h2>
             </div>
           </Row>
 
