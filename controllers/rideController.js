@@ -4,6 +4,7 @@ const auth = require('../auth');
 module.exports = {
   //post - done
   createRide(req, res) {
+    const io = req.app.get('io');
     const user = auth.verifyToken(req.cookies);
     if (!user) {
       return res.status(401).end();
@@ -13,7 +14,10 @@ module.exports = {
     rideDetails.provider = userID;
 
     Ride.create(rideDetails)
-      .then(data => res.json(data))
+      .then(data => {
+        io.emit(`${rideDetails.tripID}-Rides`);
+        return res.json(data);
+      })
       .catch(err => res.status(422).json(err));
   },
   //get - done
@@ -31,13 +35,17 @@ module.exports = {
   },
   //update - done
   claimRide(req, res) {
+    const io = req.app.get('io');
     const user = auth.verifyToken(req.cookies);
     if (!user) {
       return res.status(401).end();
     }
     const userID = user.id;
     Ride.findByIdAndUpdate(req.query.rideID, { $push: { riders: userID}, $inc: { availableSeats: -1 } })
-      .then(result => res.json(result))
+      .then(result => {
+        io.emit(`${result.tripID}-Rides`);
+        return res.json(result);
+      })
       .catch(err => res.status(404).json(err));
   }
 }

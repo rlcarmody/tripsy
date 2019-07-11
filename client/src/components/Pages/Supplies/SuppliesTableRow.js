@@ -21,7 +21,7 @@ class TableRow extends Component {
 
           </td>
           <td>
-            <button onClick={() => onClaimed(id)} type="button" className="button align-center">Claim</button>
+            {!claimedBy.displayName && <button onClick={() => onClaimed(id)} type="button" className="button align-center">Claim</button>}
           </td>
         </tr>
       </Fragment>

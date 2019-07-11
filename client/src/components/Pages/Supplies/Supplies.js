@@ -1,3 +1,4 @@
+/* global socket */
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
@@ -5,7 +6,6 @@ import SuppliesTable from './SuppliesTable';
 import Nav from '../../layoutComponents/Nav';
 import API from '../../../utils/API';
 import AddSuppliesForm from './AddSuppliesForm';
-
 
 class Supplies extends Component {
   state={
@@ -17,8 +17,15 @@ class Supplies extends Component {
   }
 
   componentDidMount = () => {
-    const { tripID, tripName } = this.props;
-    console.log('trip name: '+ this.props.tripName)
+    const { tripID } = this.props;
+    this.getSupplies();
+    socket.on(`${tripID}-Supplies`, () => {
+      this.getSupplies();
+    });
+  }
+
+  getSupplies = () => {
+    const { tripID } = this.props;
     API.getSupplies(tripID)
       .then((data) => {
         this.setState({ supplies: data.data });
@@ -34,7 +41,7 @@ class Supplies extends Component {
   }
 
   render() {
-    const { checkLoginStatus, tripID } = this.props;
+    const { checkLoginStatus, tripID, tripName } = this.props;
     const { supplies } = this.state;
     return (
       <Fragment>
@@ -63,7 +70,9 @@ class Supplies extends Component {
 
           <div className="row">
             <div className="col s12 center-align" id="subHeadline">
-              <h3>Supplies for {this.props.tripName}</h3>
+              <h3>
+                {`Supplies for ${tripName}`}
+              </h3>
             </div>
           </div>
           <section>
@@ -84,4 +93,5 @@ export default Supplies;
 Supplies.propTypes = {
   checkLoginStatus: PropTypes.func.isRequired,
   tripID: PropTypes.string.isRequired,
+  tripName: PropTypes.string.isRequired,
 };

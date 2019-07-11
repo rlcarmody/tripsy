@@ -19,7 +19,6 @@ class TripDash extends Component {
 
   componentDidMount() {
     this.getOneTrip();
-    console.log(this.props.tripName);
   }
 
   getOneTrip = () => {
@@ -43,6 +42,7 @@ class TripDash extends Component {
         startDate,
         endDate,
         description,
+        members,
       },
     } = this.state;
     return (
@@ -100,6 +100,30 @@ class TripDash extends Component {
                 <p>
                   {description}
                 </p>
+                <div>
+                  <table>
+                    <tr>
+                      <th />
+                      <th>Attendee</th>
+                      <th>Email Address</th>
+                    </tr>
+                    {members && members.map(member => (
+                      <tr>
+                        <td>
+                          <img src={member.pictureURL} alt={member.displayName} />
+                        </td>
+                        <td align="center">
+                          {member.displayName}
+                        </td>
+                        <td>
+                          <a href={`mailto:${member.email}`}>
+                            {member.email}
+                          </a>
+                        </td>
+                      </tr>
+                    ))}
+                  </table>
+                </div>
               </div>
             </div>
           </div>

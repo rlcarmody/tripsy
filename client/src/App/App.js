@@ -1,3 +1,4 @@
+/* global window */
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
@@ -16,9 +17,10 @@ import API from '../utils/API';
 import RidesTable from '../components/Pages/Rides/RidesTable';
 import RidesTableRow from '../components/Pages/Rides/RidesTableRow';
 
+const { localStorage } = window;
+
 class App extends Component {
 state= {
-
   tripID: undefined,
   tripName: undefined,
   rideID: undefined,
@@ -27,11 +29,13 @@ state= {
 
 componentDidMount() {
   this.checkLoginStatus();
+  this.getCachedState();
 }
 
 handleNewTrip = (id, name) => {
-  this.setState({ tripID: id });
-  this.setState({ tripName: name });
+  this.setState({ tripID: id, tripName: name }, () => {
+    localStorage.setItem('state', JSON.stringify(this.state));
+  });
 }
 
 handleNewRide = (id) => {
@@ -46,8 +50,19 @@ checkLoginStatus = () => {
     });
 }
 
+getCachedState = () => {
+  const cachedState = JSON.parse(localStorage.getItem('state'));
+
+  if (cachedState) {
+    delete cachedState.isAuthenticated;
+  }
+  this.setState(currentState => Object.assign(currentState, cachedState));
+}
+
 render() {
-  const { isAuthenticated, tripID, tripName, rideID } = this.state;
+  const {
+    isAuthenticated, tripID, tripName, rideID,
+  } = this.state;
   return (
     <Router>
       <Switch>
