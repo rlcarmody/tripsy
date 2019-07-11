@@ -1,12 +1,10 @@
-/* global io */
+/* global socket */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import CommentInput from './CommentInput';
 import CommentMessage from './CommentMessage';
 import API from '../../utils/API';
 import './Comment.css';
-
-const socket = io();
 
 class Comment extends Component {
   constructor(props) {
@@ -22,7 +20,7 @@ class Comment extends Component {
     const { tripID } = this.props;
     API.getComments(tripID)
       .then(result => this.setState({ messages: result.data }));
-    socket.on(tripID, (msg) => {
+    socket.on(`${tripID}-Message`, (msg) => {
       this.setState(currentState => ({ messages: [...currentState.messages, msg] }));
     });
     this.scrollToBottom();

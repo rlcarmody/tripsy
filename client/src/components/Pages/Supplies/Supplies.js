@@ -1,3 +1,4 @@
+/* global socket */
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
@@ -5,7 +6,6 @@ import SuppliesTable from './SuppliesTable';
 import Nav from '../../layoutComponents/Nav';
 import API from '../../../utils/API';
 import AddSuppliesForm from './AddSuppliesForm';
-
 
 class Supplies extends Component {
   state={
@@ -17,6 +17,14 @@ class Supplies extends Component {
   }
 
   componentDidMount = () => {
+    const { tripID } = this.props;
+    this.getSupplies();
+    socket.on(`${tripID}-Supplies`, () => {
+      this.getSupplies();
+    });
+  }
+
+  getSupplies = () => {
     const { tripID } = this.props;
     API.getSupplies(tripID)
       .then((data) => {

@@ -1,3 +1,4 @@
+/* global socket */
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 // eslint-disable-next-line no-unused-vars
@@ -13,7 +14,15 @@ class Rides extends Component {
   }
 
   componentDidMount = () => {
-    const { tripID, tripName } = this.props;
+    const { tripID } = this.props;
+    this.getRides();
+    socket.on(`${tripID}-Rides`, () => {
+      this.getRides();
+    });
+  }
+
+  getRides = () => {
+    const { tripID } = this.props;
     API.getRides(tripID)
       .then((data) => {
         this.setState({ rides: data.data });
@@ -29,7 +38,7 @@ class Rides extends Component {
   }
 
   render() {
-    const { checkLoginStatus } = this.props;
+    const { checkLoginStatus, tripName } = this.props;
     const { rides } = this.state;
     return (
       <Fragment>
@@ -64,7 +73,9 @@ class Rides extends Component {
 
           <div className="row">
             <div className="col s12 center-align" id="subHeadline">
-              <h3>Rides to {this.props.tripName}</h3>
+              <h3>
+                {`Rides to ${tripName}`}
+              </h3>
             </div>
           </div>
 
@@ -80,4 +91,5 @@ export default Rides;
 Rides.propTypes = {
   checkLoginStatus: PropTypes.func.isRequired,
   tripID: PropTypes.string.isRequired,
+  tripName: PropTypes.string.isRequired,
 };

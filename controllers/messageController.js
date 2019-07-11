@@ -18,7 +18,7 @@ module.exports = {
           select: 'displayName pictureURL'
         }).execPopulate()
         .then(msg => {
-          io.emit(msg.tripID, msg)
+          io.emit(`${msg.tripID}-Message`, msg)
           return res.json(msg);
         })
       )

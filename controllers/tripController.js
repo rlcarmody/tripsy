@@ -79,10 +79,14 @@ module.exports = {
   },
   //post - done
   addSupplies(req, res) {
+    const io = req.app.get('io');
     const { tripID } = req.query;
     const supplies = req.body.supplies.map(item => ({ name: item, tripID }));
     Trip.findById(tripID)
-      .then(trip => trip.addSupplies(supplies, cb => res.json(cb)))
+      .then(trip => trip.addSupplies(supplies, cb => {
+        io.emit(`${tripID}-Supplies`);
+        return res.json(cb);
+      }))
       .catch(err => res.status(404).json(err));
   }
 }

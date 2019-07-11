@@ -18,7 +18,7 @@ class PostRide extends Component {
   }
 
   componentDidMount() {
-    const { tripID, tripName } = this.props;
+    const { tripID } = this.props;
     this.setState({ tripID });
   }
 

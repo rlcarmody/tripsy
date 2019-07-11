@@ -13,12 +13,16 @@ module.exports = {
       .then(data => res.json(data));
   },
   claimSupplyItem(req, res) {
+    const io = req.app.get('io');
     const user = auth.verifyToken(req.cookies);
     if (!user) {
       return res.status(401).end();
     }
     SupplyItem.findByIdAndUpdate(req.query.supplyItemID, { $set: { claimed: true, claimedBy: user.id }})
-      .then(result => res.json(result))
+      .then(result => {
+        io.emit(`${result.tripID}-Supplies`);
+        return res.json(result);
+      })
       .catch(err => res.status(400).json(err));
   }
 }
