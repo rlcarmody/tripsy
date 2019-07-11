@@ -34,7 +34,7 @@ module.exports = {
     Trip.findById(req.params.tripID)
       .populate({
         path: 'members',
-        select: 'displayName'
+        select: 'displayName pictureURL email'
       })
       .then(result => res.json(result))
       .catch(err => res.status(404).json(err));

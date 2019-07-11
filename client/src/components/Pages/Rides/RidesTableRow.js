@@ -33,7 +33,7 @@ class RidesTableRow extends Component {
             </p>
           </td>
           <td>
-            <button onClick={() => onSeatClaimed(id)} type="button" className="button align-center">Claim Seat</button>
+            {availableSeats > 0 && <button onClick={() => onSeatClaimed(id)} type="button" className="button align-center">Claim Seat</button>}
           </td>
         </tr>
       </Fragment>
