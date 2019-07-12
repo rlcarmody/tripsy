@@ -25,22 +25,35 @@ class Signup extends Component {
     const { isAuthenticated } = this.props;
     return !isAuthenticated ? (
       <Fragment>
-        <div id="signUpLeft">
-          <img id="logo" alt="logo" src="./images/tripsy.PNG" />
-          <h2 className="headline" id="headline">
-            <strong>
-              {'Trippin\' Made Easy'}
-            </strong>
-          </h2>
-          <div id="fbLogin">
-            <FacebookLogin
-              appId={REACT_APP_FACEBOOK_KEY}
-              fields="name, email, picture"
-              callback={this.facebookResponse}
-              icon="fa-facebook"
-            />
+       
+          <div className="row">
+            <div id="signUpLeft" className="col m6 s12">
+              <img id="logo" alt="logo" src="./images/tripsy.PNG" />
+              <h2 className="headline" id="headline">
+
+                {'Trippin\' Made Easy'}
+
+              </h2>
+
+            </div>
+            <div id="signUpRight" className="col s12 m6">
+              <div className="row">
+                <h2 id="miniHeadline">
+                  Vacations are relaxing. Planning group trips is not. Let Tripsy turn your group travel nightmare into the vacation of your dreams.
+                </h2>
+              </div>
+              <div id="fbLogin">
+                <FacebookLogin
+                  appId={REACT_APP_FACEBOOK_KEY}
+                  fields="name, email, picture"
+                  callback={this.facebookResponse}
+                  icon="fa-facebook"
+                />
+              </div>
+            </div>
           </div>
-        </div>
+    
+        
       </Fragment>
     )
       : <Redirect to="/home" />;
