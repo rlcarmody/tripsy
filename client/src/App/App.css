@@ -24,9 +24,15 @@ Nav .nav-wrapper {
     padding-right: 20px;
 }
 
-h1, h2, h3, h4, h5, p, th, tr {
+h1, h2, h3, h5, p {
     font-family: 'Montserrat', sans-serif;
     color: white;
+    text-align: center;
+}
+
+p, h4, th, td {
+    font-family: 'Montserrat', sans-serif;
+    color: rgb(53, 53, 53);
 }
 
 #headline {
@@ -331,8 +337,8 @@ button > i.material-icons:hover {
 
     #subHeadline {
         font-family: 'Shrikhand', cursive;
-        font-size: 8vw;
-        color: white;
+        font-size: 10vw;
+        color: rgb(238, 235, 235);
     }
 
     #miniHeadline {
