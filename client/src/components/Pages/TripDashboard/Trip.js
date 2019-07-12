@@ -22,8 +22,8 @@ class Trip extends Component {
     return (
       <ListItem className="center-align">
         <div className="row flex-wrap">
-          <div className="col s6 offset-s3">
-            <h4>
+          <div className="col s12">
+            <h4 id="subHeadline">
               {name}
             </h4>
             {location && (
@@ -34,7 +34,7 @@ class Trip extends Component {
           </div>
         </div>
         <div className="row">
-          <div className="col s6 offset-s3">
+          <div className="col s12">
             {organizer && (
               <p className="font-italic small">
                 {`Organized by ${organizer}`}
@@ -43,7 +43,7 @@ class Trip extends Component {
           </div>
         </div>
         <div className="row">
-          <div className="col s6 offset-s3">
+          <div className="col s12">
             {startDate && endDate && (
             <p>
               {`This Trip Starts on ${format(addMinutes(startDate, TZ_OFFSET), 'MMMM DD, YYYY')}`}

@@ -1,5 +1,5 @@
 body {    
-    background-image: linear-gradient(to bottom right, rgb(174, 218, 243), rgb(178, 252, 233));
+    background-image: linear-gradient(to right, rgb(7, 240, 248), rgb(9, 240, 124));
     background-repeat: no-repeat;
     background-attachment: fixed;
     box-sizing: border-box;
@@ -17,29 +17,40 @@ button {
 }
 
 Nav .nav-wrapper {
-    background-color: rgb(62, 177, 142);
+    background-color: rgb(178, 66, 243);
     padding-left: 20px;
     padding-top: 10px;
     padding-bottom: 7px;
     padding-right: 20px;
 }
 
-h2, h3, h4, h5, p, th, tr {
+h1, h2, h3, h4, h5, p, th, tr {
     font-family: 'Montserrat', sans-serif;
+    color: white;
 }
 
 #headline {
-    font-family: 'Cabin Condensed', sans-serif;
-    font-size: 7vw;
-    color: black;
+    font-family: 'Shrikhand', cursive !important;
+    font-size: 6vw;
+    color: rgb(248, 247, 247) !important;
     text-align: center;
+    letter-spacing: 1.7px;
 }
 
 #subHeadline {
-    font-family: 'Cabin Condensed', sans-serif;
-    font-size: 4vw;
-    color: black;
+    font-family: 'Shrikhand', cursive !important;
+    font-size: 3vw;
+    color: white !important;
     text-align: center;  
+    letter-spacing: 1.2px;
+}
+
+#miniHeadline {
+    font-family: 'Shrikhand', cursive !important;
+    font-size: 3vw;
+    color: white !important;
+    text-align: center;  
+    letter-spacing: 1.2px;
 }
 
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
@@ -130,6 +141,7 @@ h2, h3, h4, h5, p, th, tr {
 .button:hover {
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 12px 30px 0 rgba(0,0,0,0.19);
     transition: 200ms;
+    background-color: rgb(178, 66, 243);
 }
 
 .btnNav {
@@ -172,6 +184,7 @@ h2, h3, h4, h5, p, th, tr {
 .newTripBtn:hover {
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
     transition: 200ms;
+    background-color: rgb(178, 66, 243);
 }
 
 #logo {
@@ -244,15 +257,23 @@ span {
 }
 
 #signUpLeft {
-    background-color: rgb(174, 218, 243);
+    /* background-color: rgb(7, 240, 248); */
+    background-image: linear-gradient(to right, rgb(7, 240, 248), rgb(91, 247, 234));
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     height: 100vh;
     box-sizing: border-box;
+    padding-top: 5%;
 }
 
 #signUpRight {
-    background-color: rgb(49, 121, 85);
-    height: 100vw;
-    padding: 15px;
+    background-image: linear-gradient(to right, rgb(7, 248, 196), rgb(9, 240, 124));
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 100vh;
+    padding: 30px;
+    box-sizing: border-box;
+
 }
 
 #fbLogin {
@@ -302,17 +323,40 @@ button > i.material-icons:hover {
     }
     
     #headline {
-        font-family: 'Cabin Condensed', sans-serif;
+        font-family: 'Shrikhand', cursive;
         font-size: 12vw;
-        color: black;
+        color: white;
     
     }
 
     #subHeadline {
-        font-family: 'Cabin Condensed', sans-serif;
+        font-family: 'Shrikhand', cursive;
         font-size: 8vw;
-        color: black;
+        color: white;
     }
+
+    #miniHeadline {
+        font-family: 'Shrikhand', cursive;
+        font-size: 8vw;
+        color: white;
+    }
+
+    #signUpLeft {
+        background-color: rgb(7, 240, 248);
+        height: 100vh;
+        box-sizing: border-box;
+        padding-top: 25%;
+    }
+    
+    #signUpRight {
+        background-color: rgb(9, 240, 124);
+        height: 100vh;
+        padding-top: 15%;
+        padding: 15%;
+        box-sizing: border-box;
+    
+    }
+    
 
     .newTripBtn{
         background-color: rgb(62, 177, 142);
