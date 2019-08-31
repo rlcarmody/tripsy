@@ -1,6 +1,7 @@
 const User = require('../models/Schema/User');
 const auth = require('../auth');
 const GRAPH_API_URL = 'https://graph.facebook.com/me?access_token=';
+const PICTURE_BASE_URL = 'https://graph.facebook.com/v3.2/';
 const axios = require('axios');
 
 module.exports = {
@@ -10,11 +11,6 @@ module.exports = {
       email,
       id,
       name,
-      picture: {
-        data: {
-          url
-        }
-      }
     } = req.body;
 
     axios.get(`${GRAPH_API_URL}${accessToken}`)
@@ -27,7 +23,7 @@ module.exports = {
                   displayName: name,
                   email,
                   facebookID: id,
-                  pictureURL: url,
+                  pictureURL: `${PICTURE_BASE_URL}${id}/picture`,
                 }).then(result => {
                   const token = auth.generateToken(result._id);
                   res.cookie('accessToken', token, {
